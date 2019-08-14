@@ -16,8 +16,8 @@
     <DeploymentServerName>ks-sql2018</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
-    <DeploymentServerDatabase>Kartdata</DeploymentServerDatabase>
-    <DeploymentServerCubeName>Kartdatabase</DeploymentServerCubeName>
+    <DeploymentServerDatabase>ASSS data</DeploymentServerDatabase>
+    <DeploymentServerCubeName>ASSS database</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Full</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
@@ -37,7 +37,7 @@
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Kartdatabase.bim">
+    <Compile Include="ASSS database.bim">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
