@@ -197,7 +197,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Kostnader til gatebelysning per lyspunkt, kommunale veier",
+            "name": "SFS Kostnader til gatebelysning per lyspunkt, kommunale veier",
             "expression": [
               "",
               "var gate = ",
@@ -222,7 +222,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Drenering/overvann, kroner per meter vei",
+            "name": "SFS Drenering/overvann, kroner per meter vei",
             "expression": [
               "",
               "",
@@ -241,7 +241,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Trafikksikkerhet inkludert skilting og veimerking, kroner per meter vei",
+            "name": "SFS Trafikksikkerhet inkludert skilting og veimerking, kroner per meter vei",
             "expression": [
               "",
               "",
@@ -260,7 +260,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Renhold, kroner per meter vei",
+            "name": "SFS Renhold, kroner per meter vei",
             "expression": [
               "",
               "",
@@ -279,7 +279,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Vinterdrift, kroner per meter vei",
+            "name": "SFS Vinterdrift, kroner per meter vei",
             "expression": [
               "",
               "",
@@ -298,7 +298,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Investeringer til veidekker (asfalt) per meter vei (kroner)",
+            "name": "SFS Investeringer til veidekker (asfalt) per meter vei (kroner)",
             "expression": [
               "",
               "",
@@ -332,7 +332,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Veidekker, kroner per meter vei",
+            "name": "SFS Veidekker, kroner per meter vei",
             "expression": [
               "",
               "",
@@ -351,7 +351,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Andel adkomst- og GS-vei på og/eller over akseptabel standard - tilstandsgrad TG2 (prosent)*",
+            "name": "SFS Andel adkomst- og GS-vei på og/eller over akseptabel standard - tilstandsgrad TG2 (prosent)*",
             "expression": [
               "",
               "",
@@ -366,7 +366,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Andel gate og samlevei på og/eller over akseptabel standard - tilstandsgrad TG1 (prosent)*",
+            "name": "SFS Andel gate og samlevei på og/eller over akseptabel standard - tilstandsgrad TG1 (prosent)*",
             "expression": [
               "",
               "",
@@ -381,7 +381,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Kostnad per meter vei for å komme over akseptabel standard (kroner)*",
+            "name": "SFS Kostnad per meter vei for å komme over akseptabel standard (kroner)*",
             "expression": [
               "",
               "",
