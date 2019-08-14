@@ -151,7 +151,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Lengde kommunalvei (km)\"),",
               "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Innbyggere (antall)\"))/10000)"
-            ]
+            ],
+            "isHidden": true
           },
           {
             "name": "Antall km tilrettelagt for syklende som kommunen har ansvaret for per 10 000 innbyggere",
@@ -159,6 +160,223 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Lengde  tilrettelagt for syklende som kommunen har ansvaret for (km)\"),",
               "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Innbyggere (antall)\"))/10000)"
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "Brutto driftsutgifter eksklusiv avskrivninger samferdsel per km (kroner)",
+            "expression": [
+              " ",
+              "",
+              "var agd10 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD10\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"332\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Beløp (1000 kr)\")",
+              " )   ",
+              "",
+              "var a590= CALCULATE(SUM('Alle Data'[Verdi]),  ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"A590\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"332\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Beløp (1000 kr)\")",
+              " ) ",
+              "",
+              "var vei = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")",
+              ")",
+              "",
+              "Return ((agd10-a590)*1000)/vei"
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "Kostnader til gatebelysning per lyspunkt, kommunale veier",
+            "expression": [
+              "",
+              "var gate = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"12183\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Brutto driftsutgifter til gatebelysning langs kommunale veier og gater (1000 kr)\")",
+              ")   ",
+              "",
+              "var lys = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"11845\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lyspunkt langs kommunale veier og gater (antall)\")   ",
+              ")  ",
+              "",
+              "RETURN (",
+              "    ROUND(",
+              "        DIVIDE((gate * 1000), lys),",
+              "        2  ",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "Drenering/overvann, kroner per meter vei",
+            "expression": [
+              "",
+              "",
+              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til drenering/overvann\")",
+              ")   ",
+              "",
+              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              ")  ",
+              "",
+              "Return divide( brutto,(lengde*1000))"
+            ]
+          },
+          {
+            "name": "Trafikksikkerhet inkludert skilting og veimerking, kroner per meter vei",
+            "expression": [
+              "",
+              "",
+              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til trafikksikkerhet inkl skilting og vegmerking\")",
+              ")   ",
+              "",
+              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              ")  ",
+              "",
+              "Return divide( brutto,(lengde*1000))"
+            ]
+          },
+          {
+            "name": "Renhold, kroner per meter vei",
+            "expression": [
+              "",
+              "",
+              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til renhold\")",
+              ")   ",
+              "",
+              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              ")  ",
+              "",
+              "Return divide( brutto,(lengde*1000))"
+            ]
+          },
+          {
+            "name": "Vinterdrift, kroner per meter vei",
+            "expression": [
+              "",
+              "",
+              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til vinterdrift\")",
+              ")   ",
+              "",
+              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              ")  ",
+              "",
+              "Return divide( brutto,(lengde*1000))"
+            ]
+          },
+          {
+            "name": "Investeringer til veidekker (asfalt) per meter vei (kroner)",
+            "expression": [
+              "",
+              "",
+              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Investeringer til veidekker\")",
+              ")   ",
+              "",
+              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              ")  ",
+              "",
+              "Return divide( brutto,(lengde*1000))"
+            ]
+          },
+          {
+            "name": "Sykefravær samferdsel (PAI) (prosent)*",
+            "expression": [
+              "",
+              "",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ASSS\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sykefravær Samferdsel (PAI)\")",
+              ")",
+              "",
+              "return a"
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "Veidekker, kroner per meter vei",
+            "expression": [
+              "",
+              "",
+              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til veidekker\")",
+              ")   ",
+              "",
+              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              ")  ",
+              "",
+              "Return divide( brutto,(lengde*1000))"
+            ]
+          },
+          {
+            "name": "Andel adkomst- og GS-vei på og/eller over akseptabel standard - tilstandsgrad TG2 (prosent)*",
+            "expression": [
+              "",
+              "",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
+              "= \"Andel adkomst- og GS-veg over akseptabelt nivå > TG2\")",
+              ")",
+              "",
+              "return a"
+            ]
+          },
+          {
+            "name": "Andel gate og samlevei på og/eller over akseptabel standard - tilstandsgrad TG1 (prosent)*",
+            "expression": [
+              "",
+              "",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
+              "= \"Andel gate og samleveg over akseptabelt nivå > TG1\")",
+              ")",
+              "",
+              "return a"
+            ]
+          },
+          {
+            "name": "Kostnad per meter vei for å komme over akseptabel standard (kroner)*",
+            "expression": [
+              "",
+              "",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
+              "= \"Kostnad per meter veg for å komme over akseptabel standard\")",
+              ")",
+              "",
+              "return a"
             ]
           }
         ],
@@ -428,6 +646,7 @@
       },
       {
         "name": "Alle Data",
+        "isHidden": true,
         "columns": [
           {
             "name": "Tabell",
@@ -502,6 +721,57 @@
             "value": "dbo"
           }
         ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "4e9f0201-a402-446a-8143-3524dec0a92e",
+        "fromTable": "Alle Data",
+        "fromColumn": "Tabell",
+        "toTable": "Tabeller",
+        "toColumn": "Tabellnummer"
+      },
+      {
+        "name": "5204d27e-8169-49b0-ae25-ef8dcad03ae3",
+        "fromTable": "Alle Data",
+        "fromColumn": "Energitypekode",
+        "toTable": "Energitype",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "8c977260-ed82-4f2b-9c8c-871023631bfc",
+        "fromTable": "Alle Data",
+        "fromColumn": "Funksjonkode",
+        "toTable": "Funksjon",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "20fb5620-a51f-4aef-8f01-7ac9f30e472d",
+        "fromTable": "Alle Data",
+        "fromColumn": "Kode",
+        "toTable": "Region",
+        "toColumn": "Kode"
+      },
+      {
+        "name": "219ebb80-653d-45da-bcdf-52b85370e766",
+        "fromTable": "Alle Data",
+        "fromColumn": "Artkode",
+        "toTable": "Art",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "e93c2126-b5fc-4246-b517-1d3e8d5fd7cc",
+        "fromTable": "Alle Data",
+        "fromColumn": "Variabel",
+        "toTable": "Variabel",
+        "toColumn": "Variabel"
+      },
+      {
+        "name": "7d2da773-d756-403e-b569-1ad00b2f5e9f",
+        "fromTable": "Alle Data",
+        "fromColumn": "År",
+        "toTable": "År",
+        "toColumn": "År"
       }
     ],
     "annotations": [
