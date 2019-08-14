@@ -1,0 +1,515 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1400,
+  "model": {
+    "culture": "nb-NO",
+    "dataSources": [
+      {
+        "name": "KS-SQL2018;Reporting_ASSS",
+        "connectionString": "Provider=SQLNCLI11;Data Source=KS-SQL2018;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=Reporting_ASSS",
+        "impersonationMode": "impersonateAccount",
+        "account": "KSINT\\8093AHA",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Variabel",
+        "columns": [
+          {
+            "name": "Variabelgruppe",
+            "dataType": "string",
+            "sourceColumn": "Variabelgruppe",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Variabel",
+            "dataType": "string",
+            "sourceColumn": "Variabel",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Variabelnavn",
+            "dataType": "string",
+            "sourceColumn": "Variabelnavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Variabel",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Variabel].* FROM [dbo].[Variabel] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Variabel].* FROM [dbo].[Variabel] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Variabel"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Art",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Art",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Art].* FROM [dbo].[Art] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Art].* FROM [dbo].[Art] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Art"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "ASSS Indikatorer",
+        "columns": [
+          {
+            "name": "Barnehage",
+            "dataType": "int64",
+            "sourceColumn": "Barnehage",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Miljøforvaltning",
+            "dataType": "int64",
+            "sourceColumn": "Miljøforvaltning",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Samferdsel",
+            "dataType": "int64",
+            "sourceColumn": "Samferdsel",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ASSS Indikatorer",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[ASSS Indikatorer].* FROM [dbo].[ASSS Indikatorer] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Kommunale veier i km per 10 000 innbyggere",
+            "expression": [
+              "",
+              "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Lengde kommunalvei (km)\"),",
+              "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Innbyggere (antall)\"))/10000)"
+            ]
+          },
+          {
+            "name": "Antall km tilrettelagt for syklende som kommunen har ansvaret for per 10 000 innbyggere",
+            "expression": [
+              "",
+              "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Lengde  tilrettelagt for syklende som kommunen har ansvaret for (km)\"),",
+              "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Innbyggere (antall)\"))/10000)"
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[ASSS Indikatorer].* FROM [dbo].[ASSS Indikatorer] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "ASSS Indikatorer"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Energitype",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Energitype",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Energitype].* FROM [dbo].[Energitype] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Energitype].* FROM [dbo].[Energitype] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Energitype"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Funksjon",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Funksjon",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Funksjon].* FROM [dbo].[Funksjon] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Funksjon].* FROM [dbo].[Funksjon] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Funksjon"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Region",
+        "columns": [
+          {
+            "name": "Kode",
+            "dataType": "string",
+            "sourceColumn": "Kode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Navn",
+            "dataType": "string",
+            "sourceColumn": "Navn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "KodeNummernavn",
+            "dataType": "string",
+            "sourceColumn": "KodeNummernavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Regionnummer",
+            "dataType": "string",
+            "sourceColumn": "Regionnummer",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Kategori",
+            "dataType": "string",
+            "sourceColumn": "Kategori",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GyldigFraDato",
+            "dataType": "dateTime",
+            "sourceColumn": "GyldigFraDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "GyldigTilDato",
+            "dataType": "dateTime",
+            "sourceColumn": "GyldigTilDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Region",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Region].* FROM [dbo].[Region] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Region].* FROM [dbo].[Region] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Region"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Tabeller",
+        "columns": [
+          {
+            "name": "Tabellnummer",
+            "dataType": "string",
+            "sourceColumn": "Tabellnummer",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Tabellnavn",
+            "dataType": "string",
+            "sourceColumn": "Tabellnavn",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "TabellNummerNavn",
+            "dataType": "string",
+            "sourceColumn": "TabellNummerNavn",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Tabeller",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Tabeller].* FROM [dbo].[Tabeller] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Tabeller].* FROM [dbo].[Tabeller] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Tabeller"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "År",
+        "columns": [
+          {
+            "name": "År",
+            "dataType": "int64",
+            "sourceColumn": "År",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "År",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[År].* FROM [dbo].[År] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[År].* FROM [dbo].[År] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "År"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Alle Data",
+        "columns": [
+          {
+            "name": "Tabell",
+            "dataType": "string",
+            "sourceColumn": "Tabell",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Kode",
+            "dataType": "string",
+            "sourceColumn": "Kode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Variabel",
+            "dataType": "string",
+            "sourceColumn": "Variabel",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Artkode",
+            "dataType": "string",
+            "sourceColumn": "Artkode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Energitypekode",
+            "dataType": "string",
+            "sourceColumn": "Energitypekode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Funksjonkode",
+            "dataType": "string",
+            "sourceColumn": "Funksjonkode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "År",
+            "dataType": "int64",
+            "sourceColumn": "År",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Verdi",
+            "dataType": "double",
+            "sourceColumn": "Verdi",
+            "sourceProviderType": "Numeric"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Alle Data",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Alle Data].* FROM [dbo].[Alle Data] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Alle Data].* FROM [dbo].[Alle Data] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Alle Data"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "500"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
