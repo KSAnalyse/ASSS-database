@@ -147,21 +147,44 @@
         ],
         "measures": [
           {
-            "name": "Kommunale veier i km per 10 000 innbyggere",
+            "name": "SFS Kommunale veier i km per 10 000 innbyggere",
             "expression": [
               "",
-              "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Lengde kommunalvei (km)\"),",
-              "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Innbyggere (antall)\"))/10000)"
+              "",
+              "var lengde_komvei = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lengde kommunalvei (km)\")",
+              ")",
+              "",
+              "var innb = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Innbyggere (antall)\")",
+              ")",
+              "",
+              "return (",
+              "    DIVIDE(lengde_komvei, innb) / 10000",
+              ")"
             ],
-            "isHidden": true,
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Antall km tilrettelagt for syklende som kommunen har ansvaret for per 10 000 innbyggere",
+            "name": "SFS Antall km tilrettelagt for syklende som kommunen har ansvaret for per 10 000 innbyggere",
             "expression": [
               "",
-              "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Lengde  tilrettelagt for syklende som kommunen har ansvaret for (km)\"),",
-              "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Innbyggere (antall)\"))/10000)"
+              "",
+              "var lengde_syklende = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lengde  tilrettelagt for syklende som kommunen har ansvaret for (km)\")",
+              ")",
+              "",
+              "var innb_ant = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Innbyggere (antall)\")",
+              ")",
+              "",
+              "return (",
+              "    DIVIDE(lengde_syklende, innb_ant) / 10000",
+              ")"
             ],
             "isHidden": true,
             "displayFolder": "Samferdsel"
