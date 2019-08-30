@@ -133,6 +133,11 @@
             "dataType": "int64",
             "sourceColumn": "Samferdsel",
             "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Barnevern",
+            "dataType": "int64",
+            "sourceColumn": "Barnevern"
           }
         ],
         "partitions": [
@@ -142,7 +147,106 @@
             "source": {
               "query": " SELECT [dbo].[ASSS Indikatorer].* FROM [dbo].[ASSS Indikatorer] ",
               "dataSource": "KS-SQL2018;Reporting_ASSS"
-            }
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Barnehage</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>113</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Barnevern</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>110</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Miljøforvaltning</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>149</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Samferdsel</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>117</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Barnehage</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Barnevern</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Miljøforvaltning</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Samferdsel</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Barnevern</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
           }
         ],
         "measures": [
@@ -190,30 +294,38 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Brutto driftsutgifter eksklusiv avskrivninger samferdsel per km (kroner)",
+            "name": "SFS Brutto driftsutgifter eksklusiv avskrivninger samferdsel per km (kroner)",
             "expression": [
               " ",
               "",
-              "var agd10 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD10\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"332\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Beløp (1000 kr)\")",
-              " )   ",
+              "var agd10 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"12367\"),",
+              "    FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]), [Artsgruppekode] = \"AGD10\"),",
+              "    FILTER(ALL('Funksjon Kostra'[Funksjonskode]), [Funksjonskode] = \"332\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")   ",
               "",
-              "var a590= CALCULATE(SUM('Alle Data'[Verdi]),  ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"A590\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"332\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Beløp (1000 kr)\")",
-              " ) ",
+              "var a590 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),  ",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"12367\"),",
+              "    FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]), [Artsgruppekode] = \"A590\"),",
+              "    FILTER(ALL('Funksjon Kostra'[Funksjonskode]), [Funksjonskode] = \"332\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ") ",
               "",
-              "var vei = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")",
+              "var vei = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"11814\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lengde kommunalvei (km)\")",
               ")",
               "",
-              "Return ((agd10-a590)*1000)/vei"
+              "Return (",
+              "    DIVIDE(",
+              "        (agd10 - a590) * 1000, ",
+              "        vei",
+              "    )",
+              ")"
             ],
             "isHidden": true,
             "displayFolder": "Samferdsel"
@@ -339,16 +451,14 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Sykefravær samferdsel (PAI) (prosent)*",
+            "name": "SFS Sykefravær samferdsel (PAI) (prosent)*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ASSS\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sykefravær Samferdsel (PAI)\")",
-              ")",
-              "",
-              "return a"
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"ASSS\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Sykefravær Samferdsel (PAI)\")",
+              ")"
             ],
             "isHidden": true,
             "displayFolder": "Samferdsel"
@@ -416,6 +526,333 @@
               "return a"
             ],
             "displayFolder": "Samferdsel"
+          },
+          {
+            "name": "Netto driftsutgifter barnevernstjenester per innbygger 0-17 år (kroner)",
+            "expression": [
+              "",
+              "",
+              "var ndrbv = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "filter(ALL('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
+              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"244\", \"251\", \"252\"}),",
+              "filter(ALL('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"11805\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-17 år\")",
+              ")",
+              "",
+              "return (DIVIDE((ndrbv*1000),barn))"
+            ]
+          },
+          {
+            "name": "Andel barn med undersøkelser i forhold til innbyggere 0-17 år (prosent)",
+            "expression": [
+              "",
+              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Barn med undersøking  (antall)\"),",
+              "(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100"
+            ]
+          },
+          {
+            "name": "Andel barn med barneverntiltak i forhold til innbyggere 0-17 år (prosent)",
+            "expression": [
+              "",
+              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Barn med barnevernstiltak i løpet av året (antall) 0-22 år Tiltak i alt\"),",
+              "(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100"
+            ]
+          },
+          {
+            "name": "Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)",
+            "expression": [
+              "",
+              "CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Funksjon Kostra'[Funksjonskode]),'Funksjon Kostra'[Funksjonskode] = \"252\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
+              "\"Barn med barnevernstiltak i løpet av året  (antall) 0-22 år\"))"
+            ]
+          },
+          {
+            "name": "Andel barn som er plassert i løpet av året i prosent av antall barn 0-17 år",
+            "expression": [
+              "",
+              "",
+              "var barn017 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"11805\"),",
+              "filter(all(Variabel[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Personer (antall) 0-17 år\")",
+              ")",
+              "",
+              "return DIVIDE('Nøkkeltall tjenester'",
+              "[Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)],barn017)*100"
+            ]
+          },
+          {
+            "name": "Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)",
+            "expression": [
+              "",
+              "CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Funksjon Kostra'[Funksjonskode]),'Funksjon Kostra'[Funksjonskode] = \"251\"),",
+              "FILTER(ALL(Variabel[Variabelnavn]), ",
+              "Variabel[Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall) 0-22 år\"))"
+            ]
+          },
+          {
+            "name": "Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak  (0-22 år)",
+            "expression": [
+              "",
+              "",
+              "var tiltak022 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all(Variabel[Variabelnavn]), ",
+              "'Variabel'[Variabelnavn] = \"Barn med barnevernstiltak i løpet av året (antall) 0-22 år Tiltak i alt\")",
+              ")",
+              "",
+              "return DIVIDE('Nøkkeltall tjenester'",
+              "[Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)],tiltak022)*100"
+            ]
+          },
+          {
+            "name": "Brutto driftsutgifter per barn (f251) som ikke er plassert av barnevernet (kroner)",
+            "expression": [
+              "",
+              "",
+              "var brbv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD10\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"251\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              " )",
+              "",
+              "return DIVIDE((brbv*1000),'Nøkkeltall tjenester'",
+              "[Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)])"
+            ]
+          },
+          {
+            "name": "Brutto driftsutgifter per barn (f252) som er plassert av barnevernet (kroner)",
+            "expression": [
+              "",
+              "",
+              "var brbv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD10\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"252\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              " )",
+              "",
+              "return divide((brbv*1000),'Nøkkeltall tjenester'[Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])"
+            ]
+          },
+          {
+            "name": "Brutto driftsutgifter per barn (f244) med undersøkelse eller tiltak (kroner)*",
+            "expression": [
+              "",
+              "",
+              "var br244 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12279\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Brutto driftsutgifter (funksjon 244) per barn med undersøking eller tiltak (kr)\")",
+              ")",
+              "",
+              "return br244"
+            ]
+          },
+          {
+            "name": "Andel undersøkelser gjennomført i løpet av 3 måneder (prosent)*",
+            "expression": [
+              "",
+              "",
+              "var und= CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12280\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Undersøkingar med handsamingstid innan 3 månader (prosent)\")",
+              ")",
+              "",
+              "return und"
+            ]
+          },
+          {
+            "name": "Sykefravær barnevern (PAI) (prosent)*",
+            "expression": [
+              "",
+              "",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ASSS\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sykefravær Barnevern (PAI)\")",
+              ")",
+              "",
+              "return a"
+            ]
+          },
+          {
+            "name": "Netto driftsutgifter per barn (f252) som er plassert av barnevernet (kroner)",
+            "expression": [
+              "",
+              "",
+              "var brbv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"252\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              " )",
+              "",
+              "return divide((brbv*1000),",
+              "'Nøkkeltall tjenester'[Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])"
+            ]
+          },
+          {
+            "name": "Andel av netto driftsutgifter barnevern f244 (prosent)",
+            "expression": [
+              "",
+              "",
+              "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"FGK13\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "var netto244 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"244\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return (divide(netto244,nettobv))*100",
+              ""
+            ]
+          },
+          {
+            "name": "Andel av netto driftsutgifter barnevern f251 (prosent)",
+            "expression": [
+              "",
+              "",
+              "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"FGK13\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "var netto251 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"251\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return (divide(netto251,nettobv))*100",
+              ""
+            ]
+          },
+          {
+            "name": "Andel av netto driftsutgifter barnevern f252 (prosent)",
+            "expression": [
+              "",
+              "",
+              "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"FGK13\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "var netto252 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"252\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return (divide(netto252,nettobv))*100",
+              ""
+            ]
+          },
+          {
+            "name": "Andel barn med melding av innbyggere 0-17 år (prosent)",
+            "expression": [
+              "",
+              "",
+              "var melding = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12615\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Barn med melding (antall)\")",
+              ")",
+              "",
+              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"11805\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-17 år\")",
+              ")",
+              "",
+              "return (divide(melding,barn))*100",
+              ""
+            ]
+          },
+          {
+            "name": "Antall barn med undersøkelse eller tiltak per årsverk (funksjon 244)*",
+            "expression": [
+              "",
+              "",
+              "var barn = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12280\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Barn med undersøking eller tiltak per årsverk (funksjon 244) (antall)\")",
+              ")",
+              "",
+              "return barn"
+            ]
+          },
+          {
+            "name": "Stillinger med fagutdanning av alle fag- og tiltaksstillinger (prosent)",
+            "expression": [
+              "",
+              "",
+              "var fag = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12305\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Stillingar med fagutdanning (årsverk)\")",
+              ")",
+              "",
+              "var stillinger= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"12305\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
+              "\"Stillingar knytt til sakshandsaming og tiltak frå barnevernstenesta (funksjon 244 unnateke støttefunksjonar, funksjon 251 og 252)  (årsverk)\")",
+              ")",
+              "",
+              "return (divide(fag,stillinger)*100)",
+              ""
+            ]
+          },
+          {
+            "name": "Andel meldinger som går til undersøkelser (prosent)",
+            "expression": [
+              "",
+              "",
+              "var und = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12189\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
+              "\"Meldingar til barnevernet (antall) Til undersøkelse Meldinger i alt\")",
+              ")",
+              "",
+              "var meld= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"12189\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
+              "\"Meldingar til barnevernet (antall) Meldinger i alt Meldinger i alt\")",
+              ")",
+              "",
+              "return (divide(und,meld)*100)",
+              ""
+            ]
+          },
+          {
+            "name": "Brutto driftsutgifter per EM (f252) (kroner)",
+            "expression": [
+              "",
+              "",
+              "var brem = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"BMT\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=",
+              "\"Brutto driftsutgifter funksjon 252 enslige mindreårige (1000 kr)\")",
+              ")",
+              "var antall = CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"BMT\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=",
+              "\"Antall enslige mindreårige f252\")",
+              ")",
+              "return divide((brem*1000),antall)"
+            ]
           }
         ],
         "annotations": [
@@ -430,6 +867,103 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "dbo"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>Barnehage</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>113</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Barnevern</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>110</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Miljøforvaltning</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>149</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Samferdsel</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>117</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>Barnehage</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Barnevern</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Miljøforvaltning</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Samferdsel</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>Barnevern</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
