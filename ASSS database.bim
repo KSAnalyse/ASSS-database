@@ -301,16 +301,16 @@
               "var agd10 = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"12367\"),",
-              "    FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]), [Artsgruppekode] = \"AGD10\"),",
-              "    FILTER(ALL('Funksjon Kostra'[Funksjonskode]), [Funksjonskode] = \"332\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD10\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"332\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
               ")   ",
               "",
               "var a590 = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),  ",
               "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"12367\"),",
-              "    FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]), [Artsgruppekode] = \"A590\"),",
-              "    FILTER(ALL('Funksjon Kostra'[Funksjonskode]), [Funksjonskode] = \"332\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"A590\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"332\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
               ") ",
               "",
@@ -534,8 +534,8 @@
               "",
               "var ndrbv = CALCULATE(sum('Alle Data'[Verdi]),",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "filter(ALL('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
-              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"244\", \"251\", \"252\"}),",
+              "filter(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "filter(all('Funksjon'[Dimensjonskode]), [Dimensjonskode] in {\"244\", \"251\", \"252\"}),",
               "filter(ALL('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Beløp (1000 kr)\")",
               ")",
               "",
@@ -568,7 +568,7 @@
             "expression": [
               "",
               "CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Funksjon Kostra'[Funksjonskode]),'Funksjon Kostra'[Funksjonskode] = \"252\"),",
+              "filter(all('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
               "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
               "\"Barn med barnevernstiltak i løpet av året  (antall) 0-22 år\"))"
             ]
@@ -583,8 +583,7 @@
               "filter(all(Variabel[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Personer (antall) 0-17 år\")",
               ")",
               "",
-              "return DIVIDE('Nøkkeltall tjenester'",
-              "[Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)],barn017)*100"
+              "return DIVIDE([Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)],barn017)*100"
             ]
           },
           {
@@ -592,7 +591,7 @@
             "expression": [
               "",
               "CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Funksjon Kostra'[Funksjonskode]),'Funksjon Kostra'[Funksjonskode] = \"251\"),",
+              "filter(all('Funksjon'[Dimensjonskode]),'Funksjon'[Dimensjonskode] = \"251\"),",
               "FILTER(ALL(Variabel[Variabelnavn]), ",
               "Variabel[Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall) 0-22 år\"))"
             ]
@@ -607,8 +606,7 @@
               "'Variabel'[Variabelnavn] = \"Barn med barnevernstiltak i løpet av året (antall) 0-22 år Tiltak i alt\")",
               ")",
               "",
-              "return DIVIDE('Nøkkeltall tjenester'",
-              "[Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)],tiltak022)*100"
+              "return DIVIDE([Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)],tiltak022)*100"
             ]
           },
           {
@@ -618,13 +616,12 @@
               "",
               "var brbv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD10\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"251\"),",
+              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD10\"),",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"251\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               " )",
               "",
-              "return DIVIDE((brbv*1000),'Nøkkeltall tjenester'",
-              "[Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)])"
+              "return DIVIDE((brbv*1000),[Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)])"
             ]
           },
           {
@@ -634,12 +631,12 @@
               "",
               "var brbv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD10\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"252\"),",
+              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD10\"),",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               " )",
               "",
-              "return divide((brbv*1000),'Nøkkeltall tjenester'[Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])"
+              "return divide((brbv*1000), [Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])"
             ]
           },
           {
@@ -688,13 +685,12 @@
               "",
               "var brbv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"252\"),",
+              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               " )",
               "",
-              "return divide((brbv*1000),",
-              "'Nøkkeltall tjenester'[Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])"
+              "return divide((brbv*1000),[Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])"
             ]
           },
           {
@@ -704,14 +700,14 @@
               "",
               "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"FGK13\"),",
+              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"FGK13\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "var netto244 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"244\"),",
+              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"244\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "",
@@ -726,14 +722,14 @@
               "",
               "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"FGK13\"),",
+              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"FGK13\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "var netto251 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"251\"),",
+              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"251\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "",
@@ -748,14 +744,14 @@
               "",
               "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"FGK13\"),",
+              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"FGK13\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "var netto252 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Artsgruppe Kostra'[Artsgruppekode]),'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"252\"),",
+              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "",
@@ -852,6 +848,13 @@
               "\"Antall enslige mindreårige f252\")",
               ")",
               "return divide((brem*1000),antall)"
+            ]
+          },
+          {
+            "name": "Test indikator",
+            "expression": [
+              "",
+              "1"
             ]
           }
         ],
