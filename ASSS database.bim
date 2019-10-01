@@ -532,44 +532,101 @@
             "expression": [
               "",
               "",
-              "var ndrbv = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "filter(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "filter(all('Funksjon'[Dimensjonskode]), [Dimensjonskode] in {\"244\", \"251\", \"252\"}),",
-              "filter(ALL('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Beløp (1000 kr)\")",
+              "var ndrbv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] IN {\"244\", \"251\", \"252\"}),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
               ")",
               "",
-              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"11805\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-17 år\")",
+              "var barn = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]= \"Personer (antall)\"),",
+              "    FILTER(ALL('Alder'[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-17 år\")",
               ")",
               "",
-              "return (DIVIDE((ndrbv*1000),barn))"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE((ndrbv*1000), barn),",
+              "        2",
+              "    )",
+              ")"
             ]
           },
           {
             "name": "Andel barn med undersøkelser i forhold til innbyggere 0-17 år (prosent)",
             "expression": [
               "",
-              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Barn med undersøking  (antall)\"),",
-              "(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100"
+              "",
+              "/* gammel kode",
+              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Barn med undersøking  (antall)\");",
+              "(CALCULATE(sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100",
+              "*/",
+              "",
+              "var barn_und =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"12286\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med undersøking  (antall)\")",
+              ")",
+              "",
+              "var pers_017 =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]= \"Personer (antall)\"),",
+              "    FILTER(ALL('Alder'[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-17 år\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(barn_und, pers_017) * 100,",
+              "        2",
+              "    )",
+              ")",
+              ""
             ]
           },
           {
             "name": "Andel barn med barneverntiltak i forhold til innbyggere 0-17 år (prosent)",
             "expression": [
               "",
-              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Barn med barnevernstiltak i løpet av året (antall) 0-22 år Tiltak i alt\"),",
-              "(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100"
+              "/*",
+              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Barn med barnevernstiltak i løpet av året (antall) 0-22 år Tiltak i alt\");",
+              "(CALCULATE(sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100",
+              "*/",
+              "",
+              "",
+              "/* Valg mellom i løpet av året eller per 31.12 */",
+              "var barn_mtiltak =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"12275\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året (antall)\"),",
+              "    FILTER(ALL('Alder'[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-22 år\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonsnavn]), [Dimensjonsnavn] = \"Tiltak i alt\")",
+              ")",
+              "",
+              "var pers_017 =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]= \"Personer (antall)\"),",
+              "    FILTER(ALL('Alder'[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-17 år\")",
+              ")",
+              "",
+              "return (",
+              "    barn_mtiltak",
+              " /*DIVIDE(barn_mtiltak; pers_017) * 100*/",
+              ")"
             ]
           },
           {
             "name": "Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)",
             "expression": [
               "",
-              "CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
+              "",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
               "\"Barn med barnevernstiltak i løpet av året  (antall) 0-22 år\"))"
             ]
           },
@@ -1274,6 +1331,21 @@
             "name": "Tiltakskategorikode",
             "dataType": "string",
             "sourceColumn": "Tiltakskategorikode"
+          },
+          {
+            "name": "Alderkode",
+            "dataType": "string",
+            "sourceColumn": "Alderkode"
+          },
+          {
+            "name": "Kilde",
+            "dataType": "string",
+            "sourceColumn": "Kilde"
+          },
+          {
+            "name": "Omsorgs-/hjelpetiltakkode",
+            "dataType": "string",
+            "sourceColumn": "Omsorgs-/hjelpetiltakkode"
           }
         ],
         "partitions": [
@@ -1385,6 +1457,30 @@
                   "        <int>176</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Alderkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>78</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kilde</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>52</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Omsorgs-/hjelpetiltakkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>155</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -1475,6 +1571,30 @@
                   "        <int>10</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Alderkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>11</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kilde</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>12</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Omsorgs-/hjelpetiltakkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>13</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -1529,6 +1649,30 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Tiltakskategorikode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Alderkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kilde</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Omsorgs-/hjelpetiltakkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -1658,6 +1802,30 @@
               "        <int>176</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Alderkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>78</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kilde</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>52</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Omsorgs-/hjelpetiltakkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>155</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -1748,6 +1916,30 @@
               "        <int>10</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Alderkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>11</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kilde</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>12</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Omsorgs-/hjelpetiltakkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>13</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -1807,6 +1999,30 @@
               "        <boolean>true</boolean>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Alderkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kilde</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Omsorgs-/hjelpetiltakkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
               "  </ColumnChecked>",
               "  <ColumnFilter />",
               "  <SelectionFilter />",
@@ -1814,6 +2030,362 @@
               "  <IsSortDescending>false</IsSortDescending>",
               "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
             ]
+          }
+        ]
+      },
+      {
+        "name": "Alder",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Alder",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Alder].* FROM [dbo].[Alder] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Alder].* FROM [dbo].[Alder] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Alder"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Handsamingstid",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Handsamingstid",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Handsamingstid].* FROM [dbo].[Handsamingstid] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Handsamingstid].* FROM [dbo].[Handsamingstid] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Handsamingstid"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Kilde",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Kilde",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Kilde].* FROM [dbo].[Kilde] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Kilde].* FROM [dbo].[Kilde] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Kilde"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Konklusjon",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Konklusjon",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Konklusjon].* FROM [dbo].[Konklusjon] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Konklusjon].* FROM [dbo].[Konklusjon] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Konklusjon"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Omsorgs-hjelpetiltak",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Omsorgs-hjelpetiltak",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Omsorgs-/hjelpetiltak].* FROM [dbo].[Omsorgs-/hjelpetiltak] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Omsorgs-/hjelpetiltak].* FROM [dbo].[Omsorgs-/hjelpetiltak] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Omsorgs-/hjelpetiltak"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Sammenslåtte Regioner",
+        "columns": [
+          {
+            "name": "Kode",
+            "dataType": "string",
+            "sourceColumn": "Kode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Navn",
+            "dataType": "string",
+            "sourceColumn": "Navn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "KodeNummernavn",
+            "dataType": "string",
+            "sourceColumn": "KodeNummernavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Kategori",
+            "dataType": "string",
+            "sourceColumn": "Kategori",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GyldigFraDato",
+            "dataType": "dateTime",
+            "sourceColumn": "GyldigFraDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "GyldigTilDato",
+            "dataType": "dateTime",
+            "sourceColumn": "GyldigTilDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "SammenslåingsDato",
+            "dataType": "dateTime",
+            "sourceColumn": "SammenslåingsDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Sammenslåtte Regioner",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Sammenslåtte Regioner].* FROM [dbo].[Sammenslåtte Regioner] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Sammenslåtte Regioner].* FROM [dbo].[Sammenslåtte Regioner] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Sammenslåtte Regioner"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Tiltakskategori",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Tiltakskategori",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Tiltakskategori].* FROM [dbo].[Tiltakskategori] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Tiltakskategori].* FROM [dbo].[Tiltakskategori] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Tiltakskategori"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
           }
         ]
       }
@@ -1859,6 +2431,55 @@
         "fromTable": "Alle Data",
         "fromColumn": "Energitypekode",
         "toTable": "Energitype",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "594be1f1-a81a-452e-9716-b79eec7957c4",
+        "fromTable": "Alle Data",
+        "fromColumn": "Funksjonkode",
+        "toTable": "Funksjon",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "59939372-74a8-4aeb-bfd6-4cc23ae88a18",
+        "fromTable": "Alle Data",
+        "fromColumn": "Handsamingstidkode",
+        "toTable": "Kilde",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "cf2e5996-1feb-4ea4-8043-5ebfa5c19e6c",
+        "fromTable": "Alle Data",
+        "fromColumn": "Alderkode",
+        "toTable": "Alder",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "dbf8b217-9570-4951-b6bd-b6e2b03b327f",
+        "fromTable": "Alle Data",
+        "fromColumn": "Handsamingstidkode",
+        "toTable": "Handsamingstid",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "f77ef936-3e3f-4d7b-afb8-c7e6f0894bc7",
+        "fromTable": "Alle Data",
+        "fromColumn": "Konklusjonkode",
+        "toTable": "Konklusjon",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "aafab56c-d833-4f01-aa89-ebb84720ddbf",
+        "fromTable": "Alle Data",
+        "fromColumn": "Tiltakskategorikode",
+        "toTable": "Tiltakskategori",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "086ee4f8-dbd1-498f-a83f-4ec576faba0c",
+        "fromTable": "Alle Data",
+        "fromColumn": "Omsorgs-/hjelpetiltakkode",
+        "toTable": "Omsorgs-hjelpetiltak",
         "toColumn": "Dimensjonskode"
       }
     ],
