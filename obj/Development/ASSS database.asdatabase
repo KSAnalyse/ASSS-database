@@ -268,7 +268,10 @@
               ")",
               "",
               "return (",
-              "    DIVIDE(lengde_komvei, DIVIDE(innb, 10000)) ",
+              "    ROUND(",
+              "        DIVIDE(lengde_komvei, DIVIDE(innb, 10000)),",
+              "        1",
+              "    )",
               ")",
               ""
             ],
@@ -290,7 +293,10 @@
               ")",
               "",
               "return (",
-              "    DIVIDE(lengde_syklende, DIVIDE(innb_ant, 10000))",
+              "    ROUND(",
+              "        DIVIDE(lengde_syklende, DIVIDE(innb_ant, 10000)),",
+              "        1",
+              "    )",
               ")"
             ],
             "displayFolder": "Samferdsel"
@@ -323,9 +329,12 @@
               ")",
               "",
               "Return (",
-              "    DIVIDE(",
-              "        (agd10 - a590) * 1000, ",
-              "        vei",
+              "    ROUND(",
+              "        DIVIDE(",
+              "            (agd10 - a590) * 1000, ",
+              "            vei",
+              "        ),",
+              "        1",
               "    )",
               ")"
             ],
@@ -350,7 +359,7 @@
               "RETURN (",
               "    ROUND(",
               "        DIVIDE((gate * 1000), lys),",
-              "        2  ",
+              "        1  ",
               "    )",
               ")"
             ],
@@ -361,17 +370,26 @@
             "expression": [
               "",
               "",
-              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til drenering/overvann\")",
+              "var brutto = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"SFS01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Brutto driftsutg eks avskrivninger til drenering/overvann\"",
+              "    )",
               ")   ",
               "",
-              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              "var lengde = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11814\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
               ")  ",
               "",
-              "Return divide( brutto,(lengde*1000))"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(brutto, lengde * 1000),",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Samferdsel"
           },
@@ -380,17 +398,25 @@
             "expression": [
               "",
               "",
-              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til trafikksikkerhet inkl skilting og vegmerking\")",
+              "var brutto = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"SFS01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Brutto driftsutg eks avskrivninger til trafikksikkerhet inkl skilting og vegmerking\"",
+              "    )",
               ")   ",
               "",
-              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              "var lengde = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11814\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
               ")  ",
-              "",
-              "Return divide( brutto,(lengde*1000))"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(brutto, lengde * 1000),",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Samferdsel"
           },
@@ -399,17 +425,24 @@
             "expression": [
               "",
               "",
-              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til renhold\")",
+              "var brutto = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"SFS01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Brutto driftsutg eks avskrivninger til renhold\")",
               ")   ",
               "",
-              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              "var lengde = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11814\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
               ")  ",
               "",
-              "Return divide( brutto,(lengde*1000))"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(brutto, lengde * 1000),",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Samferdsel"
           },
@@ -418,17 +451,24 @@
             "expression": [
               "",
               "",
-              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til vinterdrift\")",
+              "var brutto = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"SFS01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Brutto driftsutg eks avskrivninger til vinterdrift\")",
               ")   ",
               "",
-              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              "var lengde = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11814\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
               ")  ",
               "",
-              "Return divide( brutto,(lengde*1000))"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(brutto, lengde * 1000),",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Samferdsel"
           },
@@ -437,17 +477,23 @@
             "expression": [
               "",
               "",
-              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Investeringer til veidekker\")",
+              "var brutto = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"SFS01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Investeringer til veidekker\")",
               ")   ",
               "",
-              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              "var lengde = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11814\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
               ")  ",
-              "",
-              "Return divide( brutto,(lengde*1000))"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(brutto, lengde * 1000),",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Samferdsel"
           },
@@ -457,7 +503,7 @@
               "",
               "",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"ASSS\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"ASSS\"),",
               "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Sykefravær Samferdsel (PAI)\")",
               ")"
             ],
@@ -469,17 +515,23 @@
             "expression": [
               "",
               "",
-              "var brutto = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Brutto driftsutg eks avskrivninger til veidekker\")",
+              "var brutto = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"SFS01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Brutto driftsutg eks avskrivninger til veidekker\")",
               ")   ",
               "",
-              "var lengde = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11814\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]),Variabel[Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
+              "var lengde = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11814\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lengde kommunalvei (km)\")   ",
               ")  ",
-              "",
-              "Return divide( brutto,(lengde*1000))"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(brutto, lengde*1000),",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Samferdsel"
           },
@@ -488,13 +540,10 @@
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
-              "= \"Andel adkomst- og GS-veg over akseptabelt nivå > TG2\")",
-              ")",
-              "",
-              "return a"
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"SFS01\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Andel adkomst- og GS-veg over akseptabelt nivå > TG2\")",
+              ")"
             ],
             "displayFolder": "Samferdsel"
           },
@@ -503,13 +552,10 @@
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
-              "= \"Andel gate og samleveg over akseptabelt nivå > TG1\")",
-              ")",
-              "",
-              "return a"
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"SFS01\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Andel gate og samleveg over akseptabelt nivå > TG1\")",
+              ")"
             ],
             "displayFolder": "Samferdsel"
           },
@@ -518,152 +564,304 @@
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"SFS01\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
-              "= \"Kostnad per meter veg for å komme over akseptabel standard\")",
-              ")",
-              "",
-              "return a"
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"SFS01\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Kostnad per meter veg for å komme over akseptabel standard\"",
+              "    )",
+              ")"
             ],
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "Netto driftsutgifter barnevernstjenester per innbygger 0-17 år (kroner)",
+            "name": "BNV Netto driftsutgifter barnevernstjenester per innbygger 0-17 år (kroner)",
             "expression": [
               "",
               "",
-              "var ndrbv = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "filter(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "filter(all('Funksjon'[Dimensjonskode]), [Dimensjonskode] in {\"244\", \"251\", \"252\"}),",
-              "filter(ALL('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Beløp (1000 kr)\")",
+              "var ndrbv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] IN {\"244\", \"251\", \"252\"}),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
               ")",
               "",
-              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"11805\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-17 år\")",
+              "var barn = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]= \"Personer (antall)\"),",
+              "    FILTER(ALL('Alder'[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-17 år\")",
               ")",
               "",
-              "return (DIVIDE((ndrbv*1000),barn))"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE((ndrbv*1000), barn),",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
-            "name": "Andel barn med undersøkelser i forhold til innbyggere 0-17 år (prosent)",
+            "name": "BNV Andel barn med undersøkelser i forhold til innbyggere 0-17 år (prosent)",
             "expression": [
               "",
-              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Barn med undersøking  (antall)\"),",
-              "(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100"
+              "",
+              "/* gammel kode",
+              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Barn med undersøking  (antall)\");",
+              "(CALCULATE(sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100",
+              "*/",
+              "",
+              "var barn_und =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"12286\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med undersøking  (antall)\")",
+              ")",
+              "",
+              "var pers_017 =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]= \"Personer (antall)\"),",
+              "    FILTER(ALL('Alder'[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-17 år\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(barn_und, pers_017) * 100,",
+              "        1",
+              "    )",
+              ")",
+              ""
             ]
           },
           {
-            "name": "Andel barn med barneverntiltak i forhold til innbyggere 0-17 år (prosent)",
+            "name": "BNV Andel barn med barneverntiltak i forhold til innbyggere 0-17 år (prosent)",
             "expression": [
               "",
-              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Barn med barnevernstiltak i løpet av året (antall) 0-22 år Tiltak i alt\"),",
-              "(CALCULATE(sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100"
+              "/*",
+              "DIVIDE(CALCULATE(sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Barn med barnevernstiltak i løpet av året (antall) 0-22 år Tiltak i alt\");",
+              "(CALCULATE(sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Personer (antall) 0-17 år\")))*100",
+              "*/",
+              "",
+              "",
+              "/* Valg mellom i løpet av året eller per 31.12 */",
+              "var barn_mtiltak =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"12275\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall)\"),",
+              "    FILTER(ALL('Alder'[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-22 år\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonsnavn]), [Dimensjonsnavn] = \"Tiltak i alt\")",
+              ")",
+              "",
+              "var pers_017 =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Tabeller'[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]= \"Personer (antall)\"),",
+              "    FILTER(ALL('Alder'[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-17 år\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(    ",
+              "        DIVIDE(barn_mtiltak, pers_017) * 100,",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
-            "name": "Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)",
+            "name": "BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)",
             "expression": [
               "",
+              "/*",
+              "CALCULATE(SUM('Alle Data'[Verdi]);",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"252\");",
+              "    FILTER(ALL(Variabel[Variabelnavn]); Variabel[Variabelnavn] = ",
+              "\"Barn med barnevernstiltak i løpet av året  (antall) 0-22 år\"))",
+              "*/",
+              "",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonsnavn]), [Dimensjonsnavn] = ",
+              "        \"252 - Barnevernstiltak når barnet er plassert av barnevernet\"",
+              "    ),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-22 år\")",
+              ")"
+            ]
+          },
+          {
+            "name": "BNV Andel barn som er plassert i løpet av året i prosent av antall barn 0-17 år",
+            "expression": [
+              "",
+              "",
+              "var barn_017 = ",
               "CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
-              "\"Barn med barnevernstiltak i løpet av året  (antall) 0-22 år\"))"
-            ]
-          },
-          {
-            "name": "Andel barn som er plassert i løpet av året i prosent av antall barn 0-17 år",
-            "expression": [
-              "",
-              "",
-              "var barn017 = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"11805\"),",
-              "filter(all(Variabel[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Personer (antall) 0-17 år\")",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell]=\"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\")",
               ")",
               "",
-              "return DIVIDE([Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)],barn017)*100"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(",
+              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)], ",
+              "            barn_017",
+              "        ) * 100,",
+              "        2",
+              "    )",
+              ")"
             ]
           },
           {
-            "name": "Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)",
+            "name": "BNV Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)",
             "expression": [
               "",
-              "CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Funksjon'[Dimensjonskode]),'Funksjon'[Dimensjonskode] = \"251\"),",
-              "FILTER(ALL(Variabel[Variabelnavn]), ",
-              "Variabel[Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall) 0-22 år\"))"
+              "/*",
+              "CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Funksjon'[Dimensjonskode]);'Funksjon'[Dimensjonskode] = \"251\");",
+              "FILTER(ALL(Variabel[Variabelnavn]); ",
+              "Variabel[Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall) 0-22 år\"))",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonsnavn]), Funksjon[Dimensjonsnavn] = ",
+              "        \"251 - Barnevernstiltak når barnet ikke er plassert av barnevernet\"",
+              "    ),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall)\")",
+              ")"
             ]
           },
           {
-            "name": "Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak  (0-22 år)",
+            "name": "BNV Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak  (0-22 år)",
             "expression": [
               "",
-              "",
-              "var tiltak022 = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all(Variabel[Variabelnavn]), ",
+              "/*",
+              "var tiltak022 = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all(Variabel[Variabelnavn]); ",
               "'Variabel'[Variabelnavn] = \"Barn med barnevernstiltak i løpet av året (antall) 0-22 år Tiltak i alt\")",
               ")",
               "",
-              "return DIVIDE([Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)],tiltak022)*100"
-            ]
-          },
-          {
-            "name": "Brutto driftsutgifter per barn (f251) som ikke er plassert av barnevernet (kroner)",
-            "expression": [
+              "return DIVIDE([Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)];tiltak022)*100",
+              "*/",
               "",
-              "",
-              "var brbv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD10\"),",
-              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"251\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
-              " )",
-              "",
-              "return DIVIDE((brbv*1000),[Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)])"
-            ]
-          },
-          {
-            "name": "Brutto driftsutgifter per barn (f252) som er plassert av barnevernet (kroner)",
-            "expression": [
-              "",
-              "",
-              "var brbv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD10\"),",
-              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
-              " )",
-              "",
-              "return divide((brbv*1000), [Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])"
-            ]
-          },
-          {
-            "name": "Brutto driftsutgifter per barn (f244) med undersøkelse eller tiltak (kroner)*",
-            "expression": [
-              "",
-              "",
-              "var br244 = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12279\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Brutto driftsutgifter (funksjon 244) per barn med undersøking eller tiltak (kr)\")",
+              "var tiltak022 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall)\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonsnavn]), [Dimensjonsnavn] = \"Tiltak i alt\")",
               ")",
               "",
-              "return br244"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(",
+              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)],",
+              "            tiltak022",
+              "        ) * 100,",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
-            "name": "Andel undersøkelser gjennomført i løpet av 3 måneder (prosent)*",
+            "name": "BNV Brutto driftsutgifter per barn (f251) som ikke er plassert av barnevernet (kroner)",
             "expression": [
               "",
+              "/*",
+              "var brbv = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "FILTER(ALL('Art'[Dimensjonskode]); [Dimensjonskode] = \"AGD10\");",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"251\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              " )",
               "",
-              "var und= CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12280\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Undersøkingar med handsamingstid innan 3 månader (prosent)\")",
+              "return DIVIDE((brbv*1000);[Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)])",
+              "*/",
+              "var brbv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD10\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"251\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              " )",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(",
+              "            brbv * 1000, ",
+              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)]",
+              "        ),",
+              "        1",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "BNV Brutto driftsutgifter per barn (f252) som er plassert av barnevernet (kroner)",
+            "expression": [
+              "",
+              "/*",
+              "var brbv = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "FILTER(ALL('Art'[Dimensjonskode]); [Dimensjonskode] = \"AGD10\");",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"252\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              " )",
+              "",
+              "return divide((brbv*1000); [Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])",
+              "*/",
+              "var brbv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD10\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              " )",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(",
+              "            brbv * 1000,",
+              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)]",
+              "        ),",
+              "        1",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "BNV Brutto driftsutgifter per barn (f244) med undersøkelse eller tiltak (kroner)*",
+            "expression": [
+              "",
+              "/*",
+              "var br244 = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12279\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Brutto driftsutgifter (funksjon 244) per barn med undersøking eller tiltak (kr)\")",
               ")",
               "",
-              "return und"
+              "return br244",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12279\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Brutto driftsutgifter (funksjon 244) per barn med undersøking eller tiltak (kr)\"",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "BNV Andel undersøkelser gjennomført i løpet av 3 måneder (prosent)*",
+            "expression": [
+              "",
+              "/*",
+              "var und= CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12280\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Undersøkingar med handsamingstid innan 3 månader (prosent)\")",
+              ")",
+              "",
+              "return und",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12280\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Undersøkingar med handsamingstid innan 3 månader (prosent)\"",
+              "    )",
+              ")"
             ]
           },
           {
@@ -680,175 +878,352 @@
             ]
           },
           {
-            "name": "Netto driftsutgifter per barn (f252) som er plassert av barnevernet (kroner)",
+            "name": "BNV Netto driftsutgifter per barn (f252) som er plassert av barnevernet (kroner)",
             "expression": [
               "",
-              "",
-              "var brbv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "/*",
+              "var brbv = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "FILTER(ALL('Art'[Dimensjonskode]); [Dimensjonskode] = \"AGD2\");",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"252\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               " )",
               "",
-              "return divide((brbv*1000),[Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])"
+              "return divide((brbv*1000);[Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)])",
+              "*/",
+              "var brbv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(",
+              "            brbv * 1000,",
+              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)]",
+              "        ),",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
-            "name": "Andel av netto driftsutgifter barnevern f244 (prosent)",
+            "name": "BNV Andel av netto driftsutgifter barnevern f244 (prosent)",
+            "expression": [
+              "",
+              "/*",
+              "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "FILTER(ALL('Art'[Dimensjonskode]); [Dimensjonskode] = \"AGD2\");",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"FGK13\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "var netto244 = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "FILTER(ALL('Art'[Dimensjonskode]); [Dimensjonskode] = \"AGD2\");",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"244\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return (divide(netto244;nettobv))*100",
+              "*/",
+              "var nettobv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"FGK13\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var netto244 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL(Art[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] = \"244\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(netto244, nettobv) * 100,",
+              "        1",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "BNV Andel av netto driftsutgifter barnevern f251 (prosent)",
+            "expression": [
+              "",
+              "/*",
+              "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "FILTER(ALL('Art'[Dimensjonskode]); [Dimensjonskode] = \"AGD2\");",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"FGK13\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "var netto251 = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "FILTER(ALL('Art'[Dimensjonskode]); [Dimensjonskode] = \"AGD2\");",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"251\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return (divide(netto251;nettobv))*100",
+              "*/",
+              "var nettobv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"FGK13\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var netto251 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"251\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(netto251, nettobv) * 100,",
+              "        1",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "BNV Andel av netto driftsutgifter barnevern f252 (prosent)",
             "expression": [
               "",
               "",
-              "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"FGK13\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "/*",
+              "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "FILTER(ALL('Art'[Dimensjonskode]); [Dimensjonskode] = \"AGD2\");",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"FGK13\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
-              "var netto244 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"244\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "var netto252 = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "FILTER(ALL('Art'[Dimensjonskode]); [Dimensjonskode] = \"AGD2\");",
+              "FILTER(ALL('Funksjon'[Dimensjonskode]); [Dimensjonskode] = \"252\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "",
-              "return (divide(netto244,nettobv))*100",
+              "return (divide(netto252;nettobv))*100",
+              "*/",
+              "var nettobv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"FGK13\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var netto252 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "    FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(netto252, nettobv) * 100,",
+              "        1",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "BNV Andel barn med melding av innbyggere 0-17 år (prosent)",
+            "expression": [
+              "",
+              "/*",
+              "var melding = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12615\");",
+              "filter(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = \"Barn med melding (antall)\")",
+              ")",
+              "",
+              "var barn= CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(ALL('Alle Data'[Tabell]);'Alle Data'[Tabell]=\"11805\");",
+              "filter(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = \"Personer (antall) 0-17 år\")",
+              ")",
+              "",
+              "return (divide(melding;barn))*100",
+              "*/",
+              "var melding = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12615\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med melding (antall)\")",
+              ")",
+              "",
+              "var barn = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] =  \"0-17 år\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(melding, barn) * 100,",
+              "        1",
+              "    )",
+              ")",
+              "    ",
               ""
             ]
           },
           {
-            "name": "Andel av netto driftsutgifter barnevern f251 (prosent)",
+            "name": "BNV Antall barn med undersøkelse eller tiltak per årsverk (funksjon 244)*",
             "expression": [
               "",
-              "",
-              "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"FGK13\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
-              ")",
-              "var netto251 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"251\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "/*",
+              "var barn = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12280\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Barn med undersøking eller tiltak per årsverk (funksjon 244) (antall)\")",
               ")",
               "",
-              "return (divide(netto251,nettobv))*100",
-              ""
+              "return barn",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12280\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Barn med undersøking eller tiltak per årsverk (funksjon 244) (antall)\"",
+              "    )",
+              ")"
             ]
           },
           {
-            "name": "Andel av netto driftsutgifter barnevern f252 (prosent)",
+            "name": "BNV Stillinger med fagutdanning av alle fag- og tiltaksstillinger (prosent)",
             "expression": [
               "",
-              "",
-              "var nettobv = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"FGK13\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
-              ")",
-              "var netto252 = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "FILTER(ALL('Art'[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "FILTER(ALL('Funksjon'[Dimensjonskode]), [Dimensjonskode] = \"252\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "/*",
+              "var fag = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12305\");",
+              "filter(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = \"Stillingar med fagutdanning (årsverk)\")",
               ")",
               "",
-              "return (divide(netto252,nettobv))*100",
-              ""
-            ]
-          },
-          {
-            "name": "Andel barn med melding av innbyggere 0-17 år (prosent)",
-            "expression": [
-              "",
-              "",
-              "var melding = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12615\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Barn med melding (antall)\")",
-              ")",
-              "",
-              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"11805\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-17 år\")",
-              ")",
-              "",
-              "return (divide(melding,barn))*100",
-              ""
-            ]
-          },
-          {
-            "name": "Antall barn med undersøkelse eller tiltak per årsverk (funksjon 244)*",
-            "expression": [
-              "",
-              "",
-              "var barn = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12280\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Barn med undersøking eller tiltak per årsverk (funksjon 244) (antall)\")",
-              ")",
-              "",
-              "return barn"
-            ]
-          },
-          {
-            "name": "Stillinger med fagutdanning av alle fag- og tiltaksstillinger (prosent)",
-            "expression": [
-              "",
-              "",
-              "var fag = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12305\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Stillingar med fagutdanning (årsverk)\")",
-              ")",
-              "",
-              "var stillinger= CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"12305\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
+              "var stillinger= CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(ALL('Alle Data'[Tabell]);'Alle Data'[Tabell]=\"12305\");",
+              "filter(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = ",
               "\"Stillingar knytt til sakshandsaming og tiltak frå barnevernstenesta (funksjon 244 unnateke støttefunksjonar, funksjon 251 og 252)  (årsverk)\")",
               ")",
               "",
-              "return (divide(fag,stillinger)*100)",
-              ""
+              "return (divide(fag;stillinger)*100)",
+              "*/",
+              "var fag = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12305\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Stillingar med fagutdanning (årsverk)\")",
+              ")",
+              "",
+              "var stillinger = ",
+              "CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"12305\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
+              "        \"Stillingar knytt til sakshandsaming og tiltak frå barnevernstenesta (funksjon 244 unnateke støttefunksjonar, funksjon 251 og 252)  (årsverk)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(fag, stillinger) * 100,",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
-            "name": "Andel meldinger som går til undersøkelser (prosent)",
+            "name": "BNV Andel meldinger som går til undersøkelser (prosent)",
             "expression": [
               "",
-              "",
-              "var und = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12189\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
+              "/*",
+              "var und = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12189\");",
+              "filter(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = ",
               "\"Meldingar til barnevernet (antall) Til undersøkelse Meldinger i alt\")",
               ")",
               "",
-              "var meld= CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"12189\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = ",
+              "var meld= CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(ALL('Alle Data'[Tabell]);'Alle Data'[Tabell]=\"12189\");",
+              "filter(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = ",
               "\"Meldingar til barnevernet (antall) Meldinger i alt Meldinger i alt\")",
               ")",
               "",
-              "return (divide(und,meld)*100)",
-              ""
+              "return (divide(und;meld)*100)",
+              "*/",
+              "var und = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12189\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Meldingar til barnevernet (antall)\"),",
+              "    FILTER(ALL(Konklusjon[Dimensjonsnavn]), [Dimensjonsnavn] = \"Til undersøkelse\"),",
+              "    FILTER(ALL(Handsamingstid[Dimensjonsnavn]), [Dimensjonsnavn] = \"Meldinger i alt\")",
+              ")",
+              "",
+              "var meld = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Alle Data'[Tabell]),'Alle Data'[Tabell]=\"12189\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Meldingar til barnevernet (antall)\"),",
+              "    FILTER(ALL(Handsamingstid[Dimensjonsnavn]), [Dimensjonsnavn] = \"Meldinger i alt\"),",
+              "    FILTER(ALL(Konklusjon[Dimensjonsnavn]), [Dimensjonsnavn] = \"Meldinger i alt\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(und, meld) * 100,",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
             "name": "Brutto driftsutgifter per EM (f252) (kroner)",
             "expression": [
               "",
-              "",
-              "var brem = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"BMT\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=",
+              "/*",
+              "var brem = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"BMT\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=",
               "\"Brutto driftsutgifter funksjon 252 enslige mindreårige (1000 kr)\")",
               ")",
-              "var antall = CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"BMT\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=",
+              "var antall = CALCULATE(SUM('Alle Data'[Verdi]);   ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"BMT\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=",
               "\"Antall enslige mindreårige f252\")",
               ")",
-              "return divide((brem*1000),antall)"
+              "return divide((brem*1000);antall)",
+              "*/",
+              "",
+              "var brem = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BMT\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] =",
+              "        \"Brutto driftsutgifter funksjon 252 enslige mindreårige (1000 kr)\"",
+              "    )",
+              ")",
+              "",
+              "var antall = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"BMT\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Antall enslige mindreårige f252\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(brem * 1000, antall),",
+              "        1",
+              "    )",
+              ")"
             ]
           }
         ],
@@ -1275,6 +1650,21 @@
             "name": "Tiltakskategorikode",
             "dataType": "string",
             "sourceColumn": "Tiltakskategorikode"
+          },
+          {
+            "name": "Alderkode",
+            "dataType": "string",
+            "sourceColumn": "Alderkode"
+          },
+          {
+            "name": "Kilde",
+            "dataType": "string",
+            "sourceColumn": "Kilde"
+          },
+          {
+            "name": "Omsorgs-/hjelpetiltakkode",
+            "dataType": "string",
+            "sourceColumn": "Omsorgs-/hjelpetiltakkode"
           }
         ],
         "partitions": [
@@ -1386,6 +1776,30 @@
                   "        <int>176</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Alderkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>78</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kilde</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>52</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Omsorgs-/hjelpetiltakkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>155</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -1476,6 +1890,30 @@
                   "        <int>10</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Alderkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>11</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kilde</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>12</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Omsorgs-/hjelpetiltakkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>13</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -1530,6 +1968,30 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Tiltakskategorikode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Alderkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kilde</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Omsorgs-/hjelpetiltakkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -1659,6 +2121,30 @@
               "        <int>176</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Alderkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>78</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kilde</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>52</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Omsorgs-/hjelpetiltakkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>155</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -1749,6 +2235,30 @@
               "        <int>10</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Alderkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>11</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kilde</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>12</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Omsorgs-/hjelpetiltakkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>13</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -1808,6 +2318,30 @@
               "        <boolean>true</boolean>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Alderkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kilde</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Omsorgs-/hjelpetiltakkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
               "  </ColumnChecked>",
               "  <ColumnFilter />",
               "  <SelectionFilter />",
@@ -1815,6 +2349,362 @@
               "  <IsSortDescending>false</IsSortDescending>",
               "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
             ]
+          }
+        ]
+      },
+      {
+        "name": "Alder",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Alder",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Alder].* FROM [dbo].[Alder] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Alder].* FROM [dbo].[Alder] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Alder"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Handsamingstid",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Handsamingstid",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Handsamingstid].* FROM [dbo].[Handsamingstid] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Handsamingstid].* FROM [dbo].[Handsamingstid] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Handsamingstid"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Kilde",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Kilde",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Kilde].* FROM [dbo].[Kilde] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Kilde].* FROM [dbo].[Kilde] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Kilde"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Konklusjon",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Konklusjon",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Konklusjon].* FROM [dbo].[Konklusjon] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Konklusjon].* FROM [dbo].[Konklusjon] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Konklusjon"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Omsorgs-hjelpetiltak",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Omsorgs-hjelpetiltak",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Omsorgs-/hjelpetiltak].* FROM [dbo].[Omsorgs-/hjelpetiltak] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Omsorgs-/hjelpetiltak].* FROM [dbo].[Omsorgs-/hjelpetiltak] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Omsorgs-/hjelpetiltak"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Sammenslåtte Regioner",
+        "columns": [
+          {
+            "name": "Kode",
+            "dataType": "string",
+            "sourceColumn": "Kode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Navn",
+            "dataType": "string",
+            "sourceColumn": "Navn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "KodeNummernavn",
+            "dataType": "string",
+            "sourceColumn": "KodeNummernavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Kategori",
+            "dataType": "string",
+            "sourceColumn": "Kategori",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GyldigFraDato",
+            "dataType": "dateTime",
+            "sourceColumn": "GyldigFraDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "GyldigTilDato",
+            "dataType": "dateTime",
+            "sourceColumn": "GyldigTilDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "SammenslåingsDato",
+            "dataType": "dateTime",
+            "sourceColumn": "SammenslåingsDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Sammenslåtte Regioner",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Sammenslåtte Regioner].* FROM [dbo].[Sammenslåtte Regioner] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Sammenslåtte Regioner].* FROM [dbo].[Sammenslåtte Regioner] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Sammenslåtte Regioner"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Tiltakskategori",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Tiltakskategori",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Tiltakskategori].* FROM [dbo].[Tiltakskategori] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Tiltakskategori].* FROM [dbo].[Tiltakskategori] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Tiltakskategori"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
           }
         ]
       }
@@ -1860,6 +2750,55 @@
         "fromTable": "Alle Data",
         "fromColumn": "Energitypekode",
         "toTable": "Energitype",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "594be1f1-a81a-452e-9716-b79eec7957c4",
+        "fromTable": "Alle Data",
+        "fromColumn": "Funksjonkode",
+        "toTable": "Funksjon",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "59939372-74a8-4aeb-bfd6-4cc23ae88a18",
+        "fromTable": "Alle Data",
+        "fromColumn": "Handsamingstidkode",
+        "toTable": "Kilde",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "cf2e5996-1feb-4ea4-8043-5ebfa5c19e6c",
+        "fromTable": "Alle Data",
+        "fromColumn": "Alderkode",
+        "toTable": "Alder",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "dbf8b217-9570-4951-b6bd-b6e2b03b327f",
+        "fromTable": "Alle Data",
+        "fromColumn": "Handsamingstidkode",
+        "toTable": "Handsamingstid",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "f77ef936-3e3f-4d7b-afb8-c7e6f0894bc7",
+        "fromTable": "Alle Data",
+        "fromColumn": "Konklusjonkode",
+        "toTable": "Konklusjon",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "aafab56c-d833-4f01-aa89-ebb84720ddbf",
+        "fromTable": "Alle Data",
+        "fromColumn": "Tiltakskategorikode",
+        "toTable": "Tiltakskategori",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "086ee4f8-dbd1-498f-a83f-4ec576faba0c",
+        "fromTable": "Alle Data",
+        "fromColumn": "Omsorgs-/hjelpetiltakkode",
+        "toTable": "Omsorgs-hjelpetiltak",
         "toColumn": "Dimensjonskode"
       }
     ],
