@@ -627,7 +627,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Andel barn med undersøkelser i forhold til innbyggere 0-17 år (prosent)",
@@ -659,7 +660,8 @@
               "    )",
               ")",
               ""
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Andel barn med barneverntiltak i forhold til innbyggere 0-17 år (prosent)",
@@ -693,7 +695,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)",
@@ -735,7 +738,8 @@
               "        2",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)",
@@ -754,7 +758,8 @@
               "    ),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall)\")",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak  (0-22 år)",
@@ -784,7 +789,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Brutto driftsutgifter per barn (f251) som ikke er plassert av barnevernet (kroner)",
@@ -850,7 +856,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Brutto driftsutgifter per barn (f244) med undersøkelse eller tiltak (kroner)*",
@@ -870,7 +877,8 @@
               "        \"Brutto driftsutgifter (funksjon 244) per barn med undersøking eller tiltak (kr)\"",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Andel undersøkelser gjennomført i løpet av 3 måneder (prosent)*",
@@ -908,7 +916,8 @@
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"PAI02\"),",
               "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Sykefravær Barnevern (PAI)\")",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Netto driftsutgifter per barn (f252) som er plassert av barnevernet (kroner)",
@@ -985,7 +994,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Andel av netto driftsutgifter barnevern f251 (prosent)",
@@ -1029,7 +1039,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Andel av netto driftsutgifter barnevern f252 (prosent)",
@@ -1074,7 +1085,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Andel barn med melding av innbyggere 0-17 år (prosent)",
@@ -1114,7 +1126,8 @@
               ")",
               "    ",
               ""
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Antall barn med undersøkelse eller tiltak per årsverk (funksjon 244)*",
@@ -1174,7 +1187,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Andel meldinger som går til undersøkelser (prosent)",
@@ -1257,7 +1271,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "PLO Gjennomsnittlig bistandsbehov hos mottakere av hjemmetjenester 0 til 66 år",
@@ -1307,7 +1322,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Gjennomsnittlig bistandsbehov hos mottakere av hjemmetjenester 67 år+",
@@ -1359,7 +1375,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Andel brukere i institusjon som har omfattende bistandsbehov: Langtidsopphold (prosent)",
@@ -1385,12 +1402,14 @@
               ")",
               "",
               "return (",
+              "    ",
               "    ROUND(",
               "        DIVIDE(bebomf, beb) * 100,",
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Andel timer hjemmetjeneste brukere 0-66 år",
@@ -1451,15 +1470,17 @@
               ")",
               "",
               "return (",
+              "    ",
               "    ROUND(",
               "        DIVIDE(",
-              "            timer1 * brukere1 * 52,",
-              "            timer1 * brukere1 * 52 + brukere2 * timer2 * 52",
+              "            timer1 * brukere1,",
+              "            timer1 * brukere1 + brukere2 * timer2",
               "        ) * 100,",
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Andel timer hjemmetjeneste brukere 67 år +",
@@ -1522,16 +1543,17 @@
               "return (",
               "    ROUND(",
               "        DIVIDE(",
-              "            timer2 * brukere2 * 52,",
-              "            timer1 * brukere1 * 52 + brukere2 * timer2 * 52",
+              "            timer2 * brukere2,",
+              "            timer1 * brukere1 + brukere2 * timer2",
               "        ) * 100,",
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
-            "name": "Netto driftsutgifter hjemmetjeneste 0-66 år per innbygger 0-66 år (kroner)",
+            "name": "PLO Netto driftsutgifter hjemmetjeneste 0-66 år per innbygger 0-66 år (kroner)",
             "expression": [
               "",
               "/*",
@@ -1571,7 +1593,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Netto driftsutgifter hjemmetjeneste 67 + år per innbygger 67 år+ (kroner)",
@@ -1738,7 +1761,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Netto driftsutgifter hjemmetjeneste 67 + år per mottaker 67 år+ (kroner)",
@@ -1786,7 +1810,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "Andel årsverk i brukerrettede tjenester med fagutdanning (prosent)",
@@ -1826,7 +1851,8 @@
               "return (",
               "    ROUND(rbi, 1)",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Sykefravær pleie og omsorg (PAI) (prosent)*",
@@ -1844,90 +1870,118 @@
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"PAI02\"),",
               "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Sykefravær Pleie og omsorg (PAI)\")",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
-            "name": "Legetimer per uke per beboer i sykehjem (timer)*",
+            "name": "PLO Legetimer per uke per beboer i sykehjem (timer)*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12293\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Legetimer per uke per beboer i sykehjem (timer)\")",
+              "var a = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12293\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Legetimer per uke per beboer i sykehjem (timer)\")",
               ")",
               "",
-              "return a"
+              "return (",
+              "    ROUND(a, 1)",
+              ")"
             ]
           },
           {
-            "name": "Andel utviklingshemmede av befolkningen 16 år og eldre (TTU) (prosent)*",
+            "name": "PLO Andel utviklingshemmede av befolkningen 16 år og eldre (TTU) (prosent)*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"TTU01\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
-              "= \"Andel utviklingshemmede av befolkningen 16 år og eldre (TTU) (prosent)\")",
+              "var utv16 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"TTU01\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Andel utviklingshemmede av befolkningen 16 år og eldre (TTU) (prosent)\"",
+              "    )",
               ")",
               "",
-              "return a"
-            ]
+              "return (",
+              "    ROUND(utv16, 1)",
+              ")"
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
-            "name": "Utgifter per utviklingshemmet (fratrukket refusjon ressurskrevende) (TTU) (kroner)*",
+            "name": "PLO Utgifter per utviklingshemmet (fratrukket refusjon ressurskrevende) (TTU) (kroner)*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"TTU01\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
-              "= \"Utgifter per utviklingshemmet (fratrukket refusjon ressurskrevende) (TTU) (kroner)\")",
+              "var utgutv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"TTU01\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Utgifter per utviklingshemmet (fratrukket refusjon ressurskrevende) (TTU) (kroner)\"",
+              "    )",
               ")",
               "",
-              "return a"
-            ]
+              "return (",
+              "    ROUND(utgutv, 1)",
+              ")"
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
-            "name": "Andel utviklingshemmede 18 år+ i bolig med fast tilknyttet personell hele døgnet (TTU) (prosent)*",
+            "name": "PLO Andel utviklingshemmede 18 år+ i bolig med fast tilknyttet personell hele døgnet (TTU)(prosent)*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"TTU01\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
-              "= \"Andel utviklingshemmede 18 år og eldre som bor i bolig med fast tilknyttet personell hele døgnet (TTU) (prosent)\")",
+              "var a = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"TTU01\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Andel utviklingshemmede 18 år og eldre som bor i bolig med fast tilknyttet personell hele døgnet (TTU) (prosent)\"",
+              "    )",
               ")",
               "",
-              "return a"
-            ]
+              "return (",
+              "    ROUND(a, 1)",
+              ")"
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
-            "name": "Utgifter bolig med fast personell hele døgnet (inkl. private/ideelle) per beboer (TTU) (kroner)*",
+            "name": "PLO Utgifter bolig med fast personell hele døgnet (inkl. private/ideelle) per beboer (TTU) (kroner)*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"TTU01\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
-              "= \"Utgifter til bolig med fast tilknyttet personell hele døgnet (inkl. private/ideelle) per beboer (TTU) (kroner)\")",
+              "var a = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"TTU01\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Utgifter til bolig med fast tilknyttet personell hele døgnet (inkl. private/ideelle) per beboer (TTU) (kroner)\"",
+              "    )",
               ")",
               "",
-              "return a"
-            ]
+              "return (",
+              "    ROUND(a, 1)",
+              ")"
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
-            "name": "Andel årsverk med fagutdanning (TTU) (prosent)*",
+            "name": "PLO Andel årsverk med fagutdanning (TTU) (prosent)*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"TTU01\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] ",
-              "= \"Andel årsverk med fagutdanning (TTU) (prosent)\")",
+              "var a = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"TTU01\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Andel årsverk med fagutdanning (TTU) (prosent)\")",
               ")",
               "",
-              "return a"
-            ]
+              "return (",
+              "    ROUND(a, 1)",
+              ")"
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "BVN Brutto driftsutgifter per plassert barn uten EM (f252) (kroner)",
@@ -2019,7 +2073,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
             "name": "BNV Andel barn med tiltak 0-5 år av barn på tiltak 0-17 år (prosent)",
@@ -2065,10 +2120,11 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           },
           {
-            "name": "Ressursbruksindikator. Barnevern*",
+            "name": "BNV Ressursbruksindikator. Barnevern*",
             "expression": [
               "",
               "/*",
@@ -2088,7 +2144,8 @@
               "return (",
               "    ROUND(rbi, 1)",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnvern"
           }
         ],
         "annotations": [
@@ -2553,6 +2610,11 @@
             "name": "Omsorgs-/hjelpetiltakkode",
             "dataType": "string",
             "sourceColumn": "Omsorgs-/hjelpetiltakkode"
+          },
+          {
+            "name": "Tjenestegrupperkode",
+            "dataType": "string",
+            "sourceColumn": "Tjenestegrupperkode"
           }
         ],
         "partitions": [
@@ -2688,6 +2750,14 @@
                   "        <int>155</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Tjenestegrupperkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>189</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -2802,6 +2872,14 @@
                   "        <int>13</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Tjenestegrupperkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>14</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -2880,6 +2958,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Omsorgs-/hjelpetiltakkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Tjenestegrupperkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -3033,6 +3119,14 @@
               "        <int>155</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Tjenestegrupperkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>189</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -3147,6 +3241,14 @@
               "        <int>13</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Tjenestegrupperkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>14</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -3225,6 +3327,14 @@
               "    <item>",
               "      <key>",
               "        <string>Omsorgs-/hjelpetiltakkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Tjenestegrupperkode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -3734,6 +3844,13 @@
         "fromTable": "Alle Data",
         "fromColumn": "Omsorgs-/hjelpetiltakkode",
         "toTable": "Omsorgs-hjelpetiltak",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "29567bbc-14bb-407c-a300-bca620bf10db",
+        "fromTable": "Alle Data",
+        "fromColumn": "Tjenestegrupperkode",
+        "toTable": "Tjenestegrupper",
         "toColumn": "Dimensjonskode"
       }
     ],
