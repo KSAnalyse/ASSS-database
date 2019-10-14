@@ -2467,6 +2467,230 @@
               ")"
             ],
             "displayFolder": "Barnvern"
+          },
+          {
+            "name": "Sykefravær byggesak (PAI) (prosent)*",
+            "expression": [
+              "",
+              "",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ASSS\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sykefravær Byggesak (PAI)\")",
+              ")",
+              "",
+              "return a"
+            ]
+          },
+          {
+            "name": "Godkjente boligenheter per 1 000 innbyggere",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12295\"), ",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Netto endring i antall boliger (antall)\") ",
+              ") ",
+              "var var2 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
+              ")  ",
+              "",
+              "",
+              "return divide(var1,(var2/1000))",
+              ""
+            ]
+          },
+          {
+            "name": "Godkjent annet areal per 1 000 innbyggere",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"05939\"), ",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Fullført bruksareal til annet enn bolig\") ",
+              ") ",
+              "var var2 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
+              ")  ",
+              "",
+              "",
+              "return divide(var1,(var2/1000))"
+            ]
+          },
+          {
+            "name": "Gjennomsnittlig saksbehandlingstid ett-trinnssøknader, 12-uker (dager)*",
+            "expression": [
+              "",
+              "",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12295\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Gjennomsnittlig saksbehandlingstid for byggesaker med 12 ukers frist (dager)\")",
+              ")",
+              "",
+              "return a"
+            ]
+          },
+          {
+            "name": "Saksbehandlingsgebyr for oppføring av enebolig (kroner)*",
+            "expression": [
+              "",
+              "",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12303\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Byggesaksgebyr for oppføring av enebolig (kr)\")",
+              ")",
+              "",
+              "return a"
+            ]
+          },
+          {
+            "name": "Nye søknader per 1 000 innbyggere",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11211\"), ",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Antall søknader mottatt av kommunen\") ",
+              ") ",
+              "",
+              "var var2 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
+              ")  ",
+              "",
+              "",
+              "return divide(var1,(var2/1000))",
+              ""
+            ]
+          },
+          {
+            "name": "Tilsyn i % av nye byggesaker",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12224\"), ",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Byggesaker med tilsyn (antall)\") ",
+              ")  ",
+              "var var1b = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12612\"), ",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Behandlete søknader om eierseksjonering (antall)\") ",
+              ")  ",
+              "var var2 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12224\"), ",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Behandlede byggesøknader i alt (antall)\") ",
+              ") ",
+              "",
+              "return (divide((var1+var1b),var2))*100",
+              ""
+            ]
+          },
+          {
+            "name": "Antall utførte tilsyn med ikke omsøkt byggevirksomhet*",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11879\"), ",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Tilsyn i ikke omsøkte byggesaker (antall)\") ",
+              ")  ",
+              "",
+              "return (var1)"
+            ]
+          },
+          {
+            "name": "Andel mangelfulle søknader i prosent av vedtak",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11211\"), ",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Antall mangelfulle søknader hvor det ble bedt om tilleggsdokumentasjon\") ",
+              ")  ",
+              "var var2 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11211\"), ",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Antall søknader kommunen behandlet ferdig (fattet vedtak om)\") ",
+              ") ",
+              "",
+              "return (divide(var1,var2))*100",
+              ""
+            ]
+          },
+          {
+            "name": "Brutto driftsutgifter per ferdigbehandlet byggesak (f302) (kroner)",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12611\"),",
+              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"302\"}),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"2. Brutto driftsutgifter (1000 kr)\")",
+              ")",
+              "var var2 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11211\"), ",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Antall søknader kommunen behandlet ferdig (fattet vedtak om)\") ",
+              ") ",
+              "",
+              "return ((divide(var1,var2))*1000)",
+              ""
+            ]
+          },
+          {
+            "name": "Andel vedtak innenfor frist (prosent)",
+            "expression": [
+              "",
+              " ",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11211\"), ",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Antall søknader med saksbehandlingstid over lovpålagt tid\") ",
+              ") ",
+              "var var2 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11211\"), ",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Antall søknader mottatt av kommunen\") ",
+              ")",
+              "",
+              "return (divide((var2-var1),var2))*100",
+              ""
+            ]
+          },
+          {
+            "name": "Totale gebyrinntekter bygge- og delesaksbehandling per f.g.vedtak (kroner)",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12299\"), ",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Beløp (1000 kr) Bygge- og delesaksbehandling Gebyrinntekter\") ",
+              ")  ",
+              "",
+              "var var1b = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12299\"), ",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Beløp (1000 kr) Eierseksjonering Gebyrinntekter\") ",
+              ")  ",
+              "",
+              "var var2 = CALCULATE(sum('Alle Data'[Verdi]), ",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11211\"), ",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Antall søknader kommunen behandlet ferdig (fattet vedtak om)\") ",
+              ") ",
+              "",
+              "return (divide(((var1+var1b)*1000),var2))"
+            ]
+          },
+          {
+            "name": "Gjennomsnittlig stønadslengde med sosialhjelp som hovedinntekt (måneder)",
+            "expression": [
+              "",
+              "",
+              "var soslg = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Gjennomsnittlig stønadslengde for mottakere med sosialhjelp som hovedinntekt  (måneder)\")",
+              ")",
+              "",
+              "return soslg",
+              "",
+              "",
+              ""
+            ]
           }
         ],
         "annotations": [
