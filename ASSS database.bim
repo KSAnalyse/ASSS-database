@@ -2469,16 +2469,14 @@
             "displayFolder": "Barnvern"
           },
           {
-            "name": "Sykefravær byggesak (PAI) (prosent)*",
+            "name": "BGS Sykefravær byggesak (PAI) (prosent)*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ASSS\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sykefravær Byggesak (PAI)\")",
-              ")",
-              "",
-              "return a"
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"PAI02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sykefravær Byggesak (PAI)\")",
+              ")"
             ]
           },
           {
