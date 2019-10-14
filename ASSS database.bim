@@ -1788,7 +1788,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Andel innbyggere 0-66 år som er beboere på institusjon eller mottar hjemmetjenester (prosent)",
@@ -1840,7 +1841,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Andel innbyggere 80 år og eldre som mottar hjemmetjenester (prosent)",
@@ -1872,7 +1874,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Andel innbyggere 80 år+ beboer på institusjon eller i bolig med heldøgns bemanning(prosent)",
@@ -1919,7 +1922,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Andel brukere på institusjon 0-66 år (prosent)",
@@ -1951,7 +1955,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Brutto driftsutgifter per plass i institusjon (kroner)",
@@ -1995,7 +2000,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Netto driftsutgifter hjemmetjeneste 0-66 år per mottaker 0-66 år (kroner)",
@@ -2148,7 +2154,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Ressursbruksindikator. Pleie og omsorg*",
@@ -2200,7 +2207,8 @@
               "return (",
               "    ROUND(a, 1)",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           },
           {
             "name": "PLO Andel utviklingshemmede av befolkningen 16 år og eldre (TTU) (prosent)*",
