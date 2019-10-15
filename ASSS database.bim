@@ -2480,22 +2480,41 @@
             ]
           },
           {
-            "name": "Godkjente boligenheter per 1 000 innbyggere",
+            "name": "BGS Godkjente boligenheter per 1 000 innbyggere",
             "expression": [
               "",
-              "",
-              "var var1 = CALCULATE(sum('Alle Data'[Verdi]), ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12295\"), ",
-              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Netto endring i antall boliger (antall)\") ",
+              "/*",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]); ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12295\"); ",
+              "filter(all('Variabel'[Variabelnavn]); Variabel[Variabelnavn] = \"Netto endring i antall boliger (antall)\") ",
               ") ",
-              "var var2 = CALCULATE(sum('Alle Data'[Verdi]), ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
+              "var var2 = CALCULATE(sum('Alle Data'[Verdi]); ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"11805\"); ",
+              "filter(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
               ")  ",
               "",
               "",
-              "return divide(var1,(var2/1000))",
-              ""
+              "return divide(var1;(var2/1000))",
+              "*/",
+              "var nettoend = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]), ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12295\"), ",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Netto endring i antall boliger (antall)\") ",
+              ")",
+              "",
+              "var befolkning = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]), ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"), ",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"I alt\") ",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(nettoend, befolkning / 1000),",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
@@ -2517,16 +2536,21 @@
             ]
           },
           {
-            "name": "Gjennomsnittlig saksbehandlingstid ett-trinnssøknader, 12-uker (dager)*",
+            "name": "BGS Gjennomsnittlig saksbehandlingstid ett-trinnssøknader, 12-uker (dager)*",
             "expression": [
               "",
-              "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12295\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Gjennomsnittlig saksbehandlingstid for byggesaker med 12 ukers frist (dager)\")",
+              "/*",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12295\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Gjennomsnittlig saksbehandlingstid for byggesaker med 12 ukers frist (dager)\")",
               ")",
               "",
-              "return a"
+              "return a",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12295\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Gjennomsnittlig saksbehandlingstid for byggesaker med 12 ukers frist (dager)\")",
+              ")"
             ]
           },
           {
