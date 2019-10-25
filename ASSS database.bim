@@ -2888,7 +2888,7 @@
             ]
           },
           {
-            "name": "Netto driftsutgifter kommunehelsetjenesten per innbygger (kroner)",
+            "name": "KHT Netto driftsutgifter kommunehelsetjenesten per innbygger (kroner)",
             "expression": [
               "",
               "/*",
@@ -2933,17 +2933,34 @@
             "name": "Netto driftsutgifter kommunehelsetjenesten av kommunens samlede netto driftsutgifter (prosent)",
             "expression": [
               "",
-              "",
-              "var nettokom = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "filter(all('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode]=\"AGD2\"),",
-              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"232\", \"233\", \"241\"}),",
-              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "/*",
+              "var nettokom = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "filter(all('Artsgruppe Kostra'[Artsgruppekode]); 'Artsgruppe Kostra'[Artsgruppekode]=\"AGD2\");",
+              "filter(all('Funksjon Kostra'[Funksjonskode]); 'Funksjon Kostra'[Funksjonskode] in {\"232\"; \"233\"; \"241\"});",
+              "FILTER(ALL(Variabel[Variabelnavn]); Variabel[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "",
-              "var nettoalle = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12364\"),",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn]=\"Netto driftsutgifter totalt Beløp (1000 kr)\")",
+              "var nettoalle = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12364\");",
+              "filter(all(Variabel[Variabelnavn]); Variabel[Variabelnavn]=\"Netto driftsutgifter totalt Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return divide(nettokom;nettoalle)*100",
+              "*/",
+              "var nettokom = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL(Art[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] IN {\"232\", \"233\", \"241\"}),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var nettoalle = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12364\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
+              "    FILTER(ALL(Regnskapsbegrep[Dimensjonsnavn]), [Dimensjonsnavn] = \"Netto driftsutgifter totalt\")",
               ")",
               "",
               "return divide(nettokom,nettoalle)*100"
@@ -3005,22 +3022,44 @@
             ]
           },
           {
-            "name": "Brutto driftsutgifter (f232, f233 og f241) per innbygger (kroner)",
+            "name": "KHT Brutto driftsutgifter (f232, f233 og f241) per innbygger (kroner)",
             "expression": [
               "",
-              "",
-              "var brkom = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "filter(ALL('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode] = \"AGD10\"),",
-              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"232\", \"233\", \"241\"}),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "/*",
+              "var brkom = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "filter(ALL('Artsgruppe Kostra'[Artsgruppekode]); 'Artsgruppe Kostra'[Artsgruppekode] = \"AGD10\");",
+              "filter(all('Funksjon Kostra'[Funksjonskode]); 'Funksjon Kostra'[Funksjonskode] in {\"232\"; \"233\"; \"241\"});",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
-              "var person = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
-              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
+              "var person = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"11805\"); ",
+              "FILTER(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
               ")",
               "",
-              "return divide((brkom*1000),person)"
+              "return divide((brkom*1000);person)",
+              "*/",
+              "var brkom = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL(Art[Dimensjonskode]), [Dimensjonskode] = \"AGD10\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] IN {\"232\", \"233\", \"241\"}),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "var person = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"), ",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"I alt\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(brkom * 1000, person),",
+              "        1",
+              "    )",
+              ")",
+              ""
             ]
           },
           {
@@ -3085,7 +3124,7 @@
             ]
           },
           {
-            "name": "KHS Sykefravær kommunehelse (PAI) (prosent)*",
+            "name": "KHT Sykefravær kommunehelse (PAI) (prosent)*",
             "expression": [
               "",
               "/*",
@@ -3174,23 +3213,45 @@
             ]
           },
           {
-            "name": "Netto driftsutgifter forebygging, helsestasjons- og skolehelsetjeneste per innb. 0-20 år (kroner)",
+            "name": "KHT Netto driftsutgifter forebygging, helsestasjons- og skolehelsetjeneste per innb. 0-20 år(kroner)",
             "expression": [
               "",
-              "",
-              "var nettokom = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "filter(all('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode]=\"AGD2\"),",
-              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] =\"232\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "/*",
+              "var nettokom = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "filter(all('Artsgruppe Kostra'[Artsgruppekode]); 'Artsgruppe Kostra'[Artsgruppekode]=\"AGD2\");",
+              "filter(all('Funksjon Kostra'[Funksjonskode]); 'Funksjon Kostra'[Funksjonskode] =\"232\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "",
-              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
-              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-20 år\")",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"11805\");",
+              "FILTER(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = \"Personer (antall) 0-20 år\")",
               ")",
               "",
-              "return divide((nettokom*1000),bef)"
+              "return divide((nettokom*1000);bef)",
+              "*/",
+              "var nettokom = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL(Art[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] = \"232\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var bef = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-22 år\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(nettokom * 1000, bef),",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
@@ -3455,7 +3516,7 @@
             ]
           },
           {
-            "name": "KHS Ressursbruksindikator. Kommunehelse*",
+            "name": "KHT Ressursbruksindikator. Kommunehelse*",
             "expression": [
               "",
               "/*",
@@ -4134,6 +4195,11 @@
             "name": "Postkode",
             "dataType": "string",
             "sourceColumn": "Postkode"
+          },
+          {
+            "name": "Regnskapsbegrepkode",
+            "dataType": "string",
+            "sourceColumn": "Regnskapsbegrepkode"
           }
         ],
         "partitions": [
@@ -4301,6 +4367,14 @@
                   "        <int>103</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Regnskapsbegrepkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>197</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -4447,6 +4521,14 @@
                   "        <int>17</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Regnskapsbegrepkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>18</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -4557,6 +4639,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Postkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Regnskapsbegrepkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -4742,6 +4832,14 @@
               "        <int>103</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Regnskapsbegrepkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>197</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -4888,6 +4986,14 @@
               "        <int>17</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Regnskapsbegrepkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>18</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -4998,6 +5104,14 @@
               "    <item>",
               "      <key>",
               "        <string>Postkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Regnskapsbegrepkode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -5556,6 +5670,53 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Regnskapsbegrep",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Regnskapsbegrep",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Regnskapsbegrep].* FROM [dbo].[Regnskapsbegrep] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Regnskapsbegrep].* FROM [dbo].[Regnskapsbegrep] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Regnskapsbegrep"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -5676,6 +5837,13 @@
         "fromTable": "Alle Data",
         "fromColumn": "Postkode",
         "toTable": "Post",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "9550548b-1135-4ef0-9380-dccee1f29745",
+        "fromTable": "Alle Data",
+        "fromColumn": "Regnskapsbegrepkode",
+        "toTable": "Regnskapsbegrep",
         "toColumn": "Dimensjonskode"
       }
     ],
