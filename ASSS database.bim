@@ -2886,6 +2886,618 @@
               "    )",
               ")"
             ]
+          },
+          {
+            "name": "Netto driftsutgifter kommunehelsetjenesten per innbygger (kroner)",
+            "expression": [
+              "",
+              "",
+              "var nettokom = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "filter(all('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode]=\"AGD2\"),",
+              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"232\", \"233\", \"241\"}),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\")",
+              ")",
+              "",
+              "return divide((nettokom*1000),bef)"
+            ]
+          },
+          {
+            "name": "Netto driftsutgifter kommunehelsetjenesten av kommunens samlede netto driftsutgifter (prosent)",
+            "expression": [
+              "",
+              "",
+              "var nettokom = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "filter(all('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode]=\"AGD2\"),",
+              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"232\", \"233\", \"241\"}),",
+              "FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var nettoalle = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12364\"),",
+              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn]=\"Netto driftsutgifter totalt Beløp (1000 kr)\")",
+              ")",
+              "",
+              "return divide(nettokom,nettoalle)*100"
+            ]
+          },
+          {
+            "name": "Årsverk helsestasjonen totalt per 10 000 innbyggere 0-20 år",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11994\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Avtalte årsverk (årsverk) Utdanning i alt\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-20 år\")",
+              ")",
+              "",
+              "return divide(aarsverk,(bef/10000))"
+            ]
+          },
+          {
+            "name": "Årsverk helsesøstre totalt per 10 000 innbyggere 0-20 år",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11994\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Avtalte årsverk (årsverk) Helsesøster\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-20 år\")",
+              ")",
+              "",
+              "return divide(aarsverk,(bef/10000))"
+            ]
+          },
+          {
+            "name": "Årsverk leger per 10 000 innbyggere (f120, f233, f241)",
+            "expression": [
+              "",
+              "",
+              "var aarsverk1 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11996\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Avtalte legeårsverk (årsverk) Avtaleform i alt\"),",
+              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"120\", \"233\", \"241\"})",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
+              ")",
+              "",
+              "return divide(aarsverk1,(bef/10000))"
+            ]
+          },
+          {
+            "name": "Brutto driftsutgifter (f232, f233 og f241) per innbygger (kroner)",
+            "expression": [
+              "",
+              "",
+              "var brkom = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "filter(ALL('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode] = \"AGD10\"),",
+              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"232\", \"233\", \"241\"}),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "var person = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
+              ")",
+              "",
+              "return divide((brkom*1000),person)"
+            ]
+          },
+          {
+            "name": "Ledig liste-kapasitet",
+            "expression": [
+              "",
+              "",
+              "var kapasitet = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12005\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Kapasitet hos fastlegene (iht. liste) (antall)\")",
+              ")",
+              "",
+              "var pasienter = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12005\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Antall pasienter på fastlegeliste (antall)\")",
+              ")",
+              "",
+              "return divide(kapasitet,pasienter)*100"
+            ]
+          },
+          {
+            "name": "Ledig liste-kapasitet i prosent av antall innbyggere",
+            "expression": [
+              "",
+              "",
+              "var kapasitet = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12005\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Kapasitet hos fastlegene (iht. liste) (antall)\")",
+              ")",
+              "",
+              "var pasienter = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12005\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Antall pasienter på fastlegeliste (antall)\")",
+              "",
+              ")",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\")",
+              ")",
+              "",
+              "",
+              "return ",
+              "    (divide((kapasitet-pasienter),bef)*100)"
+            ]
+          },
+          {
+            "name": "Andel nyfødte med hjembesøk innen 2 uker etter hjemkomst (prosent)",
+            "expression": [
+              "",
+              "",
+              "var fodte = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Hjemmebesøk nyfødte\")",
+              ")",
+              "",
+              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11820\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Fødte i løpet av året (antall)\")",
+              ")",
+              "",
+              "return divide(fodte,barn)*100"
+            ]
+          },
+          {
+            "name": "Sykefravær kommunehelse (PAI) (prosent)*",
+            "expression": [
+              "",
+              "",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ASSS\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sykefravær Kommunehelse (PAI)\")",
+              ")",
+              "",
+              "return a"
+            ]
+          },
+          {
+            "name": "Årsverk ergoterapeuter per 10 000 innbyggere",
+            "expression": [
+              "",
+              "",
+              "var aarsverk1 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRER\"),",
+              "    filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk ergoteraputer. Annet forebyggende helsearbeid (f233) - Annet forebyggende arbeid\")",
+              ")",
+              "",
+              "var aarsverk2 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRER\"),",
+              "        filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] =\"Årsverk ergoteraputer. Annet forebyggende helsearbeid (f233) - Miljørettet helsevern\")",
+              ")",
+              "",
+              "var aarsverk3 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRER\"),",
+              "        filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk ergoteraputer. Diagnose/ behandling, re-/habilitering (f241)\")",
+              ")",
+              "",
+              "var aarsverk4 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRER\"),",
+              "        filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk ergoteraputer. Forebygging, helsestasjons- og skolehelsetjeneste (f232)\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "    FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\")",
+              ")",
+              "",
+              "return divide((aarsverk1+aarsverk2+aarsverk3+aarsverk4),(bef/10000))",
+              "",
+              ""
+            ]
+          },
+          {
+            "name": "Årsverk helsestasjonen totalt per 1 000 innbyggere 0-5 år",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRHOS\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk 0-5 totalt uten ledelse. Helsestasjon 0-5 år\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-5 år\")",
+              ")",
+              "",
+              "return divide(aarsverk,(bef/1000))"
+            ]
+          },
+          {
+            "name": "Årsverk skolehelsetjenesten totalt per 1 000 innbyggere 6-20 år",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRHOS\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk totalt skolehelsetjenesten uten ledelse\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 6-20 år\")",
+              ")",
+              "",
+              "return DIVIDE(aarsverk,(bef/1000))"
+            ]
+          },
+          {
+            "name": "Netto driftsutgifter forebygging, helsestasjons- og skolehelsetjeneste per innb. 0-20 år (kroner)",
+            "expression": [
+              "",
+              "",
+              "var nettokom = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
+              "filter(all('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode]=\"AGD2\"),",
+              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] =\"232\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-20 år\")",
+              ")",
+              "",
+              "return divide((nettokom*1000),bef)"
+            ]
+          },
+          {
+            "name": "Årsverk helsesykepleiere per 1 000 innbygger 0-5 år",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRHOS\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk helsesykepleiere uten ledelse. Helsestasjon 0-5 år\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-5 år\")",
+              ")",
+              "",
+              "return DIVIDE(aarsverk,(bef/1000))"
+            ]
+          },
+          {
+            "name": "Årsverk totalt på helsestasjon per innbygger 0-5 år",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRHOS\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk 0-5 totalt uten ledelse. Helsestasjon 0-5 år\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-5 år\")",
+              ")",
+              "",
+              "return DIVIDE(aarsverk,bef)"
+            ]
+          },
+          {
+            "name": "Årsverk skolehelsetjenesten per 1 000 elever barnetrinn",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRHOS\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk barnetrinn totalt uten ledelse. Skolehelse barnetrinn\")",
+              ")",
+              "",
+              "var elev = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12222\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] in {\"Elever i kommunale og private grunnskoler (antall) 1.-4. trinn\", \"Elever i kommunale og private grunnskoler (antall) 5.-7. trinn\"})",
+              ")",
+              "",
+              "return DIVIDE(aarsverk,(elev/1000))",
+              ""
+            ]
+          },
+          {
+            "name": "Årsverk skolehelsetjenesten per 1 000 elever ungdomstrinn",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRHOS\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk ungdomstrinn totalt uten ledelse. Skolehelse ungdomstrinn\")",
+              ")",
+              "",
+              "var elev = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12222\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Elever i kommunale og private grunnskoler (antall) 8.-10. trinn\")",
+              ")",
+              "",
+              "return DIVIDE(aarsverk,(elev/1000))",
+              "",
+              ""
+            ]
+          },
+          {
+            "name": "Årsverk skolehelse per innbygger 16-20 år VGS",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRHOS\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk vg skole totalt uten ledelse. Skolehelse videregående skole\")",
+              ")",
+              "",
+              "var elev = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] in {\"Personer (antall) 16 år\", \"Personer (antall) 17 år\", \"Personer (antall) 18 år\", \"Personer (antall) 19 år\", \"Personer (antall) 20 år\"})",
+              ")",
+              "",
+              "return divide(aarsverk,elev)",
+              "",
+              ""
+            ]
+          },
+          {
+            "name": "Årsverk kommunale fysioterapeuter i alt per 10 000 innbyggere",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11995\"),",
+              "FILTER(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"FGK10\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Avtalte fysioterapeutårsverk (årsverk) Avtaleform i alt\")",
+              ")",
+              "var aarsverk241 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11995\"),",
+              "FILTER(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"241\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Avtalte fysioterapeutårsverk (årsverk) Avtaleform i alt\")",
+              ")",
+              "",
+              "var aarsverkfast = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11995\"),",
+              "FILTER(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"241\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Avtalte fysioterapeutårsverk (årsverk) Fastlønnet\")",
+              ")",
+              "",
+              "var aarsverkturnus = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11995\"),",
+              "FILTER(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"241\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Avtalte fysioterapeutårsverk (årsverk) Turnusfysioterapeut\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\")",
+              ")",
+              "",
+              "return divide(((aarsverk-aarsverk241)+aarsverkfast+aarsverkturnus),(bef/10000))"
+            ]
+          },
+          {
+            "name": "Årsverk private fysioterapeuter i alt per 10 000 innbyggere",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11995\"),",
+              "FILTER(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] = \"FGK10\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Avtalte fysioterapeutårsverk (årsverk) Tilskudd\")",
+              ")",
+              "",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\")",
+              ")",
+              "",
+              "return divide(aarsverk,(bef/10000))",
+              "",
+              "",
+              ""
+            ]
+          },
+          {
+            "name": "Årsverk jordmor per 10 000 fødte",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11994\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Avtalte årsverk (årsverk) Jordmor\")",
+              ")",
+              "",
+              "var var2= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11820\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Fødte i løpet av året (antall)\")",
+              ")",
+              "",
+              "return (divide(var1,(var2/10000)))"
+            ]
+          },
+          {
+            "name": "Årsverk leger per 10 000 innbyggere 0-5 år",
+            "expression": [
+              "",
+              "",
+              "var var1 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11994\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Avtalte årsverk (årsverk) Leger\")",
+              ")",
+              "",
+              "var var2= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 0-5 år\")",
+              ")",
+              "",
+              "return (divide(var1,(var2/10000)))"
+            ]
+          },
+          {
+            "name": "Spedbarnundersøkelse 8. leveuke (prosent)",
+            "expression": [
+              "",
+              "",
+              "var und = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Undersøkt 8. leveuke\")",
+              ")",
+              "",
+              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11820\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Fødte i løpet av året (antall)\")",
+              ")",
+              "",
+              "return divide(und,barn)*100"
+            ]
+          },
+          {
+            "name": "Helseundersøkelse 2-3 år (prosent)",
+            "expression": [
+              "",
+              "",
+              "var und = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Undersøkt ved 2-års alder\")",
+              ")",
+              "",
+              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 2-3 år\")",
+              ")",
+              "",
+              "return divide(und,(barn/2))*100"
+            ]
+          },
+          {
+            "name": "Helseundersøkelse 4 år (prosent)",
+            "expression": [
+              "",
+              "",
+              "var und = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Undersøkt ved 4-års alder\")",
+              ")",
+              "",
+              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 4 år\")",
+              ")",
+              "",
+              "return divide(und,barn)*100"
+            ]
+          },
+          {
+            "name": "Helseundersøkelse 1. trinn (prosent)",
+            "expression": [
+              "",
+              "",
+              "var und = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Undersøkt grunnskole 1. trinn\")",
+              ")",
+              "",
+              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"),",
+              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) 5-6 år\")",
+              ")",
+              "",
+              "return divide(und,(barn/2))*100"
+            ]
+          },
+          {
+            "name": "Ressursbruksindikator. Kommunehelse*",
+            "expression": [
+              "",
+              "",
+              "var r = CALCULATE(sum('Alle Data'[Verdi]),",
+              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"RBIASSS\"),",
+              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Ressursbruksindikator Kommunehelse\")",
+              ")",
+              "",
+              "return r"
+            ]
+          },
+          {
+            "name": "Målt produksjon helsestasjon",
+            "expression": [
+              "",
+              "",
+              "var undGrav = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12191\"),",
+              "    filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Antall nyinnskrevne gravide som har møtt til svangerskapskontroll (antall)\")",
+              ")",
+              "",
+              "var undFG = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
+              "    FILTER(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Hjemmebesøk nyfødte\")",
+              ")",
+              "",
+              "var und8 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
+              "    FILTER(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Undersøkt 8. leveuke\")",
+              ")",
+              "",
+              "var und23 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
+              "    FILTER(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Undersøkt ved 2-års alder\")",
+              ")",
+              "",
+              "var und4 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
+              "    FILTER(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Undersøkt ved 4-års alder\")",
+              ")",
+              "",
+              "var arsverkhst05= CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRHOS\"),",
+              "    FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk 0-5 totalt uten ledelse. Helsestasjon 0-5 år\")",
+              ")",
+              "",
+              "var vekthstprod = (21*undGrav)+(31*undFG)+(16*und8)+(16*und23)+(16*und4)",
+              "",
+              "return (",
+              "    DIVIDE(",
+              "        DIVIDE(vekthstprod,100),",
+              "        arsverkhst05",
+              "    )",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Konsultasjon og sykebesøk per 1 000 innbyggere",
+            "expression": [
+              "",
+              "",
+              "var konsAlle = CALCULATE(sum('Alle Data'[Verdi]),",
+              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"KPR01\"),",
+              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"2 konsultasjon Alle aldre Antall pasienter per 1 000 innbyggere\")",
+              ")",
+              "",
+              "return konsAlle"
+            ]
           }
         ],
         "annotations": [
