@@ -2930,7 +2930,7 @@
             ]
           },
           {
-            "name": "Netto driftsutgifter kommunehelsetjenesten av kommunens samlede netto driftsutgifter (prosent)",
+            "name": "KHT Netto driftsutgifter kommunehelsetjenesten av kommunens samlede netto driftsutgifter (prosent)",
             "expression": [
               "",
               "/*",
@@ -2963,7 +2963,12 @@
               "    FILTER(ALL(Regnskapsbegrep[Dimensjonsnavn]), [Dimensjonsnavn] = \"Netto driftsutgifter totalt\")",
               ")",
               "",
-              "return divide(nettokom,nettoalle)*100"
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(nettokom, nettoalle) * 100,",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
