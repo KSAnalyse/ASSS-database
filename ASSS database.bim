@@ -3050,22 +3050,44 @@
             ]
           },
           {
-            "name": "Årsverk leger per 10 000 innbyggere (f120, f233, f241)",
+            "name": "KHT Årsverk leger per 10 000 innbyggere (f120, f233, f241)",
             "expression": [
               "",
-              "",
-              "var aarsverk1 = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11996\"),",
-              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Avtalte legeårsverk (årsverk) Avtaleform i alt\"),",
-              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"120\", \"233\", \"241\"})",
+              "/*",
+              "var aarsverk1 = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"11996\");",
+              "filter(all('Variabel'[Variabelnavn]); Variabel[Variabelnavn] = \"Avtalte legeårsverk (årsverk) Avtaleform i alt\");",
+              "filter(all('Funksjon Kostra'[Funksjonskode]); 'Funksjon Kostra'[Funksjonskode] in {\"120\"; \"233\"; \"241\"})",
               ")",
               "",
-              "var bef = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11805\"), ",
-              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
+              "var bef = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"11805\"); ",
+              "FILTER(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = \"Personer (antall) I alt\") ",
               ")",
               "",
-              "return divide(aarsverk1,(bef/10000))"
+              "return divide(aarsverk1;(bef/10000))",
+              "*/",
+              "var aarsverk1 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11996\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Avtalte legeårsverk (årsverk)\"),",
+              "    FILTER(ALL(Avtaleform[Dimensjonsnavn]), [Dimensjonsnavn] = \"Avtaleform i alt\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] IN {\"120\", \"233\", \"241\"})",
+              ")",
+              "",
+              "var bef = ",
+              "CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"), ",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"I alt\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(aarsverk1, DIVIDE(bef, 10000)),",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
@@ -4247,6 +4269,11 @@
             "name": "Regnskapsbegrepkode",
             "dataType": "string",
             "sourceColumn": "Regnskapsbegrepkode"
+          },
+          {
+            "name": "Avtaleformkode",
+            "dataType": "string",
+            "sourceColumn": "Avtaleformkode"
           }
         ],
         "partitions": [
@@ -4422,6 +4449,14 @@
                   "        <int>197</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Avtaleformkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>151</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -4576,6 +4611,14 @@
                   "        <int>18</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Avtaleformkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>19</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -4694,6 +4737,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Regnskapsbegrepkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Avtaleformkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -4887,6 +4938,14 @@
               "        <int>197</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Avtaleformkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>151</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -5041,6 +5100,14 @@
               "        <int>18</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Avtaleformkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>19</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -5159,6 +5226,14 @@
               "    <item>",
               "      <key>",
               "        <string>Regnskapsbegrepkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Avtaleformkode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -5764,6 +5839,53 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Avtaleform",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Avtaleform",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Avtaleform].* FROM [dbo].[Avtaleform] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Avtaleform].* FROM [dbo].[Avtaleform] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Avtaleform"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -5891,6 +6013,13 @@
         "fromTable": "Alle Data",
         "fromColumn": "Regnskapsbegrepkode",
         "toTable": "Regnskapsbegrep",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "5f3af89f-97a4-4064-862a-2b04ce06f490",
+        "fromTable": "Alle Data",
+        "fromColumn": "Avtaleformkode",
+        "toTable": "Avtaleform",
         "toColumn": "Dimensjonskode"
       }
     ],
