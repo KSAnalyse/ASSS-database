@@ -3220,21 +3220,41 @@
             ]
           },
           {
-            "name": "Andel nyfødte med hjembesøk innen 2 uker etter hjemkomst (prosent)",
+            "name": "KHT Andel nyfødte med hjembesøk innen 2 uker etter hjemkomst (prosent)",
             "expression": [
               "",
-              "",
-              "var fodte = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11993\"),",
-              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Barn (antall) Hjemmebesøk nyfødte\")",
+              "/*",
+              "var fodte = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"11993\");",
+              "filter(all('Variabel'[Variabelnavn]); Variabel[Variabelnavn] = \"Barn (antall) Hjemmebesøk nyfødte\")",
               ")",
               "",
-              "var barn= CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11820\"),",
-              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Fødte i løpet av året (antall)\")",
+              "var barn= CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"11820\");",
+              "FILTER(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = \"Fødte i løpet av året (antall)\")",
               ")",
               "",
-              "return divide(fodte,barn)*100"
+              "return divide(fodte;barn)*100",
+              "*/",
+              "var fodte = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11993\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn (antall)\"),",
+              "    FILTER(ALL(Helsekontroller[Dimensjonsnavn]), [Dimensjonsnavn] = \"Hjemmebesøk nyfødte\")",
+              ")",
+              "",
+              "var barn = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11820\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Fødte i løpet av året (antall)\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(fodte, barn) * 100,",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
@@ -4319,6 +4339,11 @@
             "name": "Avtaleformkode",
             "dataType": "string",
             "sourceColumn": "Avtaleformkode"
+          },
+          {
+            "name": "Helsekontrollerkode",
+            "dataType": "string",
+            "sourceColumn": "Helsekontrollerkode"
           }
         ],
         "partitions": [
@@ -4502,6 +4527,14 @@
                   "        <int>151</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Helsekontrollerkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>179</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -4664,6 +4697,14 @@
                   "        <int>19</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Helsekontrollerkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>20</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -4790,6 +4831,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Avtaleformkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Helsekontrollerkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -4991,6 +5040,14 @@
               "        <int>151</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Helsekontrollerkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>179</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -5153,6 +5210,14 @@
               "        <int>19</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Helsekontrollerkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>20</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -5279,6 +5344,14 @@
               "    <item>",
               "      <key>",
               "        <string>Avtaleformkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Helsekontrollerkode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -5931,6 +6004,53 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Helsekontroller",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Helsekontroller",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Helsekontroller].* FROM [dbo].[Helsekontroller] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Helsekontroller].* FROM [dbo].[Helsekontroller] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Helsekontroller"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -6065,6 +6185,13 @@
         "fromTable": "Alle Data",
         "fromColumn": "Avtaleformkode",
         "toTable": "Avtaleform",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "63d3461c-d0cc-4869-9286-1042448aa308",
+        "fromTable": "Alle Data",
+        "fromColumn": "Helsekontrollerkode",
+        "toTable": "Helsekontroller",
         "toColumn": "Dimensjonskode"
       }
     ],
