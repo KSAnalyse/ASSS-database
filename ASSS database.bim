@@ -1024,7 +1024,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel undersøkelser gjennomført i løpet av 3 måneder (prosent)*",
@@ -1044,7 +1044,8 @@
               "        \"Undersøkingar med handsamingstid innan 3 månader (prosent)\"",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Sykefravær barnevern (PAI) (prosent)*",
@@ -1063,7 +1064,7 @@
               "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Sykefravær Barnevern (PAI)\")",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Netto driftsutgifter per barn (f252) som er plassert av barnevernet (kroner)",
@@ -1096,7 +1097,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel av netto driftsutgifter barnevern f244 (prosent)",
@@ -1141,7 +1143,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel av netto driftsutgifter barnevern f251 (prosent)",
@@ -1186,7 +1188,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel av netto driftsutgifter barnevern f252 (prosent)",
@@ -1232,7 +1234,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel barn med melding av innbyggere 0-17 år (prosent)",
@@ -1273,7 +1275,7 @@
               "    ",
               ""
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Antall barn med undersøkelse eller tiltak per årsverk (funksjon 244)*",
@@ -1293,7 +1295,8 @@
               "        \"Barn med undersøking eller tiltak per årsverk (funksjon 244) (antall)\"",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Stillinger med fagutdanning av alle fag- og tiltaksstillinger (prosent)",
@@ -1334,7 +1337,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel meldinger som går til undersøkelser (prosent)",
@@ -1377,7 +1380,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BVN Brutto driftsutgifter per EM (f252) (kroner)",
@@ -1418,7 +1422,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "PLO Gjennomsnittlig bistandsbehov hos mottakere av hjemmetjenester 0 til 66 år",
@@ -2364,7 +2368,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BVN Andel EM av alle plasserte barn (prosent)",
@@ -2397,7 +2402,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel barn med tiltak 0-5 år av barn på tiltak 0-17 år (prosent)",
@@ -2444,7 +2449,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Ressursbruksindikator. Barnevern*",
@@ -2468,7 +2473,7 @@
               "    ROUND(rbi, 1)",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BGS Sykefravær byggesak (PAI) (prosent)*",
@@ -2705,7 +2710,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Antall utførte tilsyn med ikke omsøkt byggevirksomhet*",
@@ -2723,7 +2729,8 @@
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11879\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Tilsyn i ikke omsøkte byggesaker (antall)\")",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Andel mangelfulle søknader i prosent av vedtak",
@@ -2762,7 +2769,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Brutto driftsutgifter per ferdigbehandlet byggesak (f302) (kroner)",
@@ -2801,7 +2809,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Andel vedtak innenfor frist (prosent)",
@@ -2839,7 +2848,8 @@
               "    )",
               ")",
               ""
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Totale gebyrinntekter bygge- og delesaksbehandling per f.g.vedtak (kroner)",
@@ -2896,7 +2906,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "KHT Netto driftsutgifter kommunehelsetjenesten per innbygger (kroner)",
@@ -3489,7 +3500,8 @@
               "return DIVIDE(aarsverk,(elev/1000))",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Årsverk skolehelse per innbygger 16-20 år VGS",
@@ -3722,7 +3734,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Spedbarnundersøkelse 8. leveuke (prosent)",
@@ -3800,7 +3813,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Helseundersøkelse 4 år (prosent)",
@@ -3839,7 +3853,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Helseundersøkelse 1. trinn (prosent)",
@@ -3897,7 +3912,8 @@
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"RBI01\"),",
               "    filter(all('Variabel'[Variabelnavn]), [Variabelnavn] = \"Ressursbruksindikator Kommunehelse\")",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Målt produksjon helsestasjon",
