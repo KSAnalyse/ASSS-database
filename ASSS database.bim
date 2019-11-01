@@ -772,7 +772,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel barn med undersøkelser i forhold til innbyggere 0-17 år (prosent)",
@@ -805,7 +805,7 @@
               ")",
               ""
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel barn med barneverntiltak i forhold til innbyggere 0-17 år (prosent)",
@@ -840,7 +840,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)",
@@ -860,7 +860,8 @@
               "    ),",
               "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"0-22 år\")",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel barn som er plassert i løpet av året i prosent av antall barn 0-17 år",
@@ -883,7 +884,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)",
@@ -903,7 +904,7 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall)\")",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak  (0-22 år)",
@@ -934,7 +935,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Brutto driftsutgifter per barn (f251) som ikke er plassert av barnevernet (kroner)",
@@ -967,7 +968,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Brutto driftsutgifter per barn (f252) som er plassert av barnevernet (kroner)",
@@ -1001,7 +1003,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Barnvern"
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Brutto driftsutgifter per barn (f244) med undersøkelse eller tiltak (kroner)*",
@@ -2477,7 +2479,8 @@
               "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"PAI02\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sykefravær Byggesak (PAI)\")",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Godkjente boligenheter per 1 000 innbyggere",
@@ -2511,11 +2514,15 @@
               "",
               "return (",
               "    ROUND(",
-              "        DIVIDE(nettoend, befolkning / 1000),",
+              "        DIVIDE(",
+              "            nettoend, ",
+              "            DIVIDE(befolkning, 1000)",
+              "        ),",
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Godkjent annet areal per 1 000 innbyggere",
@@ -2556,7 +2563,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Gjennomsnittlig saksbehandlingstid ett-trinnssøknader, 12-uker (dager)*",
@@ -2576,7 +2584,8 @@
               "        \"Gjennomsnittlig saksbehandlingstid for byggesaker med 12 ukers frist (dager)\"",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Saksbehandlingsgebyr for oppføring av enebolig (kroner)*",
@@ -2594,7 +2603,8 @@
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12303\"),",
               "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Byggesaksgebyr for oppføring av enebolig (kr)\")",
               ")"
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Nye søknader per 1 000 innbyggere",
@@ -2650,7 +2660,8 @@
               "    )",
               ")",
               ""
-            ]
+            ],
+            "displayFolder": "Byggesak"
           },
           {
             "name": "BGS Tilsyn i % av nye byggesaker",
@@ -2927,7 +2938,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Netto driftsutgifter kommunehelsetjenesten av kommunens samlede netto driftsutgifter (prosent)",
@@ -2969,7 +2981,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Årsverk helsestasjonen totalt per 10 000 innbyggere 0-20 år",
@@ -3008,7 +3021,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Årsverk helsesøstre totalt per 10 000 innbyggere 0-20 år",
@@ -3047,7 +3061,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Årsverk leger per 10 000 innbyggere (f120, f233, f241)",
@@ -3088,7 +3103,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Brutto driftsutgifter (f232, f233 og f241) per innbygger (kroner)",
@@ -3129,7 +3145,8 @@
               "    )",
               ")",
               ""
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Ledig liste-kapasitet",
@@ -3166,7 +3183,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Ledig liste-kapasitet i prosent av antall innbyggere",
@@ -3217,7 +3235,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Andel nyfødte med hjembesøk innen 2 uker etter hjemkomst (prosent)",
@@ -3255,7 +3274,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Sykefravær kommunehelse (PAI) (prosent)*",
@@ -3273,7 +3293,8 @@
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"PAI02\"),",
               "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Sykefravær Kommunehelse (PAI)\")",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Årsverk ergoterapeuter per 10 000 innbyggere",
@@ -3308,7 +3329,8 @@
               "return divide((aarsverk1+aarsverk2+aarsverk3+aarsverk4),(bef/10000))",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Årsverk helsestasjonen totalt per 1 000 innbyggere 0-5 år",
@@ -3326,7 +3348,8 @@
               ")",
               "",
               "return divide(aarsverk,(bef/1000))"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Årsverk skolehelsetjenesten totalt per 1 000 innbyggere 6-20 år",
@@ -3344,7 +3367,8 @@
               ")",
               "",
               "return DIVIDE(aarsverk,(bef/1000))"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Netto driftsutgifter forebygging, helsestasjons- og skolehelsetjeneste per innb. 0-20 år(kroner)",
@@ -3386,7 +3410,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Årsverk helsesykepleiere per 1 000 innbygger 0-5 år",
@@ -3404,7 +3429,8 @@
               ")",
               "",
               "return DIVIDE(aarsverk,(bef/1000))"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Årsverk totalt på helsestasjon per innbygger 0-5 år",
@@ -3422,7 +3448,8 @@
               ")",
               "",
               "return DIVIDE(aarsverk,bef)"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Årsverk skolehelsetjenesten per 1 000 elever barnetrinn",
@@ -3441,7 +3468,8 @@
               "",
               "return DIVIDE(aarsverk,(elev/1000))",
               ""
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Årsverk skolehelsetjenesten per 1 000 elever ungdomstrinn",
@@ -3481,7 +3509,8 @@
               "return divide(aarsverk,elev)",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Årsverk kommunale fysioterapeuter i alt per 10 000 innbyggere",
@@ -3569,7 +3598,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Årsverk private fysioterapeuter i alt per 10 000 innbyggere",
@@ -3613,7 +3643,8 @@
               "",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Årsverk jordmor per 10 000 fødte",
@@ -3651,7 +3682,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Årsverk leger per 10 000 innbyggere 0-5 år",
@@ -3728,7 +3760,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Helseundersøkelse 2-3 år (prosent)",
@@ -3845,7 +3878,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Ressursbruksindikator. Kommunehelse*",
@@ -3909,7 +3943,8 @@
               "    )",
               ")",
               ""
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "Konsultasjon og sykebesøk per 1 000 innbyggere",
@@ -3922,7 +3957,8 @@
               ")",
               "",
               "return konsAlle"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "EIE Netto driftsutgifter eiendomsforvaltning av kommunens samlede netto driftsutgifter (prosent)",
@@ -3966,7 +4002,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Samlet areal på formålsbyggene i kvadratmeter per innbygger",
@@ -3986,7 +4023,8 @@
               ")",
               "",
               "return divide(areal,bef)"
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Korrigerte brutto driftsutgifter til kommunal eiendomsforvaltning per kvadratmeter (kroner)",
@@ -4008,7 +4046,8 @@
               "",
               "return divide((korrbreien*1000),areal)",
               ""
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Korrigerte brutto driftsutgifter eksklusiv avskrivninger per kvadratmeter eiet bygg (kroner)",
@@ -4043,7 +4082,8 @@
               "",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Utgifter til renholdsaktiviteter i kommunal eiendomsforvaltning, per kvadratmeter (kroner)",
@@ -4066,7 +4106,8 @@
               "",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Korrigert brutto driftsutgifter til kommunal forvaltning av eiendommer per kvadratmeter (kroner)",
@@ -4088,7 +4129,8 @@
               "",
               "return divide((korrbreien*1000),areal)",
               ""
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Utgifter til driftsaktiviteter i kommunal eiendomsforvaltning, per kvadratmeter (kroner)",
@@ -4111,7 +4153,8 @@
               "",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Utgifter til vedlikeholdsaktiviteter i kommunal eiendomsforvaltning, per kvadratmeter (kroner)",
@@ -4134,7 +4177,8 @@
               "",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "EIE Sykefravær eiendomsforvaltning (PAI) (prosent)*",
@@ -4153,7 +4197,8 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sykefravær Eiendomsforvaltning i Alt (PAI)\")",
               ")",
               ""
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Samlet energibruk i kommunal eiendomsforvaltning kWh/m2*",
@@ -4174,7 +4219,8 @@
               "",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Brutto investeringsutgifter til kommunale veier og gater per innbygger (kroner)*",
@@ -4187,7 +4233,8 @@
               ")",
               "",
               "return a"
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Snitt årlig investering per innbygger 2015-2018 (2018-kroner byggekostnadsindeksen boligblokker)",
@@ -4255,7 +4302,8 @@
               "",
               "/*Husk at dette må endres!*/",
               "/*Koden BØR også justeres! - */"
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Antall barnehagelærere per barn kommunale barnehager",
@@ -4288,7 +4336,8 @@
               "",
               "/*Barn er korrigert ut fra endret vekt - dette er ikke korrigert hos SSB*/",
               "/*27.3.2019 Laila */"
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "Antall innbyggere 18-66",
@@ -4298,7 +4347,8 @@
               "\t    FILTER(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Personer (antall) 18-66 år\")",
               ")",
               ""
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           }
         ],
         "annotations": [
