@@ -4417,16 +4417,16 @@
             "displayFolder": "Eiendomsforvaltning"
           },
           {
-            "name": "Brutto investeringsutgifter til kommunale veier og gater per innbygger (kroner)*",
+            "name": "EIE Brutto investeringsutgifter til kommunale veier og gater per innbygger (kroner)*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"11816\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Brutto investeringsutgifter til kommunale veier og gater per innbygger (kr)\")",
-              ")",
-              "",
-              "return a"
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11816\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Brutto investeringsutgifter til kommunale veier og gater per innbygger (kr)\"",
+              "    )",
+              ")"
             ],
             "displayFolder": "Eiendomsforvaltning"
           },
