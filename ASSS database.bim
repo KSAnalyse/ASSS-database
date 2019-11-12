@@ -4901,6 +4901,16 @@
               "",
               "return ndrsos"
             ]
+          },
+          {
+            "name": "Antall innbyggere 18-66",
+            "expression": [
+              "",
+              "\tCALCULATE(SUM('Alle Data'[Verdi]),",
+              "\t    FILTER(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Personer (antall) 18-66 år\")",
+              ")",
+              ""
+            ]
           }
         ],
         "annotations": [
