@@ -2630,6 +2630,9 @@
               "",
               "return divide(var1;(var2/1000))",
               "*/",
+              "",
+              "var valgtkom = SELECTEDVALUE(Region[Kode])",
+              "",
               "var antmott = ",
               "CALCULATE(SUM('Alle Data'[Verdi]), ",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11211\"), ",
@@ -2661,7 +2664,7 @@
               "",
               "return (",
               "    ROUND(",
-              "        DIVIDE(antmott + antdelsak + anteiersek, innbd1000),",
+              "        DIVIDE(antmott + anteiersek, innbd1000),",
               "        1",
               "    )",
               ")",
@@ -5896,6 +5899,12 @@
                 ]
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sum dataverdi",
+            "expression": "SUM('Alle Data'[Verdi])"
           }
         ],
         "annotations": [
