@@ -4633,7 +4633,7 @@
               "",
               "return (",
               "    ROUND(",
-              "        DIVIDE(ndrsos * 1000, [Antall innbyggere 18-66]),",
+              "        DIVIDE(ndrsos * 1000, [SOS Antall innbyggere 18-66]),",
               "        1",
               "    )",
               ")"
@@ -4675,7 +4675,7 @@
               "",
               "return (",
               "    ROUND(",
-              "        DIVIDE(ndr281 * 1000,[Antall innbyggere 18-66]),",
+              "        DIVIDE(ndr281 * 1000,[SOS Antall innbyggere 18-66]),",
               "        1",
               "    )",
               ")"
@@ -4715,7 +4715,7 @@
               "",
               "return (",
               "    ROUND(",
-              "        DIVIDE(ndr243 * 1000, [Antall innbyggere 18-66]),",
+              "        DIVIDE(ndr243 * 1000, [SOS Antall innbyggere 18-66]),",
               "        1",
               "    )",
               ")"
@@ -5062,7 +5062,7 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Antall innbyggere 18-66",
+            "name": "SOS Antall innbyggere 18-66",
             "expression": [
               "",
               "\tCALCULATE(SUM('Alle Data'[Verdi]),",
