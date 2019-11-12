@@ -4821,11 +4821,32 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Antall mottakere av kvalifiseringsstønad (f276) per 1 000 innbyggere 18-66 år",
+            "name": "SOS Antall mottakere av kvalifiseringsstønad (f276) per 1 000 innbyggere 18-66 år",
             "expression": [
               "",
-              "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Deltakere (antall)\"),",
-              "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 18-66 år\")/1000))"
+              "/*",
+              "Divide(CALCULATE(Sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Deltakere (antall)\");",
+              "(CALCULATE(SUM('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Personer (antall) 18-66 år\")/1000))",
+              "*/",
+              "var delt = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12160\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Deltakere (antall)\")",
+              ")",
+              "",
+              "var bef =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"18-66 år\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(delt, DIVIDE(bef, 1000)),",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
