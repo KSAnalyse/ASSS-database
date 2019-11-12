@@ -4622,7 +4622,8 @@
               ")",
               "",
               "return divide((ndrsos*1000),person)"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Netto driftsutgifter til ytelse til livsopphold (f281) per innbygger 18-66 år (kroner)",
@@ -4641,7 +4642,8 @@
               ")",
               "",
               "return divide((ndr281*1000),person)"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Netto driftsutgifter tilbud personer med rusproblemer (f243) per innbygger 18-66 år (kroner)",
@@ -4660,7 +4662,8 @@
               ")",
               "",
               "return divide((ndr243*1000),person)"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Andel sosialhjelpsmottakere av innbyggere 18-66 år (prosent)",
@@ -4677,7 +4680,8 @@
               ")",
               "",
               "return divide(sosmott,bef)*100"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Andel sosialhjelpsmottakere 18-24 år av innbyggere 18-24 år (prosent)",
@@ -4685,7 +4689,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Sosialhjelpsmottakere 18-24 år (antall)\"),",
               "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 18-24 år\")))*100"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Andel sosialhjelpsmottakere 25-66 år av innbyggere 25-66 år (prosent)",
@@ -4693,7 +4698,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Sosialhjelpsmottakere 25-66 år (antall)\"),",
               "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 25-66 år\")))*100"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Antall mottakere av kvalifiseringsstønad (f276) per 1 000 innbyggere 18-66 år",
@@ -4701,7 +4707,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Deltakere (antall)\"),",
               "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Personer (antall) 18-66 år\")/1000))"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Stønad (bidrag+lån) per sosialhjelpsmottaker (kroner)",
@@ -4717,7 +4724,8 @@
               "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Sosialhjelpsmottakere (antall)\") ",
               ")  ",
               "return divide(stonad,sosmott)"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Andel med sosialhjelp som hovedinntekt/mottak i 6 mnd eller mer (alle mottakere/aldre) (prosent)",
@@ -4733,7 +4741,8 @@
               "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Sosialhjelpsmottakere (antall)\") ",
               ")  ",
               "return divide(langtid,sosmott)*100"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Stønadslengde sosialhjelpsmottakere 18-24 år. Gjennomsnittlig antall måneder per år*",
@@ -4759,7 +4768,8 @@
               ")",
               "",
               "return kvp"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Sykefravær sosiale tjenester (PAI) (prosent)*",
@@ -4772,7 +4782,8 @@
               ")",
               "",
               "return a"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Andel sosialhjelpsmottakere som forsørger barn under 18 år (prosent)",
@@ -4788,7 +4799,8 @@
               "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Sosialhjelpsmottakere (antall)\") ",
               ")  ",
               "return divide(langtid,sosmott)*100"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Stønadslengde mottakere med sosialhjelp som hovedinntektskilde. Snitt måneder per år*",
@@ -4801,7 +4813,8 @@
               ")",
               "",
               "return lengde"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Ressursbruksindikator. Sosiale tjenester*",
@@ -4827,7 +4840,8 @@
               ") ",
               "  ",
               "return (langtid)"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Antall sosialhjelpsmottakere av innbyggere 18-66 år",
@@ -4840,7 +4854,8 @@
               ")",
               "",
               "return sosmott"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Sosialhjelpsmottakere med sosialhjelp som viktigste kilde til livsopphold (antall)",
@@ -4853,7 +4868,8 @@
               "",
               "return sosv",
               ""
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Gjennomsnittlig stønadslengde med sosialhjelp som hovedinntekt (måneder)",
@@ -4868,7 +4884,8 @@
               "",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Brutto driftsutgifter til sosialtjenesten (f242/f243/f273/f276/f281) (kroner)",
@@ -4885,7 +4902,8 @@
               "return bdrsos",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Netto driftsutgifter til sosialtjenesten (f242/f243/f273/f276/f281) (kroner)",
@@ -4900,7 +4918,8 @@
               ")",
               "",
               "return ndrsos"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Antall innbyggere 18-66",
@@ -4910,7 +4929,8 @@
               "\t    FILTER(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Personer (antall) 18-66 år\")",
               ")",
               ""
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           }
         ],
         "annotations": [
