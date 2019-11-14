@@ -4449,7 +4449,7 @@
               "    )",
               ")"
             ],
-            "displayFolder": "Eiendomsforvaltning"
+            "displayFolder": "Samferdsel"
           },
           {
             "name": "EIE Snitt årlig investering per innbygger 2015-2018 (2018-kroner byggekostnadsindeksen boligblokker)",
@@ -4887,19 +4887,40 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Andel med sosialhjelp som hovedinntekt/mottak i 6 mnd eller mer (alle mottakere/aldre) (prosent)",
+            "name": "SOS Andel med sosialhjelp som hovedinntekt/mottak i 6 mnd eller mer (alle mottakere/aldre) (prosent)",
             "expression": [
               "",
-              "",
-              "var langtid= CALCULATE(sum('Alle Data'[Verdi]), ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell]=\"12213\"),",
-              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Sosialhjelpsmottakere 6 måneder eller mer og sosialhjelp som hovedinntekt  (antall)\") ",
+              "/*",
+              "var langtid= CALCULATE(sum('Alle Data'[Verdi]); ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell]=\"12213\");",
+              "filter(all('Variabel'[Variabelnavn]); Variabel[Variabelnavn] = \"Sosialhjelpsmottakere 6 måneder eller mer og sosialhjelp som hovedinntekt  (antall)\") ",
               ") ",
-              "var sosmott = CALCULATE(sum('Alle Data'[Verdi]), ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12219\"), ",
-              "filter(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Sosialhjelpsmottakere (antall)\") ",
+              "var sosmott = CALCULATE(sum('Alle Data'[Verdi]); ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12219\"); ",
+              "filter(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] = \"Sosialhjelpsmottakere (antall)\") ",
               ")  ",
-              "return divide(langtid,sosmott)*100"
+              "return divide(langtid;sosmott)*100",
+              "*/",
+              "var langtid = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]), ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12213\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Sosialhjelpsmottakere 6 måneder eller mer og sosialhjelp som hovedinntekt  (antall)\"",
+              "    ) ",
+              ") ",
+              "",
+              "var sosmott = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]), ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12219\"), ",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere (antall)\") ",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(langtid, sosmott) * 100,",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
@@ -4914,7 +4935,8 @@
               ")",
               "",
               "return lengde"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Etter KVP: Andel deltakere som gikk til arbeid/skole/utdanning (prosent)*",
@@ -4986,7 +5008,8 @@
               ")",
               "",
               "return r"
-            ]
+            ],
+            "displayFolder": "Sosiale tjenester"
           },
           {
             "name": "Antall sosialhjelpsmottakere som forsørger barn under 18 år",
