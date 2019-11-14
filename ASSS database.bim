@@ -5116,15 +5116,22 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Gjennomsnittlig stønadslengde med sosialhjelp som hovedinntekt (måneder)",
+            "name": "SOS Gjennomsnittlig stønadslengde med sosialhjelp som hovedinntekt (måneder)",
             "expression": [
               "",
-              "",
-              "var soslg = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Gjennomsnittlig stønadslengde for mottakere med sosialhjelp som hovedinntekt  (måneder)\")",
+              "/*",
+              "var soslg = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Gjennomsnittlig stønadslengde for mottakere med sosialhjelp som hovedinntekt  (måneder)\")",
               ")",
               "",
               "return soslg",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12213\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = ",
+              "        \"Gjennomsnittlig stønadslengde for mottakere med sosialhjelp som hovedinntekt  (måneder)\"",
+              "    )",
+              ")",
               "",
               "",
               ""
