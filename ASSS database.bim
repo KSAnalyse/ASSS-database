@@ -5035,16 +5035,21 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Ressursbruksindikator. Sosiale tjenester*",
+            "name": "SOS Ressursbruksindikator. Sosiale tjenester*",
             "expression": [
               "",
-              "",
-              "var r = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"RBIASSS\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Ressursbruksindikator Sosiale tjenester\")",
+              "/*",
+              "var r = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"RBIASSS\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Ressursbruksindikator Sosiale tjenester\")",
               ")",
               "",
-              "return r"
+              "return r",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"RBI01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Ressursbruksindikator Sosiale tjenester\")",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
