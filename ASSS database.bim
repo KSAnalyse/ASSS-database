@@ -5094,15 +5094,23 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Sosialhjelpsmottakere med sosialhjelp som viktigste kilde til livsopphold (antall)",
+            "name": "SOS Sosialhjelpsmottakere med sosialhjelp som viktigste kilde til livsopphold (antall)",
             "expression": [
               "",
-              "",
-              "var sosv = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sosialhjelpsmottakere med sosialhjelp som viktigste kilde til livsopphold (antall)\")",
+              "/*",
+              "var sosv = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Sosialhjelpsmottakere med sosialhjelp som viktigste kilde til livsopphold (antall)\")",
               ")",
               "",
               "return sosv",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12203\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Sosialhjelpsmottakere med sosialhjelp som viktigste kilde til livsopphold (antall)\"",
+              "    )",
+              ")",
+              "",
               ""
             ],
             "displayFolder": "Sosiale tjenester"
