@@ -5163,18 +5163,25 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Netto driftsutgifter til sosialtjenesten (f242/f243/f273/f276/f281) (kroner)",
+            "name": "SOS Netto driftsutgifter til sosialtjenesten (f242/f243/f273/f276/f281) (kroner)",
             "expression": [
               "",
-              "",
-              "var ndrsos = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "filter(ALL('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\"),",
-              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"242\", \"243\", \"273\", \"276\", \"281\"}),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "/*",
+              "var ndrsos = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "filter(ALL('Artsgruppe Kostra'[Artsgruppekode]); 'Artsgruppe Kostra'[Artsgruppekode] = \"AGD2\");",
+              "filter(all('Funksjon Kostra'[Funksjonskode]); 'Funksjon Kostra'[Funksjonskode] in {\"242\"; \"243\"; \"273\"; \"276\"; \"281\"});",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "",
-              "return ndrsos"
+              "return ndrsos",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL(Art[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] IN {\"242\", \"243\", \"273\", \"276\", \"281\"}),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
