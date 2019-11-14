@@ -5014,16 +5014,23 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Stønadslengde mottakere med sosialhjelp som hovedinntektskilde. Snitt måneder per år*",
+            "name": "SOS Stønadslengde mottakere med sosialhjelp som hovedinntektskilde. Snitt måneder per år*",
             "expression": [
               "",
-              "",
-              "var lengde = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12213\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Gjennomsnittlig stønadslengde for mottakere med sosialhjelp som hovedinntekt  (måneder)\")",
+              "/*",
+              "var lengde = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12213\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Gjennomsnittlig stønadslengde for mottakere med sosialhjelp som hovedinntekt  (måneder)\")",
               ")",
               "",
-              "return lengde"
+              "return lengde",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12213\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Gjennomsnittlig stønadslengde for mottakere med sosialhjelp som hovedinntekt  (måneder)\"",
+              "    )",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
