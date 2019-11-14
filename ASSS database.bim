@@ -5075,16 +5075,21 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Antall sosialhjelpsmottakere av innbyggere 18-66 år",
+            "name": "SOS Antall sosialhjelpsmottakere av innbyggere 18-66 år",
             "expression": [
               "",
-              "",
-              "var sosmott = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12219\"),",
-              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Sosialhjelpsmottakere (antall)\")",
+              "/*",
+              "var sosmott = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12219\");",
+              "filter(all('Variabel'[Variabelnavn]); Variabel[Variabelnavn] = \"Sosialhjelpsmottakere (antall)\")",
               ")",
               "",
-              "return sosmott"
+              "return sosmott",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12219\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere (antall)\")",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
