@@ -4925,16 +4925,21 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Stønadslengde sosialhjelpsmottakere 18-24 år. Gjennomsnittlig antall måneder per år*",
+            "name": "SOS Stønadslengde sosialhjelpsmottakere 18-24 år. Gjennomsnittlig antall måneder per år*",
             "expression": [
               "",
-              "",
-              "var lengde = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12219\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Gjennomsnittlig stønadstid 18-24 år (antall)\")",
+              "/*",
+              "var lengde = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12219\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Gjennomsnittlig stønadstid 18-24 år (antall)\")",
               ")",
               "",
-              "return lengde"
+              "return lengde",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12219\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Gjennomsnittlig stønadstid 18-24 år (antall)\")",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
@@ -4953,16 +4958,21 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Sykefravær sosiale tjenester (PAI) (prosent)*",
+            "name": "SOS Sykefravær sosiale tjenester (PAI) (prosent)*",
             "expression": [
               "",
-              "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ASSS\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sykefravær Sosiale tjenester (PAI)\")",
+              "/*",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"ASSS\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Sykefravær Sosiale tjenester (PAI)\")",
               ")",
               "",
-              "return a"
+              "return a",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"PAI02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sykefravær Sosiale tjenester (PAI)\")",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
