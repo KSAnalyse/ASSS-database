@@ -4264,7 +4264,7 @@
               "var areal = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11906\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn]=\"Areal (m2)\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Areal (m2)\"),",
               "    FILTER(ALL(Eieform[Dimensjonsnavn]), [Dimensjonsnavn] = \"Areal totalt\"),",
               "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] = \"FGK6\")",
               ")",
@@ -4438,7 +4438,7 @@
             "displayFolder": "Eiendomsforvaltning"
           },
           {
-            "name": "EIE Brutto investeringsutgifter til kommunale veier og gater per innbygger (kroner)*",
+            "name": "SFS Brutto investeringsutgifter til kommunale veier og gater per innbygger (kroner)*",
             "expression": [
               "",
               "",
@@ -7994,6 +7994,13 @@
         "fromTable": "Alle Data",
         "fromColumn": "Helsekontrollerkode",
         "toTable": "Helsekontroller",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "26b4adf3-a451-4e4c-a573-88a10519743d",
+        "fromTable": "Alle Data",
+        "fromColumn": "Eieformkode",
+        "toTable": "Eieform",
         "toColumn": "Dimensjonskode"
       }
     ],
