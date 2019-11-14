@@ -5054,16 +5054,23 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Antall sosialhjelpsmottakere som forsørger barn under 18 år",
+            "name": "SOS Antall sosialhjelpsmottakere som forsørger barn under 18 år",
             "expression": [
               "",
-              "",
-              "var langtid= CALCULATE(sum('Alle Data'[Verdi]), ",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell]=\"12219\"),",
-              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Sosialhjelpsmottakere som forsørger barn under 18 år (antall)\") ",
+              "/*",
+              "var langtid= CALCULATE(sum('Alle Data'[Verdi]); ",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell]=\"12219\");",
+              "filter(all('Variabel'[Variabelnavn]); Variabel[Variabelnavn] = \"Sosialhjelpsmottakere som forsørger barn under 18 år (antall)\") ",
               ") ",
               "  ",
-              "return (langtid)"
+              "return (langtid)",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]), ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12219\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Sosialhjelpsmottakere som forsørger barn under 18 år (antall)\"",
+              "    ) ",
+              ") "
             ],
             "displayFolder": "Sosiale tjenester"
           },
