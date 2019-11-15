@@ -3596,21 +3596,46 @@
             "displayFolder": "Kommunehelse"
           },
           {
-            "name": "Årsverk skolehelsetjenesten per 1 000 elever barnetrinn",
+            "name": "KHT Årsverk skolehelsetjenesten per 1 000 elever barnetrinn",
             "expression": [
               "",
-              "",
-              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ÅRHOS\"),",
-              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Årsverk barnetrinn totalt uten ledelse. Skolehelse barnetrinn\")",
+              "/*",
+              "var aarsverk = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"ÅRHOS\");",
+              "filter(all('Variabel'[Variabelnavn]); Variabel[Variabelnavn] = \"Årsverk barnetrinn totalt uten ledelse. Skolehelse barnetrinn\")",
               ")",
               "",
-              "var elev = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12222\"), ",
-              "FILTER(all(Variabel[Variabelnavn]), Variabel[Variabelnavn] in {\"Elever i kommunale og private grunnskoler (antall) 1.-4. trinn\", \"Elever i kommunale og private grunnskoler (antall) 5.-7. trinn\"})",
+              "var elev = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12222\"); ",
+              "FILTER(all(Variabel[Variabelnavn]); Variabel[Variabelnavn] in {\"Elever i kommunale og private grunnskoler (antall) 1.-4. trinn\"; \"Elever i kommunale og private grunnskoler (antall) 5.-7. trinn\"})",
               ")",
               "",
-              "return DIVIDE(aarsverk,(elev/1000))",
+              "return DIVIDE(aarsverk;(elev/1000))",
+              "*/",
+              "var aarsverk = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"KHT02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Årsverk barnetrinn totalt uten ledelse. Skolehelse barnetrinn\"",
+              "    )",
+              ")",
+              "",
+              "var elev = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12222\"), ",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Elever i kommunale og private grunnskoler (antall)\"),",
+              "    FILTER(ALL('Årstrinn'[Dimensjonsnavn]), [Dimensjonsnavn] IN {",
+              "        \"1.-4. trinn\",",
+              "        \"5.-7. trinn\"",
+              "    })",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(aarsverk, DIVIDE(elev, 1000)),",
+              "        1",
+              "    )",
+              ")",
               ""
             ],
             "displayFolder": "Kommunehelse"
@@ -6280,6 +6305,11 @@
             "name": "Eieformkode",
             "dataType": "string",
             "sourceColumn": "Eieformkode"
+          },
+          {
+            "name": "Årstrinnkode",
+            "dataType": "string",
+            "sourceColumn": "Årstrinnkode"
           }
         ],
         "partitions": [
@@ -6479,6 +6509,14 @@
                   "        <int>128</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Årstrinnkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>130</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -6657,6 +6695,14 @@
                   "        <int>21</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Årstrinnkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>22</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -6799,6 +6845,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Eieformkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Årstrinnkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -7022,6 +7076,14 @@
               "        <int>128</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Årstrinnkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>130</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -7200,6 +7262,14 @@
               "        <int>21</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Årstrinnkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>22</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -7342,6 +7412,14 @@
               "    <item>",
               "      <key>",
               "        <string>Eieformkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Årstrinnkode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -8088,6 +8166,53 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Årstrinn",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Årstrinn",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Årstrinn].* FROM [dbo].[Årstrinn] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Årstrinn].* FROM [dbo].[Årstrinn] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Årstrinn"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -8236,6 +8361,13 @@
         "fromTable": "Alle Data",
         "fromColumn": "Eieformkode",
         "toTable": "Eieform",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "6cc46bd4-9520-4b76-af22-609cfef1acee",
+        "fromTable": "Alle Data",
+        "fromColumn": "Årstrinnkode",
+        "toTable": "Årstrinn",
         "toColumn": "Dimensjonskode"
       }
     ],
