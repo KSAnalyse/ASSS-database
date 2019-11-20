@@ -4223,16 +4223,23 @@
             "displayFolder": "Kommunehelse"
           },
           {
-            "name": "Konsultasjon og sykebesøk per 1 000 innbyggere",
+            "name": "KHT Konsultasjon og sykebesøk per 1 000 innbyggere",
             "expression": [
               "",
-              "",
-              "var konsAlle = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"KPR01\"),",
-              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"2 konsultasjon Alle aldre Antall pasienter per 1 000 innbyggere\")",
+              "/*",
+              "var konsAlle = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"KPR01\");",
+              "filter(all('Variabel'[Variabelnavn]); Variabel[Variabelnavn] = \"2 konsultasjon Alle aldre Antall pasienter per 1 000 innbyggere\")",
               ")",
               "",
-              "return konsAlle"
+              "return konsAlle",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"KPR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"2 konsultasjon Alle aldre Antall pasienter per 1 000 innbyggere\"",
+              "    )",
+              ")"
             ],
             "displayFolder": "Kommunehelse"
           },
