@@ -5491,9 +5491,9 @@
               "var nettobhg = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
               "    FILTER(ALL(Art[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
-              "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] IN {\"201\", \"211\", \"221\"}),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] IN {\"201\", \"211\", \"221\"})",
               ")",
               "",
               "var bef = ",
@@ -5509,27 +5509,51 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
-            "name": "Netto driftsutgifter barnehager av kommunens samlede netto driftsutgifter (prosent)",
+            "name": "BHG Netto driftsutgifter barnehager av kommunens samlede netto driftsutgifter (prosent)",
             "expression": [
               "",
-              "",
-              "var nettobhg = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12367\"),",
-              "filter(all('Artsgruppe Kostra'[Artsgruppekode]), 'Artsgruppe Kostra'[Artsgruppekode]=\"AGD2\"),",
-              "filter(all('Funksjon Kostra'[Funksjonskode]), 'Funksjon Kostra'[Funksjonskode] in {\"201\", \"211\", \"221\"}),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
+              "/*",
+              "var nettobhg = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12367\");",
+              "filter(all('Artsgruppe Kostra'[Artsgruppekode]); 'Artsgruppe Kostra'[Artsgruppekode]=\"AGD2\");",
+              "filter(all('Funksjon Kostra'[Funksjonskode]); 'Funksjon Kostra'[Funksjonskode] in {\"201\"; \"211\"; \"221\"});",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Beløp (1000 kr)\")",
               ")",
               "",
-              "var nettoalle = CALCULATE(sum('Alle Data'[Verdi]),",
-              "FILTER(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12364\"),",
-              "filter(all('Variabel'[Variabelnavn]), Variabel[Variabelnavn] = \"Netto driftsutgifter totalt Beløp (1000 kr)\")",
+              "var nettoalle = CALCULATE(sum('Alle Data'[Verdi]);",
+              "FILTER(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12364\");",
+              "filter(all('Variabel'[Variabelnavn]); Variabel[Variabelnavn] = \"Netto driftsutgifter totalt Beløp (1000 kr)\")",
               ")",
               "",
-              "return (divide(nettobhg,nettoalle)*100)"
-            ]
+              "return (divide(nettobhg;nettoalle)*100)",
+              "*/",
+              "var nettobhg = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
+              "    FILTER(ALL(Art[Dimensjonskode]), [Dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL(Funksjon[Dimensjonskode]), [Dimensjonskode] IN {\"201\", \"211\", \"221\"})",
+              ")",
+              "",
+              "var nettoalle = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12364\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
+              "    FILTER(ALL(Regnskapsbegrep[Dimensjonsnavn]), [Dimensjonsnavn] = \"Netto driftsutgifter totalt\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(nettobhg, nettoalle) * 100,",
+              "        1",
+              "    )",
+              ")"
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Andel minoritetsspråklige barn i barnehage i forhold til innvandrerbarn (prosent)",
@@ -5537,7 +5561,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Minoritetsspråklige barn (antall)\"),(",
               "CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Innvandrerbarn (antall)\")))*100"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Barn 1-2 år i barnehage av innbyggere 1-2 år (prosent)",
@@ -5555,7 +5580,8 @@
               ")",
               "",
               "return (divide(barnbhg12,barn12)*100)"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Barn 3-5 år i barnehage av innbyggere 3-5 år (prosent)",
@@ -5573,7 +5599,8 @@
               ")",
               "",
               "return (divide(barnbhg35,barn35)*100)"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Barn 1-5 år i barnehage av innbyggere 1-5 år (prosent)",
@@ -5581,7 +5608,8 @@
               "",
               "divide(CALCULATE(sum('Alle Data'[Verdi]), 'Variabel'[Variabelnavn]=\"Barn i barnehage 1-5 år\"),",
               "(CALCULATE(sum('Alle Data'[Verdi]), Variabel[Variabelnavn]=\"Personer (antall) 1-5 år\")))*100"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Minoritetsspråklige barn i barnehage av alle barnehagebarn 1-5 år (prosent)",
@@ -5589,7 +5617,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Minoritetsspråklige barn (antall)\"),(",
               "CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Barn i barnehage 1-5 år\")))*100"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Barn i kommunale barnehager av alle barn i barnehage (prosent)",
@@ -5608,7 +5637,8 @@
               ")",
               "",
               "return (divide(barnkom,barnbhg)*100)"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Barn i private barnehager av alle barn i barnehage (prosent)",
@@ -5626,7 +5656,8 @@
               ")",
               "",
               "return (divide(barnkom,barnbhg)*100)"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Andel menn av grunnbemanningen barnehager (prosent)",
@@ -5644,7 +5675,8 @@
               ")",
               "",
               "return (divide(menn,ansatte)*100)"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Barn ekskl. minoritetsspråklige med ekstra ressurser av alle barn i kom. barnehager (prosent)*",
@@ -5657,7 +5689,8 @@
               ")",
               "",
               "return barnekstra"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Korrigerte brutto driftsutgifter f201 per korrigert oppholdstime i kommunale barnehage (kroner)",
@@ -5674,7 +5707,8 @@
               "filter(ALL(Variabel[Variabelnavn]), Variabel[Variabelnavn] = \"Korrigerte oppholdstimer (timer) Kommune\")",
               ")",
               "return (divide((kbr201*1000),kopph))"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Grunnbemanning per barn kommunale barnehager (prosent)*",
@@ -5687,7 +5721,8 @@
               ")",
               "",
               "return (divide(1,a)*100)"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Grunnbemanning per barn private barnehager (prosent)*",
@@ -5700,7 +5735,8 @@
               ")",
               "",
               "return (divide(1,a)*100)"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Ansatte med barnehagelærerutdanning/annen pedagogisk utdanning av alle ansatte (prosent)",
@@ -5719,7 +5755,8 @@
               ")",
               "",
               "return (divide(utd,ansatte)*100)"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Sykefravær barnehager (PAI) (prosent)*",
@@ -5732,7 +5769,8 @@
               ")",
               "",
               "return a"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Brukertilfredshet barnehager (snitt skår)*",
@@ -5745,7 +5783,8 @@
               ")",
               "",
               "return a"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Ressursbruksindikator. Barnehager*",
@@ -5758,7 +5797,8 @@
               ")",
               "",
               "return r"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Barn 1-5 år i barnehage (antall)",
@@ -5779,7 +5819,8 @@
               "",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Barnehagelærere i forhold til grunnbemanning (prosent)",
@@ -5793,7 +5834,8 @@
               "return bla",
               "",
               ""
-            ]
+            ],
+            "displayFolder": "Barnehage"
           }
         ],
         "annotations": [
