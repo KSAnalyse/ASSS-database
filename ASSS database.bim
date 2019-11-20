@@ -5208,16 +5208,23 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "Etter KVP: Andel deltakere som gikk til arbeid/skole/utdanning (prosent)*",
+            "name": "SOS Etter KVP: Andel deltakere som gikk til arbeid/skole/utdanning (prosent)*",
             "expression": [
               "",
-              "",
-              "var kvp = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"STKVP\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Etter KVP: Andel deltakere som gikk arbeid/skole/utdanning\")",
+              "/*",
+              "var kvp = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"STKVP\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Etter KVP: Andel deltakere som gikk arbeid/skole/utdanning\")",
               ")",
               "",
-              "return kvp"
+              "return kvp",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"KVP01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Etter KVP: Andel deltakere som gikk arbeid/skole/utdanning\"",
+              "    )",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
