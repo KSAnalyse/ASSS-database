@@ -5556,11 +5556,32 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Andel minoritetsspråklige barn i barnehage i forhold til innvandrerbarn (prosent)",
+            "name": "BHG Andel minoritetsspråklige barn i barnehage i forhold til innvandrerbarn (prosent)",
             "expression": [
               "",
-              "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Minoritetsspråklige barn (antall)\"),(",
-              "CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Innvandrerbarn (antall)\")))*100"
+              "/*",
+              "Divide(CALCULATE(Sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Minoritetsspråklige barn (antall)\");(",
+              "CALCULATE(SUM('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Innvandrerbarn (antall)\")))*100",
+              "*/",
+              "",
+              "var minbarn = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12272\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Minoritetsspråklige barn (antall)\")",
+              ")",
+              "",
+              "var innbarn =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12272\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Innvandrerbarn (antall)\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(minbarn, innbarn) * 100,",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
