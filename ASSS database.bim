@@ -5889,7 +5889,7 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Korrigerte brutto driftsutgifter f201 per korrigert oppholdstime i kommunale barnehage (kroner)",
+            "name": "BHG Korrigerte brutto driftsutgifter f201 per korrigert oppholdstime i kommunale barnehage (kroner)",
             "expression": [
               "",
               "/*",
@@ -5928,13 +5928,20 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Antall barn per ansatt kommunale barnehager*",
+            "name": "BHG Antall barn per ansatt kommunale barnehager*",
             "expression": [
               "",
-              "",
-              "CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"BPA\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Barn per ansatt i barnehagen (bemanningstetthet) Kommunal\")",
+              "/*",
+              "CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"BPA\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Barn per ansatt i barnehagen (bemanningstetthet) Kommunal\")",
+              ")",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Barn per ansatt i barnehagen (bemanningstetthet) Kommunal\"",
+              "    )",
               ")"
             ],
             "displayFolder": "Barnehage"
