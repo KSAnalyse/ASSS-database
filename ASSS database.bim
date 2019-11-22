@@ -5947,13 +5947,20 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Antall barn per ansatt private barnehager*",
+            "name": "BHG Antall barn per ansatt private barnehager*",
             "expression": [
               "",
-              "",
-              "CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"BPA\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Barn per ansatt i barnehagen (bemanningstetthet) Privat\")",
+              "/*",
+              "CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"BPA\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Barn per ansatt i barnehagen (bemanningstetthet) Privat\")",
+              ")",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Barn per ansatt i barnehagen (bemanningstetthet) Privat\"",
+              "    )",
               ")"
             ],
             "displayFolder": "Barnehage"
