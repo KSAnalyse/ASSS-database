@@ -5586,21 +5586,44 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Barn 1-2 år i barnehage av innbyggere 1-2 år (prosent)",
+            "name": "BHG Barn 1-2 år i barnehage av innbyggere 1-2 år (prosent)",
             "expression": [
               "",
-              "",
-              "var barnbhg12 = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12056\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Barn i barnehage (antall) 1-2 år Alle eierforhold Alle oppholdskategorier\")",
+              "/*",
+              "var barnbhg12 = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12056\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Barn i barnehage (antall) 1-2 år Alle eierforhold Alle oppholdskategorier\")",
               ")",
               "",
-              "var barn12 = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn]=\"Personer (antall) 1-2 år\"),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell]=\"11805\")",
+              "var barn12 = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\"Personer (antall) 1-2 år\");",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell]=\"11805\")",
               ")",
               "",
-              "return (divide(barnbhg12,barn12)*100)"
+              "return (divide(barnbhg12;barn12)*100)",
+              "*/",
+              "var barnbhg12 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12056\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn i barnehage (antall)\"),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"1-2 år\"),",
+              "    FILTER(ALL(Eierforhold[Dimensjonsnavn]), [Dimensjonsnavn] = \"Alle eierforhold\"),",
+              "    FILTER(ALL(Oppholdstid[Dimensjonsnavn]), [Dimensjonsnavn] = \"Alle oppholdskategorier\")",
+              ")",
+              "",
+              "var barn12 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]= \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"1-2 år\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(barnbhg12, barn12) * 100,",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
@@ -5732,30 +5755,26 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Grunnbemanning per barn kommunale barnehager (prosent)*",
+            "name": "Antall barn per ansatt kommunale barnehager*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "CALCULATE(sum('Alle Data'[Verdi]),",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"BPA\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Barn per ansatt i barnehagen (bemanningstetthet) Kommunal\")",
-              ")",
-              "",
-              "return (divide(1,a)*100)"
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Grunnbemanning per barn private barnehager (prosent)*",
+            "name": "Antall barn per ansatt private barnehager*",
             "expression": [
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
+              "CALCULATE(sum('Alle Data'[Verdi]),",
               "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"BPA\"),",
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Barn per ansatt i barnehagen (bemanningstetthet) Privat\")",
-              ")",
-              "",
-              "return (divide(1,a)*100)"
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
@@ -5857,6 +5876,46 @@
               ""
             ],
             "displayFolder": "Barnehage"
+          },
+          {
+            "name": "Antall barn per barnehagelærer kommunale barnehager",
+            "expression": [
+              "",
+              "",
+              "var bhg = ",
+              "CALCULATE(sum('Alle Data'[Verdi]),",
+              "    filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12436\"),",
+              "    filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] in {",
+              "        \"Årsverk Kommune Barnehagelærer Grunnbemanning\",",
+              "        \"Årsverk Kommune Pedagogisk utdanning som tilsvarer utdanningskravet til styrer/pedagogisk leder Grunnbemanning\"",
+              "    })",
+              ")",
+              " ",
+              "/*var barnbhg = CALCULATE(sum('Alle Data'[Verdi]);*/",
+              "/*filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell]=\\\"12216\\\");*/",
+              "/*filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn]=\\\"Barn i barnehage korrigert for alder (antall) Kommune\\\")*/",
+              "",
+              "var barn1 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12056\"),",
+              "    filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] in {",
+              "        \"Barn i barnehage (antall) 0 år Kommune Alle oppholdskategorier\",",
+              "        \"Barn i barnehage (antall) 1-2 år Kommune Alle oppholdskategorier\"",
+              "    })",
+              ")",
+              "",
+              "var barn2 = CALCULATE(sum('Alle Data'[Verdi]),",
+              "    filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12056\"),",
+              "    filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] in {",
+              "        \"Barn i barnehage (antall) 6 år Kommune Alle oppholdskategorier\", ",
+              "        \"Barn i barnehage (antall) 3-5 år Kommune Alle oppholdskategorier\"",
+              "    })",
+              ")",
+              "",
+              "return (divide(((barn1*2)+(barn2*1)), bhg))",
+              "",
+              "/*Barn er korrigert ut fra endret vekt - dette er ikke korrigert hos SSB*/",
+              "/*27.3.2019 Laila */"
+            ]
           }
         ],
         "annotations": [
@@ -6815,6 +6874,16 @@
             "name": "Årstrinnkode",
             "dataType": "string",
             "sourceColumn": "Årstrinnkode"
+          },
+          {
+            "name": "Eierforholdkode",
+            "dataType": "string",
+            "sourceColumn": "Eierforholdkode"
+          },
+          {
+            "name": "Oppholdstidkode",
+            "dataType": "string",
+            "sourceColumn": "Oppholdstidkode"
           }
         ],
         "partitions": [
@@ -7022,6 +7091,22 @@
                   "        <int>130</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Eierforholdkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>151</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Oppholdstidkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>159</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -7208,6 +7293,22 @@
                   "        <int>22</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Eierforholdkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>23</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Oppholdstidkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>24</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -7358,6 +7459,22 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Årstrinnkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Eierforholdkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Oppholdstidkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -7589,6 +7706,22 @@
               "        <int>130</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Eierforholdkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>151</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Oppholdstidkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>159</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -7775,6 +7908,22 @@
               "        <int>22</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Eierforholdkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>23</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Oppholdstidkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>24</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -7925,6 +8074,22 @@
               "    <item>",
               "      <key>",
               "        <string>Årstrinnkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Eierforholdkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Oppholdstidkode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -8718,6 +8883,100 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Eierforhold",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Eierforhold",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Eierforhold].* FROM [dbo].[Eierforhold] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Eierforhold].* FROM [dbo].[Eierforhold] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Eierforhold"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Oppholdstid",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Oppholdstid",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Oppholdstid].* FROM [dbo].[Oppholdstid] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Oppholdstid].* FROM [dbo].[Oppholdstid] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Oppholdstid"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -8873,6 +9132,20 @@
         "fromTable": "Alle Data",
         "fromColumn": "Årstrinnkode",
         "toTable": "Årstrinn",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "285b3b8f-65ad-4b65-bc8f-75d723c9155e",
+        "fromTable": "Alle Data",
+        "fromColumn": "Eierforholdkode",
+        "toTable": "Eierforhold",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "73aff484-c54e-476a-a491-90df3c491c70",
+        "fromTable": "Alle Data",
+        "fromColumn": "Oppholdstidkode",
+        "toTable": "Oppholdstid",
         "toColumn": "Dimensjonskode"
       }
     ],
