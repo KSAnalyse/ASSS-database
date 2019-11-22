@@ -5677,7 +5677,7 @@
               "divide(CALCULATE(sum('Alle Data'[Verdi]); 'Variabel'[Variabelnavn]=\"Barn i barnehage 1-5 år\");",
               "(CALCULATE(sum('Alle Data'[Verdi]); Variabel[Variabelnavn]=\"Personer (antall) 1-5 år\")))*100",
               "*/",
-              "var minorbarn15 =",
+              "var bhgbarn15 =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12272\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn i barnehage (antall)\")",
@@ -5692,7 +5692,7 @@
               "",
               "return (",
               "    ROUND(",
-              "        DIVIDE(minorbarn15, allebarn) * 100,",
+              "        DIVIDE(bhgbarn15, allebarn) * 100,",
               "        1",
               "    )",
               ")"
@@ -5700,11 +5700,31 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Minoritetsspråklige barn i barnehage av alle barnehagebarn 1-5 år (prosent)",
+            "name": "BHG Minoritetsspråklige barn i barnehage av alle barnehagebarn 1-5 år (prosent)",
             "expression": [
               "",
-              "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Minoritetsspråklige barn (antall)\"),(",
-              "CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Barn i barnehage 1-5 år\")))*100"
+              "/*",
+              "Divide(CALCULATE(Sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Minoritetsspråklige barn (antall)\");(",
+              "CALCULATE(SUM('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Barn i barnehage 1-5 år\")))*100",
+              "*/",
+              "var minorbhgbarn15 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12272\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Minoritetsspråklige barn (antall)\")",
+              ")",
+              "",
+              "var bhgbarn15 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12272\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn i barnehage (antall)\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(minorbhgbarn15, bhgbarn15) * 100,",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
