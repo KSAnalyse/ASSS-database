@@ -5817,35 +5817,74 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Andel menn av grunnbemanningen barnehager (prosent)",
+            "name": "BHG Andel menn av grunnbemanningen barnehager (prosent)",
             "expression": [
               "",
-              "",
-              "var ansatte = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12129\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] in {\"Ansatte (antall) Alle eierforhold Kvinne Annen grunnbemanning\", \"Ansatte (antall) Alle eierforhold Kvinne Pedagogisk leder\", \"Ansatte (antall) Alle eierforhold Kvinne Styrer\", \"Ansatte (antall) Alle eierforhold Mann Annen grunnbemanning\", \"Ansatte (antall) Alle eierforhold Mann Pedagogisk leder\", \"Ansatte (antall) Alle eierforhold Mann Styrer\"})",
+              "/*",
+              "var ansatte = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12129\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] in {\"Ansatte (antall) Alle eierforhold Kvinne Annen grunnbemanning\"; \"Ansatte (antall) Alle eierforhold Kvinne Pedagogisk leder\"; \"Ansatte (antall) Alle eierforhold Kvinne Styrer\"; \"Ansatte (antall) Alle eierforhold Mann Annen grunnbemanning\"; \"Ansatte (antall) Alle eierforhold Mann Pedagogisk leder\"; \"Ansatte (antall) Alle eierforhold Mann Styrer\"})",
               ")",
               "",
-              "var menn = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12129\"),",
-              "filter(ALL('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] in {\"Ansatte (antall) Alle eierforhold Mann Annen grunnbemanning\", \"Ansatte (antall) Alle eierforhold Mann Pedagogisk leder\", \"Ansatte (antall) Alle eierforhold Mann Styrer\"})",
+              "var menn = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12129\");",
+              "filter(ALL('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] in {\"Ansatte (antall) Alle eierforhold Mann Annen grunnbemanning\"; \"Ansatte (antall) Alle eierforhold Mann Pedagogisk leder\"; \"Ansatte (antall) Alle eierforhold Mann Styrer\"})",
               ")",
               "",
-              "return (divide(menn,ansatte)*100)"
+              "return (divide(menn;ansatte)*100)",
+              "*/",
+              "var ansatte = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12129\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Ansatte (antall)\"),",
+              "    FILTER(ALL(Eierforhold[Dimensjonsnavn]), [Dimensjonsnavn] = \"Alle eierforhold\"),",
+              "    FILTER(ALL(Stillingstype[Dimensjonsnavn]), [Dimensjonsnavn] IN {",
+              "        \"Annen grunnbemanning\",",
+              "        \"Pedagogisk leder\",",
+              "        \"Styrer\"",
+              "    })",
+              ")",
+              "",
+              "var menn = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12129\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Ansatte (antall)\"),",
+              "    FILTER(ALL(Eierforhold[Dimensjonsnavn]), [Dimensjonsnavn] = \"Alle eierforhold\"),",
+              "    FILTER(ALL('Kjønn'[Dimensjonsnavn]), [Dimensjonsnavn] = \"Mann\"),",
+              "    FILTER(ALL(Stillingstype[Dimensjonsnavn]), [Dimensjonsnavn] IN {",
+              "        \"Annen grunnbemanning\",",
+              "        \"Pedagogisk leder\",",
+              "        \"Styrer\"",
+              "    })",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(menn, ansatte) * 100,",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Barn ekskl. minoritetsspråklige med ekstra ressurser av alle barn i kom. barnehager (prosent)*",
+            "name": "BHG Barn ekskl. minoritetsspråklige med ekstra ressurser av alle barn i kom. barnehager (prosent)*",
             "expression": [
               "",
-              "",
-              "var barnekstra = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"12562\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Andel barn, eksklusive minoritetsspråklige, som får ekstra ressurser, i forhold til alle barn i kommunale barnehager (prosent)\")",
+              "/*",
+              "var barnekstra = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"12562\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Andel barn, eksklusive minoritetsspråklige, som får ekstra ressurser, i forhold til alle barn i kommunale barnehager (prosent)\")",
               ")",
               "",
-              "return barnekstra"
+              "return barnekstra",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12562\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Andel barn, eksklusive minoritetsspråklige, som får ekstra ressurser, i forhold til alle barn i kommunale barnehager (prosent)\"",
+              "    )",
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
@@ -6997,6 +7036,16 @@
             "name": "Oppholdstidkode",
             "dataType": "string",
             "sourceColumn": "Oppholdstidkode"
+          },
+          {
+            "name": "Kjønnkode",
+            "dataType": "string",
+            "sourceColumn": "Kjønnkode"
+          },
+          {
+            "name": "Stillingstypekode",
+            "dataType": "string",
+            "sourceColumn": "Stillingstypekode"
           }
         ],
         "partitions": [
@@ -7220,6 +7269,22 @@
                   "        <int>159</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kjønnkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>114</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Stillingstypekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>158</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -7422,6 +7487,22 @@
                   "        <int>24</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kjønnkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>25</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Stillingstypekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>26</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -7588,6 +7669,22 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Oppholdstidkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kjønnkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Stillingstypekode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -7835,6 +7932,22 @@
               "        <int>159</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kjønnkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>114</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Stillingstypekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>158</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -8037,6 +8150,22 @@
               "        <int>24</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kjønnkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>25</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Stillingstypekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>26</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -8203,6 +8332,22 @@
               "    <item>",
               "      <key>",
               "        <string>Oppholdstidkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kjønnkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Stillingstypekode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -9090,6 +9235,100 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Kjønn",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Kjønn",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Kjønn].* FROM [dbo].[Kjønn] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Kjønn].* FROM [dbo].[Kjønn] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Kjønn"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Stillingstype",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Stillingstype",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Stillingstype].* FROM [dbo].[Stillingstype] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Stillingstype].* FROM [dbo].[Stillingstype] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Stillingstype"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -9259,6 +9498,20 @@
         "fromTable": "Alle Data",
         "fromColumn": "Oppholdstidkode",
         "toTable": "Oppholdstid",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "a1b215cf-6e9d-4ccb-b872-8dc24f6057f6",
+        "fromTable": "Alle Data",
+        "fromColumn": "Kjønnkode",
+        "toTable": "Kjønn",
+        "toColumn": "Dimensjonskode"
+      },
+      {
+        "name": "1ca1ad25-b741-40ea-914e-3bee214df7cc",
+        "fromTable": "Alle Data",
+        "fromColumn": "Stillingstypekode",
+        "toTable": "Stillingstype",
         "toColumn": "Dimensjonskode"
       }
     ],
