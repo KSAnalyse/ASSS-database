@@ -6119,16 +6119,22 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Barnehagelærere i forhold til grunnbemanning (prosent)",
+            "name": "BHG Barnehagelærere i forhold til grunnbemanning (prosent)",
             "expression": [
               " ",
-              "",
-              "var bla = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Andel barnehagelærere i forhold til grunnbemanning (prosent)\")",
+              "/*",
+              "var bla = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Andel barnehagelærere i forhold til grunnbemanning (prosent)\")",
               ")",
               "",
               "return bla",
-              "",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12562\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Andel barnehagelærere i forhold til grunnbemanning (prosent)\"",
+              "    )",
+              ")",
               ""
             ],
             "displayFolder": "Barnehage"
@@ -6227,7 +6233,7 @@
             "name": "TST Tekst test",
             "expression": [
               "",
-              "\"Dette er en tekst\""
+              "\"Dette kunne vært en beskrivelse av en indikator\""
             ]
           }
         ],
