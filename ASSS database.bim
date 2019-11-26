@@ -6228,13 +6228,6 @@
               "/*Barn er korrigert ut fra endret vekt - dette er ikke korrigert hos SSB*/",
               "/*27.3.2019 Laila */"
             ]
-          },
-          {
-            "name": "TST Tekst test",
-            "expression": [
-              "",
-              "\"Dette kunne vært en beskrivelse av en indikator\""
-            ]
           }
         ],
         "annotations": [
