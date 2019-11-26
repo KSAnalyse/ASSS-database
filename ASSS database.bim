@@ -6256,7 +6256,8 @@
               "",
               "/*Barn er korrigert ut fra endret vekt - dette er ikke korrigert hos SSB*/",
               "/*27.3.2019 Laila */"
-            ]
+            ],
+            "displayFolder": "Barnehage"
           },
           {
             "name": "Netto driftsutgifter grunnskole (f202) per elev (kroner)",
@@ -6276,7 +6277,8 @@
               ")",
               "",
               "return divide((ndr202*1000),elev)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Gruppestørrelse (antall)",
@@ -6284,7 +6286,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Elevtimer (antall) Elever alle trinn\"),",
               "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Lærertimer minus morsmål og finsk (antall) Elever alle trinn\")))"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Elever i kommunale og private grunnskoler som får spesialundervisning (prosent)",
@@ -6292,7 +6295,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Elever i kommunale og private grunnskoler som får spesialundervisning  (antall) Elever alle trinn\"),",
               "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Elever i kommunale og private grunnskoler (antall) Elever alle trinn\")))*100"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Årstimer til spesialundervisning per elev med spesialundervisning (antall)",
@@ -6300,7 +6304,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Årstimer til spesialundervisning, kommunale og private grunnskoler (antall)\"),",
               "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Elever i kommunale og private grunnskoler som får spesialundervisning  (antall) Elever alle trinn\")))"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Elever med direkte overgang fra vg1 til vg2 (prosent)",
@@ -6308,7 +6313,8 @@
               "",
               "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Elever som var registrert i videregående opplæring vg2 samme år som avsluttet vg1 (antall)\"),",
               "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Elever som avsluttet vg1 (antall)\")))*100"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Nasjonale prøver 5. trinn, snitt andel nivå 2-3 (prosent)*",
@@ -6330,7 +6336,8 @@
               ")",
               "",
               "return divide((les+regn+eng),3)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Nasjonale prøver 8. trinn, snitt andel nivå 3-5 (prosent)*",
@@ -6351,7 +6358,8 @@
               ")",
               "",
               "return divide((eng + les + regn),3)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Nasjonale prøver 9. trinn, snitt andel nivå 3-5 (prosent)*",
@@ -6368,7 +6376,8 @@
               ")",
               "",
               "return divide((les + regn),2)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Sykefravær grunnskole (PAI) (prosent)*",
@@ -6381,7 +6390,8 @@
               ")",
               "",
               "return a"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Eksamen snitt engelsk, regning og norsk*",
@@ -6406,7 +6416,8 @@
               "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Norsk sidemål skriftlig eksamen\")",
               ")",
               "return (((n1+n2)/2)+eng+regn)/3"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Vurdering for læring (snitt skår)*",
@@ -6424,7 +6435,8 @@
               ")",
               "",
               "return divide((a+b),2)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Elever i kommunale og private grunnskoler som får særskilt norsksopplæring (prosent)",
@@ -6443,7 +6455,8 @@
               ")",
               "",
               "return DIVIDE(saer,alleelev)*100"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Netto driftsutgifter skoleskyss (f223) per elev (kroner)",
@@ -6463,7 +6476,8 @@
               ")",
               "",
               "return divide((ndr223*1000),elev)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Lærere i grunnskolen 40 år og yngre (prosent)",
@@ -6484,7 +6498,8 @@
               "",
               "return ((divide(l40,alle))*100)",
               ""
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Lærere i grunnskolen 40 - 49 år (prosent)",
@@ -6504,7 +6519,8 @@
               ")",
               "",
               "return ((divide(l4049,alle))*100)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Lærere i grunnskolen 50 - 59 år (prosent)",
@@ -6524,7 +6540,8 @@
               ")",
               "",
               "return ((divide(l5059,alle))*100)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Lærere i grunnskolen 60 år og eldre (prosent)",
@@ -6544,7 +6561,8 @@
               ")",
               "",
               "return ((divide(l60,alle))*100)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Gjennomsnittlig antall elever per kommunale skole",
@@ -6564,7 +6582,8 @@
               ")",
               "",
               "return (divide(elever,skoler))"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Elever i kommunale og private grunnskoler med spesialundervisning, 1.-4. trinn (prosent)",
@@ -6584,7 +6603,8 @@
               ")",
               "",
               "return ((divide(spes,elev))*100)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Elever i kommunale og private grunnskoler med spesialundervisning, 5.-7. trinn (prosent)",
@@ -6604,7 +6624,8 @@
               ")",
               "",
               "return ((divide(spes,elev))*100)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Elever i kommunale og private grunnskoler med spesialundervisning, 8.-10. trinn (prosent)",
@@ -6624,7 +6645,8 @@
               ")",
               "",
               "return ((divide(spes,elev))*100)"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Ressursbruksindikator. Grunnskole*",
@@ -6637,7 +6659,8 @@
               ")",
               "",
               "return r"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Ressursbruksindikator. Grunnskole F202*",
@@ -6650,7 +6673,8 @@
               ")",
               "",
               "return r"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Antall assistentårsverk per hundre lærerårsverk*",
@@ -6663,7 +6687,8 @@
               ")",
               "",
               "return a"
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Lærere med universitets-/høgskoleutdanning med pedagogisk utdanning (prosent)",
@@ -6684,7 +6709,8 @@
               "",
               "return ((divide(a,alle))*100)",
               ""
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Lærere med universitets-/høgskoleutdanning uten pedagogisk utdanning (prosent)",
@@ -6705,7 +6731,8 @@
               "",
               "return ((divide(a,alle))*100)",
               ""
-            ]
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Lærere med videregående utdanning eller lavere (prosent)",
@@ -6726,6 +6753,18 @@
               "",
               "return ((divide(a,alle))*100)",
               ""
+            ],
+            "displayFolder": "Grunnskole"
+          },
+          {
+            "name": "TST Kommunenavn test",
+            "expression": [
+              "",
+              "var kode = SELECTEDVALUE(Region[Kode])",
+              "",
+              "return (",
+              "    LOOKUPVALUE(Region[Navn], Region[Kode], kode)",
+              ")"
             ]
           }
         ],
