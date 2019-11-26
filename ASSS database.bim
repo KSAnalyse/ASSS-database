@@ -6039,16 +6039,21 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Brukertilfredshet barnehager (snitt skår)*",
+            "name": "BHG Brukertilfredshet barnehager (snitt skår)*",
             "expression": [
               "",
-              "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"FUB\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Foreldreundersøkelsen: Tilfredshet\")",
+              "/*",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"FUB\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Foreldreundersøkelsen: Tilfredshet\")",
               ")",
               "",
-              "return a"
+              "return a",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Foreldreundersøkelsen: Tilfredshet\")",
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
