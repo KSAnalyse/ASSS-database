@@ -6011,13 +6011,10 @@
               ")",
               "",
               "return (",
-              "    utd",
-              "    /*",
               "    ROUND(",
-              "        DIVIDE(utd; ansatte) * 100;",
+              "        DIVIDE(utd, ansatte) * 100,",
               "        1",
               "    )",
-              "    */",
               ")"
             ],
             "displayFolder": "Barnehage"
