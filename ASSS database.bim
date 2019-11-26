@@ -6058,35 +6058,60 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Ressursbruksindikator. Barnehager*",
+            "name": "BHG Ressursbruksindikator. Barnehager*",
             "expression": [
               "",
-              "",
-              "var r = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"RBIASSS\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Ressursbruksindikator Barnehager\")",
+              "/*",
+              "var r = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"RBIASSS\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Ressursbruksindikator Barnehager\")",
               ")",
               "",
-              "return r"
+              "return r",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"RBI01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Ressursbruksindikator Barnehager\")",
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Barn 1-5 år i barnehage (antall)",
+            "name": "BHG Barn 1-5 år i barnehage (antall)",
             "expression": [
               "",
-              "",
-              "var b = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Barn i barnehage 1-5 år\")",
+              "/*",
+              "var b = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Barn i barnehage 1-5 år\")",
               ")",
               "",
               "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Barn i barnehage (antall) 0 år Alle eierforhold Alle oppholdskategorier\")",
-              ") ",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Barn i barnehage (antall) 0 år Alle eierforhold Alle oppholdskategorier\")",
+              ")",
               "",
               "",
-              "return b + a ",
+              "return b + a",
+              "*/",
+              "var b = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12272\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn i barnehage 1-5 år\")",
+              ")",
+              "",
+              "",
+              "var a = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12056\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn i barnehage (antall)\"),",
+              "    FILTER(ALL(Alder[Dimensjonsnavn]), [Dimensjonsnavn] = \"0 år\"),",
+              "    FILTER(ALL(Eierforhold[Dimensjonsnavn]), [Dimensjonsnavn] = \"Alle eierforhold\"),",
+              "    FILTER(ALL(Oppholdstid[Dimensjonsnavn]), [Dimensjonsnavn] = \"Alle oppholdskategorier\")",
+              ")",
+              "",
+              "return (",
+              "    a + b",
+              ")",
               "",
               "",
               ""
@@ -6196,6 +6221,13 @@
               "",
               "/*Barn er korrigert ut fra endret vekt - dette er ikke korrigert hos SSB*/",
               "/*27.3.2019 Laila */"
+            ]
+          },
+          {
+            "name": "TST Tekst test",
+            "expression": [
+              "",
+              "\"Dette er en tekst\""
             ]
           }
         ],
