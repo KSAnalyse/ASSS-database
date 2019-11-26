@@ -6020,16 +6020,21 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "Sykefravær barnehager (PAI) (prosent)*",
+            "name": "BHG Sykefravær barnehager (PAI) (prosent)*",
             "expression": [
               "",
-              "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ASSS\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sykefravær Barnehage (PAI)\")",
+              "/*",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"ASSS\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Sykefravær Barnehage (PAI)\")",
               ")",
               "",
-              "return a"
+              "return a",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"PAI02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sykefravær Barnehage (PAI)\")",
+              ")"
             ],
             "displayFolder": "Barnehage"
           },
