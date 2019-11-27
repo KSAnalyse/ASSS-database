@@ -6590,16 +6590,21 @@
             "displayFolder": "Grunnskole"
           },
           {
-            "name": "Sykefravær grunnskole (PAI) (prosent)*",
+            "name": "GRS Sykefravær grunnskole (PAI) (prosent)*",
             "expression": [
               "",
-              "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"ASSS\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Sykefravær Grunnskole (PAI)\")",
+              "/*",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"ASSS\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Sykefravær Grunnskole (PAI)\")",
               ")",
               "",
-              "return a"
+              "return a",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"PAI02\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = \"Sykefravær Grunnskole (PAI)\")",
+              ")"
             ],
             "displayFolder": "Grunnskole"
           },
