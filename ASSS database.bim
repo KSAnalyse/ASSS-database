@@ -6401,11 +6401,33 @@
             "displayFolder": "Grunnskole"
           },
           {
-            "name": "Elever med direkte overgang fra vg1 til vg2 (prosent)",
+            "name": "GRS Elever med direkte overgang fra vg1 til vg2 (prosent)",
             "expression": [
               "",
-              "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Elever som var registrert i videregående opplæring vg2 samme år som avsluttet vg1 (antall)\"),",
-              "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Elever som avsluttet vg1 (antall)\")))*100"
+              "/*",
+              "Divide(CALCULATE(Sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Elever som var registrert i videregående opplæring vg2 samme år som avsluttet vg1 (antall)\");",
+              "(CALCULATE(SUM('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Elever som avsluttet vg1 (antall)\")))*100",
+              "*/",
+              "var a =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12236\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] =",
+              "        \"Elever som var registrert i videregående opplæring vg2 samme år som avsluttet vg1 (antall)\"",
+              "    )",
+              ")",
+              "",
+              "var b = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12236\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Elever som avsluttet vg1 (antall)\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(a, b) * 100,",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Grunnskole"
           },
