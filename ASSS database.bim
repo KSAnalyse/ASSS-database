@@ -6302,11 +6302,33 @@
             "displayFolder": "Grunnskole"
           },
           {
-            "name": "Gruppestørrelse (antall)",
+            "name": "GRS Gruppestørrelse (antall)",
             "expression": [
               "",
-              "Divide(CALCULATE(Sum('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Elevtimer (antall) Elever alle trinn\"),",
-              "(CALCULATE(SUM('Alle Data'[Verdi]),Variabel[Variabelnavn]=\"Lærertimer minus morsmål og finsk (antall) Elever alle trinn\")))"
+              "/*",
+              "Divide(CALCULATE(Sum('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Elevtimer (antall) Elever alle trinn\");",
+              "(CALCULATE(SUM('Alle Data'[Verdi]);Variabel[Variabelnavn]=\"Lærertimer minus morsmål og finsk (antall) Elever alle trinn\")))",
+              "*/",
+              "var etalle =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12285\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Elevtimer (antall)\"),",
+              "    FILTER(ALL('Årstrinn'[Dimensjonsnavn]), [Dimensjonsnavn] = \"Elever alle trinn\")",
+              ")",
+              "",
+              "var ltmmf =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12285\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Lærertimer minus morsmål og finsk (antall)\"),",
+              "    FILTER(ALL('Årstrinn'[Dimensjonsnavn]), [Dimensjonsnavn] = \"Elever alle trinn\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(etalle, ltmmf),",
+              "        1",
+              "    )",
+              ")"
             ],
             "displayFolder": "Grunnskole"
           },
