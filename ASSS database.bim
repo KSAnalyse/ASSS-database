@@ -7144,16 +7144,21 @@
             "displayFolder": "Grunnskole"
           },
           {
-            "name": "Ressursbruksindikator. Grunnskole*",
+            "name": "GRS Ressursbruksindikator. Grunnskole*",
             "expression": [
               "",
-              "",
-              "var r = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"RBIASSS\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Ressursbruksindikator Grunnskole\")",
+              "/*",
+              "var r = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"RBIASSS\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Ressursbruksindikator Grunnskole\")",
               ")",
               "",
-              "return r"
+              "return r",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"RBI01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Ressursbruksindikator Grunnskole\")",
+              ")"
             ],
             "displayFolder": "Grunnskole"
           },
