@@ -7182,16 +7182,21 @@
             "displayFolder": "Grunnskole"
           },
           {
-            "name": "Antall assistentårsverk per hundre lærerårsverk*",
+            "name": "GRS Antall assistentårsverk per hundre lærerårsverk*",
             "expression": [
               "",
-              "",
-              "var a = CALCULATE(sum('Alle Data'[Verdi]),",
-              "filter(all('Alle Data'[Tabell]), 'Alle Data'[Tabell] = \"RGS\"),",
-              "filter(all('Variabel'[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Antall assistentårsverk per hundre lærerårsverk\")",
+              "/*",
+              "var a = CALCULATE(sum('Alle Data'[Verdi]);",
+              "filter(all('Alle Data'[Tabell]); 'Alle Data'[Tabell] = \"RGS\");",
+              "filter(all('Variabel'[Variabelnavn]); 'Variabel'[Variabelnavn] = \"Antall assistentårsverk per hundre lærerårsverk\")",
               ")",
               "",
-              "return a"
+              "return a",
+              "*/",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"GRS06\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Antall assistentårsverk per hundre lærerårsverk\")",
+              ")"
             ],
             "displayFolder": "Grunnskole"
           },
@@ -8273,6 +8278,11 @@
             "name": "Stillingstypekode",
             "dataType": "string",
             "sourceColumn": "Stillingstypekode"
+          },
+          {
+            "name": "Kompetansekode",
+            "dataType": "string",
+            "sourceColumn": "Kompetansekode"
           }
         ],
         "partitions": [
@@ -8512,6 +8522,14 @@
                   "        <int>158</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kompetansekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>159</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -8730,6 +8748,14 @@
                   "        <int>26</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kompetansekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>27</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -8912,6 +8938,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Stillingstypekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Kompetansekode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -9175,6 +9209,14 @@
               "        <int>158</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kompetansekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>159</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -9393,6 +9435,14 @@
               "        <int>26</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kompetansekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>27</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -9575,6 +9625,14 @@
               "    <item>",
               "      <key>",
               "        <string>Stillingstypekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Kompetansekode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -10550,6 +10608,53 @@
           {
             "name": "_TM_ExtProp_DbTableName",
             "value": "Stillingstype"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Kompetanse",
+        "columns": [
+          {
+            "name": "Dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dimensjonsnavn",
+            "dataType": "string",
+            "sourceColumn": "Dimensjonsnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DimensjonskodeNavn",
+            "dataType": "string",
+            "sourceColumn": "DimensjonskodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Kompetanse",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[Kompetanse].* FROM [dbo].[Kompetanse] ",
+              "dataSource": "KS-SQL2018;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Kompetanse].* FROM [dbo].[Kompetanse] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Kompetanse"
           },
           {
             "name": "_TM_ExtProp_DbSchemaName",
