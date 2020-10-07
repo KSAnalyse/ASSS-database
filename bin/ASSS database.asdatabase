@@ -3092,7 +3092,7 @@
               "CALCULATE(SUM('Alle Data'[Verdi]), ",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13021\"), ",
               "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Mottatte søknader (antall)\"",
+              "        \"Behandlede søknader (antall)\"",
               "    ),",
               "    FILTER(ALL('Rammevilkår'[Rammevilkårnavn]), [Rammevilkårnavn] = \"Søknader i alt\"),",
               "    FILTER(ALL('Søknadstype'[Søknadstypenavn]), [Søknadstypenavn] = \"Byggesøknader i alt\")",

@@ -18,3 +18,10 @@ C:\Users\vk431\Documents\GitHub\ASSS-database\obj\Development\ASSS data.smproj.C
 C:\Users\vk431\Documents\GitHub\ASSS-database\obj\Development\ASSS database.asdatabase
 C:\Users\vk431\Documents\GitHub\ASSS-database\obj\Development\ASSS database.deploymentoptions
 C:\Users\vk431\Documents\GitHub\ASSS-database\obj\Development\ASSS database.deploymenttargets
+C:\Users\vk300\Documents\GitHub\ASSS-database\bin\ASSS database.asdatabase
+C:\Users\vk300\Documents\GitHub\ASSS-database\bin\ASSS database.deploymenttargets
+C:\Users\vk300\Documents\GitHub\ASSS-database\bin\ASSS database.deploymentoptions
+C:\Users\vk300\Documents\GitHub\ASSS-database\obj\Development\ASSS data.smproj.CoreCompileInputs.cache
+C:\Users\vk300\Documents\GitHub\ASSS-database\obj\Development\ASSS database.asdatabase
+C:\Users\vk300\Documents\GitHub\ASSS-database\obj\Development\ASSS database.deploymentoptions
+C:\Users\vk300\Documents\GitHub\ASSS-database\obj\Development\ASSS database.deploymenttargets
