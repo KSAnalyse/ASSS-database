@@ -4,3 +4,10 @@ C:\Users\8093aha\Documents\GitHub\ASSS-database\bin\ASSS database.deploymentopti
 C:\Users\8093aha\Documents\GitHub\ASSS-database\obj\Development\ASSS database.asdatabase
 C:\Users\8093aha\Documents\GitHub\ASSS-database\obj\Development\ASSS database.deploymentoptions
 C:\Users\8093aha\Documents\GitHub\ASSS-database\obj\Development\ASSS database.deploymenttargets
+E:\Visual Studio prosjekter\ASSS-database\bin\ASSS database.asdatabase
+E:\Visual Studio prosjekter\ASSS-database\bin\ASSS database.deploymenttargets
+E:\Visual Studio prosjekter\ASSS-database\bin\ASSS database.deploymentoptions
+E:\Visual Studio prosjekter\ASSS-database\obj\Development\ASSS data.smproj.CoreCompileInputs.cache
+E:\Visual Studio prosjekter\ASSS-database\obj\Development\ASSS database.asdatabase
+E:\Visual Studio prosjekter\ASSS-database\obj\Development\ASSS database.deploymentoptions
+E:\Visual Studio prosjekter\ASSS-database\obj\Development\ASSS database.deploymenttargets
