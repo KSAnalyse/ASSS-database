@@ -7788,13 +7788,23 @@
               "",
               "return (",
               "    ROUND(",
-              "        DIVIDE(brukere, innb),",
+              "        DIVIDE(brukere, innb) * 100,",
               "        3",
-              "    ) * 100",
+              "    )",
               ")",
               ""
             ],
             "displayFolder": "Pleie og omsorg"
+          },
+          {
+            "name": "EIE Tilstandsvurdering grunnskole (prosent)",
+            "expression": [
+              "",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"EIE01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Tilstandsvurdering grunnskole (prosent)\")",
+              ")"
+            ]
           }
         ],
         "annotations": [
