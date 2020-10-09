@@ -4297,7 +4297,7 @@
             "displayFolder": "Eiendomsforvaltning"
           },
           {
-            "name": "EIE Utgifter til renholdsaktiviteter i kommunal eiendomsforvaltning; per kvadratmeter (kroner)",
+            "name": "EIE Utgifter til renholdsaktiviteter i kommunal eiendomsforvaltning, per kvadratmeter (kroner)",
             "expression": [
               "",
               "",
@@ -4361,7 +4361,7 @@
             "displayFolder": "Eiendomsforvaltning"
           },
           {
-            "name": "EIE Utgifter til driftsaktiviteter i kommunal eiendomsforvaltning; per kvadratmeter (kroner)",
+            "name": "EIE Utgifter til driftsaktiviteter i kommunal eiendomsforvaltning, per kvadratmeter (kroner)",
             "expression": [
               "",
               "",
@@ -4393,7 +4393,7 @@
             "displayFolder": "Eiendomsforvaltning"
           },
           {
-            "name": "EIE Utgifter til vedlikeholdsaktiviteter i kommunal eiendomsforvaltning; per kvadratmeter (kroner)",
+            "name": "EIE Utgifter til vedlikeholdsaktiviteter i kommunal eiendomsforvaltning, per kvadratmeter (kroner)",
             "expression": [
               "",
               "",
