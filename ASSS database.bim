@@ -2946,7 +2946,7 @@
             "name": "KHT Ledig liste-kapasitet i prosent av antall innbyggere",
             "expression": [
               "",
-              "",
+              "1",
               "var kapasitet = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12005\"),",
