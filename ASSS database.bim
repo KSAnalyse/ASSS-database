@@ -3698,8 +3698,6 @@
               "var vekthstprod = (0.21*undGrav)+(0.31*undFG)+(0.16*und8)+(0.16*und23)+(0.16*und4)",
               "",
               "return (",
-              "    und8",
-              "    /*",
               "    ROUND(",
               "        DIVIDE(",
               "            vekthstprod,",
@@ -3707,7 +3705,6 @@
               "        ),",
               "        1",
               "    )",
-              "    */",
               ")"
             ],
             "displayFolder": "Kommunehelse"
