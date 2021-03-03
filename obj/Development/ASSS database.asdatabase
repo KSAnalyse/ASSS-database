@@ -1717,34 +1717,6 @@
             "displayFolder": "Barnevern"
           },
           {
-            "name": "BNV Brutto driftsutgifter per EM (f252) (kroner)",
-            "expression": [
-              "",
-              "",
-              "var brem = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BNV01\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] =",
-              "        \"Brutto driftsutgifter funksjon 252 enslige mindreårige (1000 kr)\"",
-              "    )",
-              ")",
-              "",
-              "var antall = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BNV01\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), 'Variabel'[Variabelnavn] = \"Antall enslige mindreårige f252\")",
-              ")",
-              "",
-              "return (",
-              "    ROUND(",
-              "        DIVIDE(brem * 1000, antall),",
-              "        1",
-              "    )",
-              ")"
-            ],
-            "displayFolder": "Barnevern"
-          },
-          {
             "name": "PLO Gjennomsnittlig bistandsbehov hos mottakere av hjemmetjenester 0 til 66 år",
             "expression": [
               "",
@@ -2420,72 +2392,6 @@
               ")"
             ],
             "displayFolder": "Pleie og omsorg"
-          },
-          {
-            "name": "BNV Brutto driftsutgifter per plassert barn uten EM (f252) (kroner)",
-            "expression": [
-              "",
-              "",
-              "var brbv = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
-              "    FILTER(ALL(Art[Artkode]), [Artkode] = \"AGD10\"),",
-              "    FILTER(ALL(Funksjon[Funksjonkode]), [Funksjonkode] = \"252\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]=\"Beløp (1000 kr)\")",
-              ")",
-              "",
-              "var brem = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BNV01\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] =",
-              "        \"Brutto driftsutgifter funksjon 252 enslige mindreårige (1000 kr)\"",
-              "    )",
-              ")",
-              "",
-              "var antall = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BNV01\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] =",
-              "        \"Antall enslige mindreårige f252\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(",
-              "        DIVIDE(",
-              "            (brbv - brem) * 1000, ",
-              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)] - antall",
-              "        ),",
-              "        1",
-              "    )",
-              ")"
-            ],
-            "displayFolder": "Barnevern"
-          },
-          {
-            "name": "BNV Andel EM av alle plasserte barn (prosent)",
-            "expression": [
-              "",
-              "",
-              "var antall =",
-              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BNV01\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]=",
-              "        \"Antall enslige mindreårige f252\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(",
-              "        DIVIDE(",
-              "            antall,",
-              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)]",
-              "        ) * 100,",
-              "        1",
-              "    )",
-              ")"
-            ],
-            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel barn med tiltak 0-5 år av barn på tiltak 0-17 år (prosent)",
@@ -5064,7 +4970,7 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "BHG Brukertilfredshet barnehager (snitt skår)*",
+            "name": "BHG Foreldretilfredshet barnehage*",
             "expression": [
               "",
               "",
