@@ -8147,6 +8147,11 @@
             "name": "Søknadstypekode",
             "dataType": "string",
             "sourceColumn": "Søknadstypekode"
+          },
+          {
+            "name": "Eksisterende/nyekode",
+            "dataType": "string",
+            "sourceColumn": "Eksisterende/nyekode"
           }
         ],
         "partitions": [
@@ -8427,6 +8432,14 @@
                   "        <int>115</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Eksisterende/nyekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>136</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -8685,6 +8698,14 @@
                   "        <int>31</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Eksisterende/nyekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>32</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -8907,6 +8928,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Søknadstypekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Eksisterende/nyekode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -9210,6 +9239,14 @@
               "        <int>115</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Eksisterende/nyekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>136</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -9468,6 +9505,14 @@
               "        <int>31</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Eksisterende/nyekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>32</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -9690,6 +9735,14 @@
               "    <item>",
               "      <key>",
               "        <string>Søknadstypekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Eksisterende/nyekode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -14827,6 +14880,54 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Eksisterendenye",
+        "columns": [
+          {
+            "name": "Eksisterende/nyekode",
+            "dataType": "string",
+            "sourceColumn": "Eksisterende/nyekode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Eksisterende/nyenavn",
+            "dataType": "string",
+            "sourceColumn": "Eksisterende/nyenavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Eksisterende/nyekodeNavn",
+            "dataType": "string",
+            "sourceColumn": "Eksisterende/nyekodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Eksisterendenye",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Eksisterende/nye].* FROM [dbo].[Eksisterende/nye] ",
+              "dataSource": "VK-SXD0E-002;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Eksisterende/nye].* FROM [dbo].[Eksisterende/nye] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Eksisterende/nye"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -15046,6 +15147,13 @@
         "fromColumn": "Søknadstypekode",
         "toTable": "Søknadstype",
         "toColumn": "Søknadstypekode"
+      },
+      {
+        "name": "f9f4760a-75bb-4b39-a518-3cbede4b221a",
+        "fromTable": "Alle Data",
+        "fromColumn": "Eksisterende/nyekode",
+        "toTable": "Eksisterendenye",
+        "toColumn": "Eksisterende/nyekode"
       }
     ],
     "roles": [

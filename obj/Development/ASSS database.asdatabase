@@ -2580,20 +2580,6 @@
             "displayFolder": "Byggesak"
           },
           {
-            "name": "BGS Gjennomsnittlig saksbehandlingstid ett-trinnssøknader; 12-uker (dager)*",
-            "expression": [
-              "",
-              "",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12295\"),",
-              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Gjennomsnittlig saksbehandlingstid for byggesaker med 12 ukers frist (dager)\"",
-              "    )",
-              ")"
-            ],
-            "displayFolder": "Byggesak"
-          },
-          {
             "name": "BGS Saksbehandlingsgebyr for oppføring av enebolig (kroner)*",
             "expression": [
               "",
@@ -2693,7 +2679,7 @@
               "",
               "",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11879\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13124\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Tilsyn i ikke omsøkte byggesaker (antall)\")",
               ")"
             ],
@@ -3181,33 +3167,6 @@
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"), ",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-5 år\")",
-              ")",
-              "",
-              "return (",
-              "    ROUND(",
-              "        DIVIDE(aarsverk, DIVIDE(bef, 1000)),",
-              "        1",
-              "    )",
-              ")"
-            ],
-            "displayFolder": "Kommunehelse"
-          },
-          {
-            "name": "KHT Årsverk skolehelsetjenesten totalt per 1 000 innbyggere 6-20 år",
-            "expression": [
-              "",
-              "",
-              "var aarsverk = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"KHT02\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Årsverk totalt skolehelsetjenesten uten ledelse\")",
-              ")",
-              "",
-              "var bef = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"), ",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
-              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"6-20 år\")",
               ")",
               "",
               "return (",
@@ -4057,7 +4016,7 @@
               "",
               "var energi = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12150\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13231\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Energibruk (MWh)\"),",
               "    FILTER(ALL(Funksjon[Funksjonkode]), [Funksjonkode] = \"FGK6\")",
               ")",
@@ -4324,7 +4283,7 @@
               "",
               "var sosmott = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere (antall)\")",
               ")",
               "var bef = ",
@@ -4350,7 +4309,7 @@
               "",
               "var sosmot = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere 18-24 år (antall)\")",
               ")",
               "",
@@ -4377,7 +4336,7 @@
               "",
               "var sosmot = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere 25-66 år (antall)\")",
               ")",
               "",
@@ -4431,13 +4390,13 @@
               "",
               "var stonad = ",
               "CALCULATE(SUM('Alle Data'[Verdi]), ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"), ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"), ",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Samlet stønadssum (bidrag + lån)  (kr)\") ",
               ")",
               "",
               "var sosmott = ",
               "CALCULATE(SUM('Alle Data'[Verdi]), ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"), ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"), ",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere (antall)\") ",
               ")",
               "",
@@ -4465,7 +4424,7 @@
               "",
               "var sosmott = ",
               "CALCULATE(SUM('Alle Data'[Verdi]), ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"), ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"), ",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere (antall)\") ",
               ")",
               "",
@@ -4484,7 +4443,7 @@
               "",
               "",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Gjennomsnittlig stønadstid 18-24 år (antall)\")",
               ")"
             ],
@@ -4533,7 +4492,7 @@
               "",
               "var langtid = ",
               "CALCULATE(SUM('Alle Data'[Verdi]), ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
               "        \"Sosialhjelpsmottakere som forsørger barn under 18 år (antall)\"",
               "    ) ",
@@ -4573,7 +4532,7 @@
               "",
               "",
               "CALCULATE(SUM('Alle Data'[Verdi]), ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
               "        \"Sosialhjelpsmottakere som forsørger barn under 18 år (antall)\"",
               "    ) ",
@@ -4587,7 +4546,7 @@
               "",
               "",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere (antall)\")",
               ")"
             ],
@@ -5100,18 +5059,6 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "BHG Foreldretilfredshet barnehage*",
-            "expression": [
-              "",
-              "",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG02\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Foreldreundersøkelsen: Tilfredshet\")",
-              ")"
-            ],
-            "displayFolder": "Barnehage"
-          },
-          {
             "name": "BHG Barn 1-5 år i barnehage (antall)",
             "expression": [
               "",
@@ -5589,7 +5536,7 @@
               "        BLANK(),",
               "        ROUND(",
               "            DIVIDE(a + b, 2),",
-              "            1",
+              "            2",
               "        )",
               "    )",
               ")"
@@ -5853,38 +5800,6 @@
               "        \"Elever i kommunale og private grunnskoler (antall)\"",
               "    ),",
               "    FILTER(ALL('Årstrinn'[Årstrinnnavn]), [Årstrinnnavn] = \"5.-7. trinn\")",
-              ")",
-              "",
-              "return (",
-              "    ROUND(",
-              "        DIVIDE(spes, elev) * 100,",
-              "        1",
-              "    )",
-              ")"
-            ],
-            "displayFolder": "Grunnskole"
-          },
-          {
-            "name": "GRS Elever i kommunale og private grunnskoler med spesialundervisning, 8.-10. trinn (prosent)",
-            "expression": [
-              "",
-              "",
-              "var spes = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12222\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Elever i kommunale og private grunnskoler som får spesialundervisning  (antall)\"",
-              "    ),",
-              "    FILTER(ALL('Årstrinn'[Årstrinnnavn]), [Årstrinnnavn] = \"8.-10. trinn\") ",
-              ")",
-              "",
-              "var elev = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12222\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Elever i kommunale og private grunnskoler (antall)\"",
-              "    ),",
-              "    FILTER(ALL('Årstrinn'[Årstrinnnavn]), [Årstrinnnavn] = \"8.-10. trinn\")",
               ")",
               "",
               "return (",
@@ -6353,6 +6268,20 @@
             "displayFolder": "Pleie og omsorg"
           },
           {
+            "name": "BGS Gjennomsnittlig saksbehandlingstid ett-trinnssøknader; 12-uker (dager)*",
+            "expression": [
+              "",
+              "",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13111\"),",
+              "    FILTER(ALL('Variabel'[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Gjennomsnittlig saksbehandlingstid for byggesaker med 12 ukers frist (dager)\"",
+              "    )",
+              ")"
+            ],
+            "displayFolder": "Byggesak"
+          },
+          {
             "name": "EIE Tilstandsvurdering grunnskole (prosent)",
             "expression": [
               "",
@@ -6385,6 +6314,65 @@
               ")"
             ],
             "displayFolder": "Eiendomsforvaltning"
+          },
+          {
+            "name": "KHT Årsverk skolehelsetjenesten totalt per 1 000 innbyggere 6-20 år",
+            "expression": [
+              "",
+              "",
+              "var aarsverk = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"KHT02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Årsverk totalt skolehelsetjenesten uten ledelse\")",
+              ")",
+              "",
+              "var bef = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"), ",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"6-20 år\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(aarsverk, DIVIDE(bef, 1000)),",
+              "        1",
+              "    )",
+              ")"
+            ],
+            "displayFolder": "Kommunehelse"
+          },
+          {
+            "name": "GRS Elever i kommunale og private grunnskoler med spesialundervisning, 8.-10. trinn (prosent)",
+            "expression": [
+              "",
+              "",
+              "var spes = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12222\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Elever i kommunale og private grunnskoler som får spesialundervisning  (antall)\"",
+              "    ),",
+              "    FILTER(ALL('Årstrinn'[Årstrinnnavn]), [Årstrinnnavn] = \"8.-10. trinn\") ",
+              ")",
+              "",
+              "var elev = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12222\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Elever i kommunale og private grunnskoler (antall)\"",
+              "    ),",
+              "    FILTER(ALL('Årstrinn'[Årstrinnnavn]), [Årstrinnnavn] = \"8.-10. trinn\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(spes, elev) * 100,",
+              "        1",
+              "    )",
+              ")"
+            ],
+            "displayFolder": "Grunnskole"
           },
           {
             "name": "Samferdselindikatorer",
@@ -6423,6 +6411,18 @@
               ")"
             ],
             "displayFolder": "Andre"
+          },
+          {
+            "name": "BHG Foreldretilfredshet barnehage*",
+            "expression": [
+              "",
+              "",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Foreldreundersøkelsen: Tilfredshet\")",
+              ")"
+            ],
+            "displayFolder": "Barnehage"
           }
         ],
         "annotations": [
@@ -8148,6 +8148,11 @@
             "name": "Søknadstypekode",
             "dataType": "string",
             "sourceColumn": "Søknadstypekode"
+          },
+          {
+            "name": "Eksisterende/nyekode",
+            "dataType": "string",
+            "sourceColumn": "Eksisterende/nyekode"
           }
         ],
         "partitions": [
@@ -8428,6 +8433,14 @@
                   "        <int>115</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Eksisterende/nyekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>136</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -8686,6 +8699,14 @@
                   "        <int>31</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Eksisterende/nyekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>32</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -8908,6 +8929,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Søknadstypekode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Eksisterende/nyekode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -9211,6 +9240,14 @@
               "        <int>115</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Eksisterende/nyekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>136</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -9469,6 +9506,14 @@
               "        <int>31</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Eksisterende/nyekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>32</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -9691,6 +9736,14 @@
               "    <item>",
               "      <key>",
               "        <string>Søknadstypekode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Eksisterende/nyekode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -14828,6 +14881,54 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Eksisterendenye",
+        "columns": [
+          {
+            "name": "Eksisterende/nyekode",
+            "dataType": "string",
+            "sourceColumn": "Eksisterende/nyekode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Eksisterende/nyenavn",
+            "dataType": "string",
+            "sourceColumn": "Eksisterende/nyenavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Eksisterende/nyekodeNavn",
+            "dataType": "string",
+            "sourceColumn": "Eksisterende/nyekodeNavn",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Eksisterendenye",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Eksisterende/nye].* FROM [dbo].[Eksisterende/nye] ",
+              "dataSource": "VK-SXD0E-002;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Eksisterende/nye].* FROM [dbo].[Eksisterende/nye] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Eksisterende/nye"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -15047,6 +15148,13 @@
         "fromColumn": "Søknadstypekode",
         "toTable": "Søknadstype",
         "toColumn": "Søknadstypekode"
+      },
+      {
+        "name": "f9f4760a-75bb-4b39-a518-3cbede4b221a",
+        "fromTable": "Alle Data",
+        "fromColumn": "Eksisterende/nyekode",
+        "toTable": "Eksisterendenye",
+        "toColumn": "Eksisterende/nyekode"
       }
     ],
     "roles": [
