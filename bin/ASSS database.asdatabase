@@ -4016,7 +4016,7 @@
               "",
               "var energi = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13231\"),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12150\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Energibruk (MWh)\"),",
               "    FILTER(ALL(Funksjon[Funksjonkode]), [Funksjonkode] = \"FGK6\")",
               ")",
