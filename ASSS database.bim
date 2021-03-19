@@ -2121,7 +2121,7 @@
               "var gr1 = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12292\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beboere bolig m/ fast tilknyttet bemanning hele døgnet 80 år og over (antall)\")",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beboere 80 år og over i bolig m/ fast tilknyttet bemanning hele døgnet (antall)\")",
               ")",
               "",
               "var gr2 = ",
