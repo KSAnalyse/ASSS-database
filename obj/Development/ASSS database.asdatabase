@@ -4499,7 +4499,7 @@
               ") ",
               "var sosmott = ",
               "CALCULATE(SUM('Alle Data'[Verdi]), ",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13006\"), ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"), ",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere (antall)\") ",
               ")",
               "",
