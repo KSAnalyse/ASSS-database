@@ -3348,7 +3348,7 @@
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"), ",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
               "    FILTER(ALL(Alder[Aldernavn]), ",
-              "        IF(ISERROR(VALUE(LEFT([Aldernavn], 3))), ",
+              "        IF(ISERROR(VALUE(LEFT([Aldernavn], 3))) || LEN([Aldernavn]) > 5, ",
               "            BLANK(), ",
               "            VALUE(LEFT([Aldernavn], 3)) >= 16 && VALUE(LEFT([Aldernavn], 3)) <= 20",
               "        )",
