@@ -4713,8 +4713,8 @@
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
-              "    FILTER(ALL(Art[Artkode]), [Artkode] = \"AGD2\"),",
-              "    FILTER(ALL(Funksjon[Funksjonkode]), [Funksjonkode] IN {\"201\", \"211\", \"221\"})",
+              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] IN {\"201\", \"211\", \"221\"})",
               ")",
               "",
               "var bef = ",
@@ -4725,13 +4725,10 @@
               ")",
               "",
               "return (",
-              "nettobhg",
-              "/*",
               "    ROUND(",
               "        DIVIDE(nettobhg * 1000, bef),",
               "        1",
               "    )",
-              "*/",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4745,8 +4742,8 @@
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
-              "    FILTER(ALL(Art[Artkode]), [Artkode] = \"AGD2\"),",
-              "    FILTER(ALL(Funksjon[Funksjonkode]), [Funksjonkode] IN {\"201\", \"211\", \"221\"})",
+              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] IN {\"201\", \"211\", \"221\"})",
               ")",
               "",
               "var nettoalle = ",
@@ -5037,8 +5034,8 @@
               "var kbr201 = ",
               "CALCULATE(sum('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
-              "    FILTER(ALL(Art[Artkode]), [Artkode] = \"AGD4\"),",
-              "    FILTER(ALL(Funksjon[Funksjonkode]), [Funksjonkode] = \"201\")",
+              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGD4\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"201\")",
               ")",
               "",
               "var kopph = ",
@@ -5117,7 +5114,7 @@
               "        \"Kommune\",",
               "        \"Privat\"",
               "    }),",
-              "    FILTER(ALL(Utdanning[Utdanningnavn]), [Utdanningnavn] IN {",
+              "    FILTER(ALL('Personellets utdanning'[Personellets utdanningnavn]), [Personellets utdanningnavn] IN {",
               "        \"Barnehagelærer\",",
               "        \"Pedagogisk utdanning som tilsvarer utdanningskravet til styrer/pedagogisk leder\"",
               "    })",
@@ -8530,6 +8527,11 @@
             "name": " omsorgs-/hjelpetiltakkode",
             "dataType": "string",
             "sourceColumn": " omsorgs-/hjelpetiltakkode"
+          },
+          {
+            "name": "Personellets utdanningkode",
+            "dataType": "string",
+            "sourceColumn": "Personellets utdanningkode"
           }
         ],
         "partitions": [
@@ -8818,6 +8820,14 @@
                   "        <int>163</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Personellets utdanningkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>162</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -9084,6 +9094,14 @@
                   "        <int>29</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Personellets utdanningkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>33</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -9314,6 +9332,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Eksisterende/nye byggkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Personellets utdanningkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -9625,6 +9651,14 @@
               "        <int>163</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Personellets utdanningkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>162</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -9891,6 +9925,14 @@
               "        <int>29</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Personellets utdanningkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>33</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -10121,6 +10163,14 @@
               "    <item>",
               "      <key>",
               "        <string>Eksisterende/nye byggkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Personellets utdanningkode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -19099,6 +19149,66 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Personellets utdanning",
+        "columns": [
+          {
+            "name": "Personellets utdanningkode",
+            "dataType": "string",
+            "sourceColumn": "Personellets utdanningkode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Personellets utdanningnavn",
+            "dataType": "string",
+            "sourceColumn": "Personellets utdanningnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Personellets utdanningkodeNavn",
+            "dataType": "string",
+            "sourceColumn": "Personellets utdanningkodeNavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Original dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Original dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Tabellkode",
+            "dataType": "string",
+            "sourceColumn": "Tabellkode",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Personellets utdanning",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Personellets utdanning].* FROM [dbo].[Personellets utdanning] ",
+              "dataSource": "VK-SXD0E-002;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Personellets utdanning].* FROM [dbo].[Personellets utdanning] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Personellets utdanning"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -19297,6 +19407,13 @@
         "fromColumn": "Søknadstypekode",
         "toTable": "Søknadstype",
         "toColumn": "Søknadstypekode"
+      },
+      {
+        "name": "565ea40f-5de4-4f49-ade8-e6f70f437e95",
+        "fromTable": "Alle Data",
+        "fromColumn": "Personellets utdanningkode",
+        "toTable": "Personellets utdanning",
+        "toColumn": "Personellets utdanningkode"
       }
     ],
     "roles": [
