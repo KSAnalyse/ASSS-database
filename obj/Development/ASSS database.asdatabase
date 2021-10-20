@@ -2954,7 +2954,7 @@
               "return (",
               "    ROUND(",
               "        DIVIDE(nettokom * 1000, bef),",
-              "        1",
+              "        0",
               "    )",
               ")"
             ],

@@ -2953,7 +2953,7 @@
               "return (",
               "    ROUND(",
               "        DIVIDE(nettokom * 1000, bef),",
-              "        1",
+              "        0",
               "    )",
               ")"
             ],
@@ -2984,7 +2984,7 @@
               "return (",
               "    ROUND(",
               "        DIVIDE(nettokom, nettoalle) * 100,",
-              "        0",
+              "        1",
               "    )",
               ")"
             ],
