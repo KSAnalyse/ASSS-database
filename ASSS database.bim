@@ -2984,7 +2984,7 @@
               "return (",
               "    ROUND(",
               "        DIVIDE(nettokom, nettoalle) * 100,",
-              "        1",
+              "        0",
               "    )",
               ")"
             ],
