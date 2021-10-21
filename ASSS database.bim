@@ -22,6 +22,12 @@
         "name": "Variabel",
         "columns": [
           {
+            "name": "Variabelnavn",
+            "dataType": "string",
+            "sourceColumn": "Variabelnavn",
+            "sourceProviderType": "Char"
+          },
+          {
             "name": "Variabelgruppe",
             "dataType": "string",
             "sourceColumn": "Variabelgruppe",
@@ -31,12 +37,6 @@
             "name": "Variabel",
             "dataType": "string",
             "sourceColumn": "Variabel",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Variabelnavn",
-            "dataType": "string",
-            "sourceColumn": "Variabelnavn",
             "sourceProviderType": "Char"
           }
         ],
@@ -2463,7 +2463,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(a, 1)",
+              "    ROUND(a, 2)",
               ")"
             ],
             "displayFolder": "Pleie og omsorg"
@@ -4175,155 +4175,6 @@
               ")"
             ],
             "displayFolder": "Samferdsel"
-          },
-          {
-            "name": "EIE Snitt årlig investering per innbygger siste fire år",
-            "expression": [
-              "",
-              "",
-              "/* Hvilket år brukereren velger endrer denne */",
-              "var valgte_aar = SELECTEDVALUE('År'[År])",
-              "",
-              "/* aar variablene er kommunens brutto investeringsutgifter på funksjon/tjenesteområde på formålsbygg*/",
-              "var aar1 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12559\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
-              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGI5\"),",
-              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"FGK6\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 3)",
-              ")",
-              "",
-              "var aar2 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12559\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
-              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGI5\"),",
-              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"FGK6\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 2)",
-              ")",
-              "",
-              "var aar3 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12559\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
-              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGI5\"),",
-              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"FGK6\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 1)",
-              ")",
-              "",
-              "var aar4 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12559\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
-              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGI5\"),",
-              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"FGK6\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar)",
-              ")",
-              "",
-              "/* bef variablene er befolkningen i kommunen */",
-              "var bef1 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
-              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 3)",
-              ")",
-              "",
-              "var bef2 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
-              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 2)",
-              ")",
-              "",
-              "var bef3 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
-              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 1)",
-              ")",
-              "",
-              "var bef4 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
-              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar)",
-              ")",
-              "",
-              "/* indeks variablene er byggekostnadsindeksen for det gitte året */",
-              "var indeks1 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"08655\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Byggjekostnadsindeks\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 3)",
-              ")",
-              "",
-              "var indeks2 = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"08655\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Byggjekostnadsindeks\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 2)",
-              ")",
-              "",
-              "var indeks3 =",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"08655\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Byggjekostnadsindeks\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 1)",
-              ")",
-              "",
-              "var indeks4 =",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"08655\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Byggjekostnadsindeks\"),",
-              "    FILTER(ALL('År'[År]), [År] = valgte_aar)",
-              ")",
-              "",
-              "var indeks1div =",
-              "DIVIDE(indeks4, indeks1)",
-              "",
-              "var indeks2div =",
-              "DIVIDE(indeks4, indeks2)",
-              "",
-              "var indeks3div =",
-              "DIVIDE(indeks4, indeks3)",
-              "",
-              "var indeks4div =",
-              "DIVIDE(indeks4, indeks4)",
-              "",
-              "/* ganger brutto drift for gitte året med indeks og deler dette på befolkningen */",
-              "var aar1bef1 = ",
-              "DIVIDE(aar1 * indeks1div, bef1)",
-              "",
-              "var aar2bef2 = ",
-              "DIVIDE(aar2 * indeks2div, bef2)",
-              "",
-              "var aar3bef3 = ",
-              "DIVIDE(aar3 * indeks3div, bef3)",
-              "",
-              "var aar4bef4 = ",
-              "DIVIDE(aar4 * indeks4div, bef4)",
-              "",
-              "var har_blanke_verdier =",
-              "ISBLANK(aar1) || ISBLANK(aar2) || ISBLANK(aar3) || ISBLANK(aar4) ||",
-              "ISBLANK(aar1bef1) || ISBLANK(aar2bef2) || ISBLANK(aar3bef3) || ISBLANK(aar4bef4)",
-              "",
-              "return (  ",
-              "    IF(har_blanke_verdier,",
-              "        BLANK(),",
-              "        ROUND(",
-              "            /* snitt verdien av alle 4 årene */",
-              "            DIVIDE(aar1bef1 + aar2bef2 + aar3bef3 + aar4bef4, 4) * 1000 ,",
-              "            0",
-              "        )",
-              "    )",
-              ")"
-            ],
-            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "SOS Netto driftsutgifter til sosialtjenesten(f242/f243/f273/f276/f281) pr innbygger 18-66 år(kroner)",
@@ -6546,6 +6397,155 @@
               ")"
             ],
             "displayFolder": "Barnehage"
+          },
+          {
+            "name": "EIE Snitt årlig investering per innbygger siste fire år",
+            "expression": [
+              "",
+              "",
+              "/* Hvilket år brukereren velger endrer denne */",
+              "var valgte_aar = SELECTEDVALUE('År'[År])",
+              "",
+              "/* aar variablene er kommunens brutto investeringsutgifter på funksjon/tjenesteområde på formålsbygg*/",
+              "var aar1 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12559\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
+              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGI5\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"FGK6\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 3)",
+              ")",
+              "",
+              "var aar2 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12559\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
+              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGI5\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"FGK6\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 2)",
+              ")",
+              "",
+              "var aar3 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12559\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
+              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGI5\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"FGK6\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 1)",
+              ")",
+              "",
+              "var aar4 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12559\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
+              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGI5\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"FGK6\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar)",
+              ")",
+              "",
+              "/* bef variablene er befolkningen i kommunen */",
+              "var bef1 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 3)",
+              ")",
+              "",
+              "var bef2 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 2)",
+              ")",
+              "",
+              "var bef3 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 1)",
+              ")",
+              "",
+              "var bef4 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar)",
+              ")",
+              "",
+              "/* indeks variablene er byggekostnadsindeksen for det gitte året */",
+              "var indeks1 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"08655\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Byggjekostnadsindeks\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 3)",
+              ")",
+              "",
+              "var indeks2 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"08655\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Byggjekostnadsindeks\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 2)",
+              ")",
+              "",
+              "var indeks3 =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"08655\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Byggjekostnadsindeks\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar - 1)",
+              ")",
+              "",
+              "var indeks4 =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"08655\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Byggjekostnadsindeks\"),",
+              "    FILTER(ALL('År'[År]), [År] = valgte_aar)",
+              ")",
+              "",
+              "var indeks1div =",
+              "DIVIDE(indeks4, indeks1)",
+              "",
+              "var indeks2div =",
+              "DIVIDE(indeks4, indeks2)",
+              "",
+              "var indeks3div =",
+              "DIVIDE(indeks4, indeks3)",
+              "",
+              "var indeks4div =",
+              "DIVIDE(indeks4, indeks4)",
+              "",
+              "/* ganger brutto drift for gitte året med indeks og deler dette på befolkningen */",
+              "var aar1bef1 = ",
+              "DIVIDE(aar1 * indeks1div, bef1)",
+              "",
+              "var aar2bef2 = ",
+              "DIVIDE(aar2 * indeks2div, bef2)",
+              "",
+              "var aar3bef3 = ",
+              "DIVIDE(aar3 * indeks3div, bef3)",
+              "",
+              "var aar4bef4 = ",
+              "DIVIDE(aar4 * indeks4div, bef4)",
+              "",
+              "var har_blanke_verdier =",
+              "ISBLANK(aar1) || ISBLANK(aar2) || ISBLANK(aar3) || ISBLANK(aar4) ||",
+              "ISBLANK(aar1bef1) || ISBLANK(aar2bef2) || ISBLANK(aar3bef3) || ISBLANK(aar4bef4)",
+              "",
+              "return (  ",
+              "    IF(har_blanke_verdier,",
+              "        BLANK(),",
+              "        ROUND(",
+              "            /* snitt verdien av alle 4 årene */",
+              "            DIVIDE(aar1bef1 + aar2bef2 + aar3bef3 + aar4bef4, 4) * 1000 ,",
+              "            0",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           }
         ],
         "annotations": [
@@ -11722,81 +11722,6 @@
               "  <IsSortDescending>false</IsSortDescending>",
               "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
             ]
-          }
-        ]
-      },
-      {
-        "name": "Sammenslåtte Regioner",
-        "columns": [
-          {
-            "name": "Kode",
-            "dataType": "string",
-            "sourceColumn": "Kode",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Navn",
-            "dataType": "string",
-            "sourceColumn": "Navn",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "KodeNummernavn",
-            "dataType": "string",
-            "sourceColumn": "KodeNummernavn",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Kategori",
-            "dataType": "string",
-            "sourceColumn": "Kategori",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "GyldigFraDato",
-            "dataType": "dateTime",
-            "sourceColumn": "GyldigFraDato",
-            "formatString": "General Date",
-            "sourceProviderType": "DBTimeStamp"
-          },
-          {
-            "name": "GyldigTilDato",
-            "dataType": "dateTime",
-            "sourceColumn": "GyldigTilDato",
-            "formatString": "General Date",
-            "sourceProviderType": "DBTimeStamp"
-          },
-          {
-            "name": "SammenslåingsDato",
-            "dataType": "dateTime",
-            "sourceColumn": "SammenslåingsDato",
-            "formatString": "General Date",
-            "sourceProviderType": "DBTimeStamp"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Sammenslåtte Regioner",
-            "dataView": "full",
-            "source": {
-              "type": "query",
-              "query": " SELECT [dbo].[Sammenslåtte Regioner].* FROM [dbo].[Sammenslåtte Regioner] ",
-              "dataSource": "VK-SXD0E-002;Reporting_ASSS"
-            }
-          }
-        ],
-        "annotations": [
-          {
-            "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [dbo].[Sammenslåtte Regioner].* FROM [dbo].[Sammenslåtte Regioner] "
-          },
-          {
-            "name": "_TM_ExtProp_DbTableName",
-            "value": "Sammenslåtte Regioner"
-          },
-          {
-            "name": "_TM_ExtProp_DbSchemaName",
-            "value": "dbo"
           }
         ]
       },
@@ -17867,6 +17792,81 @@
         ]
       },
       {
+        "name": "Sammenslåtte Regioner",
+        "columns": [
+          {
+            "name": "Kode",
+            "dataType": "string",
+            "sourceColumn": "Kode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Navn",
+            "dataType": "string",
+            "sourceColumn": "Navn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "KodeNummernavn",
+            "dataType": "string",
+            "sourceColumn": "KodeNummernavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Kategori",
+            "dataType": "string",
+            "sourceColumn": "Kategori",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GyldigFraDato",
+            "dataType": "dateTime",
+            "sourceColumn": "GyldigFraDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "GyldigTilDato",
+            "dataType": "dateTime",
+            "sourceColumn": "GyldigTilDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "SammenslåingsDato",
+            "dataType": "dateTime",
+            "sourceColumn": "SammenslåingsDato",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Sammenslåtte Regioner",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Sammenslåtte Regioner].* FROM [dbo].[Sammenslåtte Regioner] ",
+              "dataSource": "VK-SXD0E-002;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Sammenslåtte Regioner].* FROM [dbo].[Sammenslåtte Regioner] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Sammenslåtte Regioner"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
         "name": "Eksisterendenye bygg",
         "columns": [
           {
@@ -19371,20 +19371,6 @@
         "toColumn": "Tabellnummer"
       },
       {
-        "name": "e93c2126-b5fc-4246-b517-1d3e8d5fd7cc",
-        "fromTable": "Alle Data",
-        "fromColumn": "Variabel",
-        "toTable": "Variabel",
-        "toColumn": "Variabel"
-      },
-      {
-        "name": "7d2da773-d756-403e-b569-1ad00b2f5e9f",
-        "fromTable": "Alle Data",
-        "fromColumn": "År",
-        "toTable": "År",
-        "toColumn": "År"
-      },
-      {
         "name": "664363a3-aadb-4475-b62b-318ab1c5d07f",
         "fromTable": "Alle Data",
         "fromColumn": "Kode",
@@ -19558,6 +19544,20 @@
         "fromColumn": "Søknadstypekode",
         "toTable": "Søknadstype",
         "toColumn": "Søknadstypekode"
+      },
+      {
+        "name": "e93c2126-b5fc-4246-b517-1d3e8d5fd7cc",
+        "fromTable": "Alle Data",
+        "fromColumn": "Variabel",
+        "toTable": "Variabel",
+        "toColumn": "Variabel"
+      },
+      {
+        "name": "7d2da773-d756-403e-b569-1ad00b2f5e9f",
+        "fromTable": "Alle Data",
+        "fromColumn": "År",
+        "toTable": "År",
+        "toColumn": "År"
       },
       {
         "name": "565ea40f-5de4-4f49-ade8-e6f70f437e95",
