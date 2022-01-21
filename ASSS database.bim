@@ -6576,28 +6576,53 @@
             ]
           },
           {
-            "name": "BNV Andel barn med barneverntiltak i forhold til innbyggere 0-24 år (prosent)",
+            "name": "TODO BNV Andel barn med barneverntiltak i forhold til innbyggere 0-24 år (prosent)",
+            "expression": [
+              "",
+              "",
+              "/* Valg mellom i løpet av året eller per 31.12 */",
+              "var barn_mtiltak =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-22 år\"),",
+              "    FILTER(ALL(Funksjon[Funksjonnavn]), [Funksjonnavn] = \"Tiltak i alt\")",
+              ")",
+              "",
+              "var pers_024 =",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]= \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] IN {",
+              "        \"0-17 år\",",
+              "        \"18-24 år\"",
+              "    })",
+              ")",
+              "",
+              "return (",
+              "    ROUND(    ",
+              "        DIVIDE(barn_mtiltak, pers_024) * 100,",
+              "        1",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "TODO BNV Andel barn som er plassert i løpet av året i prosent av antall innbyggere 0-24 år",
             "expression": [
               "",
               "1"
             ]
           },
           {
-            "name": "BNV Andel barn som er plassert i løpet av året i prosent av antall innbyggere 0-24 år",
+            "name": "TODO BNV Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak (0-24 år)",
             "expression": [
               "",
               "1"
             ]
           },
           {
-            "name": "BNV Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak (0-24 år)",
-            "expression": [
-              "",
-              "1"
-            ]
-          },
-          {
-            "name": "BNV Andel barn med tiltak 0-5 år av antall innbyggere 0-5 år",
+            "name": "TODO BNV Andel barn med tiltak 0-5 år av antall innbyggere 0-5 år",
             "expression": [
               "",
               "1"
