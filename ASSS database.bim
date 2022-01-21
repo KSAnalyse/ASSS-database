@@ -6534,18 +6534,74 @@
               "ISBLANK(aar1) || ISBLANK(aar2) || ISBLANK(aar3) || ISBLANK(aar4) ||",
               "ISBLANK(aar1bef1) || ISBLANK(aar2bef2) || ISBLANK(aar3bef3) || ISBLANK(aar4bef4)",
               "",
-              "return (  ",
-              "    IF(har_blanke_verdier,",
-              "        BLANK(),",
-              "        ROUND(",
-              "            /* snitt verdien av alle 4 årene */",
-              "            DIVIDE(aar1bef1 + aar2bef2 + aar3bef3 + aar4bef4, 4) * 1000 ,",
+              "return (",
+              "    ROUND(",
+              "        /* snitt verdien av alle 4 årene */",
+              "        DIVIDE(aar1bef1 + aar2bef2 + aar3bef3 + aar4bef4, 4) * 1000,",
               "            0",
-              "        )",
               "    )",
               ")"
             ],
             "displayFolder": "Eiendomsforvaltning"
+          },
+          {
+            "name": "BNV Netto driftsutgifter barnevernstjenester per innbygger 0-24 år (kroner)",
+            "expression": [
+              "",
+              "",
+              "var ndrbv = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
+              "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGD2\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] IN {\"244\", \"251\", \"252\"}),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var barn = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]= \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] IN {",
+              "        \"0-17 år\",",
+              "        \"18-24 år\"",
+              "    })",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE((ndrbv*1000), barn),",
+              "        1",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "BNV Andel barn med barneverntiltak i forhold til innbyggere 0-24 år (prosent)",
+            "expression": [
+              "",
+              "1"
+            ]
+          },
+          {
+            "name": "BNV Andel barn som er plassert i løpet av året i prosent av antall innbyggere 0-24 år",
+            "expression": [
+              "",
+              "1"
+            ]
+          },
+          {
+            "name": "BNV Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak (0-24 år)",
+            "expression": [
+              "",
+              "1"
+            ]
+          },
+          {
+            "name": "BNV Andel barn med tiltak 0-5 år av antall innbyggere 0-5 år",
+            "expression": [
+              "",
+              "1"
+            ]
           }
         ],
         "annotations": [
