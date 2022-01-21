@@ -6611,7 +6611,26 @@
             "name": "TODO BNV Andel barn som er plassert i løpet av året i prosent av antall innbyggere 0-24 år",
             "expression": [
               "",
-              "1"
+              "",
+              "var barn_024 = ",
+              "CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] IN {",
+              "        \"0-17 år\",",
+              "        \"18-24 år\"",
+              "    })",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(",
+              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)], ",
+              "            barn_024",
+              "        ) * 100,",
+              "        2",
+              "    )",
+              ")"
             ]
           },
           {
@@ -6625,7 +6644,29 @@
             "name": "TODO BNV Andel barn med tiltak 0-5 år av antall innbyggere 0-5 år",
             "expression": [
               "",
-              "1"
+              "",
+              "var tiltak_05 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),   ",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BNV02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Tiltak i alt\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \" 0 - 5 år\")",
+              ")",
+              "",
+              "var barn_05 = ",
+              "CALCULATE(sum('Alle Data'[Verdi]),",
+              "    FILTER(ALL('Alle Data'[Tabell]), [Tabell] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] IN {",
+              "        \"0-5 år\"",
+              "    })",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(tiltak_05, barn_05) * 100,",
+              "        1",
+              "    )",
+              ")"
             ]
           }
         ],
