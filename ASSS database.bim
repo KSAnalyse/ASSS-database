@@ -6637,7 +6637,26 @@
             "name": "TODO BNV Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak (0-24 år)",
             "expression": [
               "",
-              "1"
+              "",
+              "var tiltak022 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Barn med barnevernstiltak i løpet av året  (antall)\"",
+              "    ),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-22 år\"),",
+              "    FILTER(ALL(Funksjon[Funksjonnavn]), [Funksjonnavn] = \"Tiltak i alt\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(",
+              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)],",
+              "            tiltak022",
+              "        ) * 100,",
+              "        1",
+              "    )",
+              ")"
             ]
           },
           {
