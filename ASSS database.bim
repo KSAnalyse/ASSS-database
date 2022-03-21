@@ -6577,7 +6577,7 @@
             "displayFolder": "Barnevern"
           },
           {
-            "name": "TODO BNV Andel barn med barneverntiltak i forhold til innbyggere 0-24 år (prosent)",
+            "name": "BNV Andel barn med barneverntiltak i forhold til innbyggere 0-24 år (prosent)",
             "expression": [
               "",
               "",
@@ -6586,7 +6586,7 @@
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall)\"),",
-              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-22 år\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-24 år\"),",
               "    FILTER(ALL(Funksjon[Funksjonnavn]), [Funksjonnavn] = \"Tiltak i alt\")",
               ")",
               "",
