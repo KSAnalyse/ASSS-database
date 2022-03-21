@@ -6573,7 +6573,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "TODO BNV Andel barn med barneverntiltak i forhold til innbyggere 0-24 år (prosent)",
@@ -6608,7 +6609,7 @@
             ]
           },
           {
-            "name": "TODO BNV Andel barn som er plassert i løpet av året i prosent av antall innbyggere 0-24 år",
+            "name": "BNV Andel barn som er plassert i løpet av året i prosent av antall innbyggere 0-24 år",
             "expression": [
               "",
               "",
@@ -6625,13 +6626,14 @@
               "return (",
               "    ROUND(",
               "        DIVIDE(",
-              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)], ",
+              "            [BNV Barn med barnevernstiltak i løpet av året 0-24 år som er plassert f252 (antall)], ",
               "            barn_024",
               "        ) * 100,",
               "        2",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak (0-24 år)",
@@ -6687,7 +6689,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "BNV Barn med barnevernstiltak i løpet av året 0-24 år som ikke er plassert f251 (antall)",
@@ -6702,7 +6705,26 @@
               "        \"251 - Barnevernstiltak når barnet ikke er plassert av barnevernet\"",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
+          },
+          {
+            "name": "BNV Barn med barnevernstiltak i løpet av året 0-24 år som er plassert f252 (antall)",
+            "expression": [
+              "",
+              "",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Barn med barnevernstiltak i løpet av året  (antall)\"",
+              "    ),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-24 år\"),",
+              "    FILTER(ALL(Funksjon[Funksjonnavn]), [Funksjonnavn] = ",
+              "        \"252 - Barnevernstiltak når barnet er plassert av barnevernet\"",
+              "    )",
+              ")"
+            ],
+            "displayFolder": "Barnevern"
           }
         ],
         "annotations": [
