@@ -1460,8 +1460,6 @@
             "expression": [
               "",
               "",
-              "var valgte_aar = SELECTEDVALUE('År'[År])",
-              "",
               "var tiltak = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
