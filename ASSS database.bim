@@ -6687,7 +6687,7 @@
             "displayFolder": "Barnevern"
           },
           {
-            "name": "BNV Andel barn som ikke er plassert i løpet av året i p av alle i tiltak 0-24 år (0-22 år tom. 2020)",
+            "name": "BNV Andel barn som ikke er plassert i løpet av året i prosent av alle i tiltak 0-24 år",
             "expression": [
               "",
               "",
@@ -6790,13 +6790,6 @@
               ")"
             ],
             "displayFolder": "Barnevern"
-          },
-          {
-            "name": "BNV % test",
-            "expression": [
-              "",
-              "1"
-            ]
           },
           {
             "name": "BNV Brutto driftsutgifter per barn (f244) med undersøkelse eller tiltak (kroner)",
