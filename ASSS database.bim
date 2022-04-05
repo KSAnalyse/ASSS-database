@@ -1558,20 +1558,6 @@
             "displayFolder": "Barnevern"
           },
           {
-            "name": "BNV Brutto driftsutgifter per barn (f244) med undersøkelse eller tiltak (kroner)*",
-            "expression": [
-              "",
-              "",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12279\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Brutto driftsutgifter (funksjon 244) per barn med undersøking eller tiltak (kr)\"",
-              "    )",
-              ")"
-            ],
-            "displayFolder": "Barnevern"
-          },
-          {
             "name": "BNV Andel undersøkelser gjennomført i løpet av 3 måneder (prosent)",
             "expression": [
               "",
@@ -6817,7 +6803,7 @@
               ")",
               "",
               "var formel =",
-              "DIVIDE(brutto244, tiltak)",
+              "DIVIDE(brutto244 * 1000, tiltak)",
               "",
               "return (",
               "    ROUND(",
