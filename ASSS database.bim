@@ -4160,7 +4160,7 @@
             "displayFolder": "Eiendomsforvaltning"
           },
           {
-            "name": "EIE Samlet energibruk i kommunal eiendomsforvaltning kWh/m2*",
+            "name": "EIE Samlet energibruk i kommunal eiendomsforvaltning kWh/m2",
             "expression": [
               "",
               "",
