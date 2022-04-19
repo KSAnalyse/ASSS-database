@@ -1613,6 +1613,8 @@
             "expression": [
               "",
               "",
+              "var valgte_aar = SELECTEDVALUE('År'[År])",
+              "",
               "var brbv = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),   ",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
@@ -1621,12 +1623,21 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
               ")",
               "",
+              "var formel022 =",
+              "DIVIDE(",
+              "    brbv * 1000,",
+              "    [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)]",
+              ")",
+              "",
+              "var formel024 =",
+              "DIVIDE(",
+              "    brbv * 1000,",
+              "    [BNV Barn med barnevernstiltak i løpet av året 0-24 år som er plassert f252 (antall)]",
+              ")",
+              "",
               "return (",
               "    ROUND(",
-              "        DIVIDE(",
-              "            brbv * 1000,",
-              "            [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)]",
-              "        ),",
+              "        IF(valgte_aar < 2021, formel022, formel024),",
               "        1",
               "    )",
               ")"
@@ -6714,7 +6725,7 @@
             "displayFolder": "Barnevern"
           },
           {
-            "name": "BNV Andel barn med tiltak 0-5 år av antall innbyggere 0-5 år",
+            "name": "BNV Andel barn med tiltak 0-5 år av antall innbyggere 0-5 år (prosent)",
             "expression": [
               "",
               "",
