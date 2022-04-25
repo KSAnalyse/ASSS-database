@@ -4596,28 +4596,6 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "BHG Barn ekskl. minoritetsspråklige med ekstra ressurser av alle barn i kom. barnehager (prosent)*",
-            "expression": [
-              "",
-              "",
-              "var resultat =",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12562\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Andel barn, eksklusive minoritetsspråklige, som får ekstra ressurser, i forhold til alle barn i kommunale barnehager (prosent)\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(",
-              "        resultat,",
-              "        1",
-              "    )",
-              ")"
-            ],
-            "displayFolder": "Barnehage"
-          },
-          {
             "name": "BHG Korrigerte brutto driftsutgifter f201 per korrigert oppholdstime i kommunale barnehage (kroner)",
             "expression": [
               "",
@@ -4783,29 +4761,6 @@
               "    )",
               ")",
               "",
-              ""
-            ],
-            "displayFolder": "Barnehage"
-          },
-          {
-            "name": "BHG Barnehagelærere i forhold til grunnbemanning (prosent)",
-            "expression": [
-              " ",
-              "",
-              "var resultat =",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13502\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Andel barnehagelærere i forhold til grunnbemanning (prosent)\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(",
-              "        resultat,",
-              "        1",
-              "    )",
-              ")",
               ""
             ],
             "displayFolder": "Barnehage"
