@@ -1186,7 +1186,7 @@
             "displayFolder": "Samferdsel"
           },
           {
-            "name": "SFS Sykefravær samferdsel (PAI) (prosent)*",
+            "name": "SFS Sykefravær samferdsel (prosent)",
             "expression": [
               "",
               "",
@@ -1602,7 +1602,7 @@
             "displayFolder": "Barnevern"
           },
           {
-            "name": "BNV Sykefravær barnevern (prosent)*",
+            "name": "BNV Sykefravær barnevern (prosent)",
             "expression": [
               "",
               "",
@@ -2491,7 +2491,7 @@
             "displayFolder": "Pleie og omsorg"
           },
           {
-            "name": "PLO Sykefravær pleie og omsorg (prosent)*",
+            "name": "PLO Sykefravær pleie og omsorg (prosent)",
             "expression": [
               "",
               "",
@@ -2947,7 +2947,7 @@
             "displayFolder": "Kommunehelse"
           },
           {
-            "name": "KHT Sykefravær kommunehelse (prosent)*",
+            "name": "KHT Sykefravær kommunehelse (prosent)",
             "expression": [
               "",
               "",
@@ -3855,7 +3855,7 @@
             "displayFolder": "Eiendomsforvaltning"
           },
           {
-            "name": "EIE Sykefravær eiendomsforvaltning (prosent)*",
+            "name": "EIE Sykefravær eiendomsforvaltning (prosent)",
             "expression": [
               "",
               "",
@@ -4198,7 +4198,7 @@
             "displayFolder": "Sosiale tjenester"
           },
           {
-            "name": "SOS Sykefravær sosiale tjenester (prosent)*",
+            "name": "SOS Sykefravær sosiale tjenester (prosent)",
             "expression": [
               "",
               "",
@@ -4786,7 +4786,7 @@
             "displayFolder": "Barnehage"
           },
           {
-            "name": "BHG Sykefravær barnehager (prosent)*",
+            "name": "BHG Sykefravær barnehager (prosent)",
             "expression": [
               "",
               "",
@@ -5192,7 +5192,7 @@
             "displayFolder": "Grunnskole"
           },
           {
-            "name": "GRS Sykefravær grunnskole (prosent)*",
+            "name": "GRS Sykefravær grunnskole (prosent)",
             "expression": [
               "",
               "",
