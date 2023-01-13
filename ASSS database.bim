@@ -6530,7 +6530,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Barnevern"
           },
           {
             "name": "KHT Målt produksjon helsestasjon 2022-vektinger",
@@ -6611,7 +6612,8 @@
               "        )",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           }
         ],
         "annotations": [
