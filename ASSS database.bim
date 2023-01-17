@@ -18590,6 +18590,20 @@
         "fromColumn": "Konklusjon på undersøking avsluttakode",
         "toTable": "Konklusjon på undersøking avslutta",
         "toColumn": "Konklusjon på undersøking avsluttakode"
+      },
+      {
+        "name": "1e767feb-9db1-47ed-926b-7dc07395ec97",
+        "fromTable": "Alle Data",
+        "fromColumn": " omsorgs-/hjelpetiltakkode",
+        "toTable": "Omsorgs-hjelpetiltak",
+        "toColumn": " omsorgs-/hjelpetiltakkode"
+      },
+      {
+        "name": "b1a05385-9d64-48ea-b3b6-14c1e4211038",
+        "fromTable": "Alle Data",
+        "fromColumn": "Stillingkode",
+        "toTable": "Stilling",
+        "toColumn": "Stillingkode"
       }
     ],
     "roles": [
