@@ -620,6 +620,11 @@
             "name": "Grunnskole",
             "dataType": "int64",
             "sourceColumn": "Grunnskole"
+          },
+          {
+            "name": "VAR",
+            "dataType": "int64",
+            "sourceColumn": "VAR"
           }
         ],
         "partitions": [
@@ -732,6 +737,14 @@
                   "        <int>119</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>VAR</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>88</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -822,6 +835,14 @@
                   "        <int>10</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>VAR</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>11</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -884,6 +905,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Grunnskole</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>VAR</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -6614,6 +6643,33 @@
               ")"
             ],
             "displayFolder": "Kommunehelse"
+          },
+          {
+            "name": "VAR Gebyrgrunnlag per innbygger (vann)",
+            "expression": [
+              "",
+              "",
+              "var gebyr = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13056\"),",
+              "    FILTER(ALL('Tjenesteområde'[Tjenesteområdenavn]), [Tjenesteområdenavn] = \"Vann\"),",
+              "    FILTER(ALL('Post'[Postnavn]), [Postnavn] = \"Gebyrgrunnlag\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var innb = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11820\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Innbyggere (antall)\")",
+              ")",
+              "",
+              "var formel =",
+              "DIVIDE(gebyr, innb) * 1000",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
           }
         ],
         "annotations": [
@@ -6729,6 +6785,14 @@
               "        <int>119</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>VAR</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>88</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -6819,6 +6883,14 @@
               "        <int>10</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>VAR</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>11</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -6881,6 +6953,14 @@
               "    <item>",
               "      <key>",
               "        <string>Grunnskole</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>VAR</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -8640,6 +8720,11 @@
             "name": "Stillingkode",
             "dataType": "string",
             "sourceColumn": "Stillingkode"
+          },
+          {
+            "name": "Postkode",
+            "dataType": "string",
+            "sourceColumn": "Postkode"
           }
         ],
         "partitions": [
@@ -8928,6 +9013,14 @@
                   "        <int>83</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Postkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>136</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnWidths>",
                   "  <ColumnDisplayIndex>",
                   "    <item>",
@@ -9194,6 +9287,14 @@
                   "        <int>32</int>",
                   "      </value>",
                   "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Postkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>33</int>",
+                  "      </value>",
+                  "    </item>",
                   "  </ColumnDisplayIndex>",
                   "  <ColumnFrozen />",
                   "  <ColumnChecked>",
@@ -9424,6 +9525,14 @@
                   "    <item>",
                   "      <key>",
                   "        <string>Stillingkode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Postkode</string>",
                   "      </key>",
                   "      <value>",
                   "        <boolean>true</boolean>",
@@ -9735,6 +9844,14 @@
               "        <int>83</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Postkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>136</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnWidths>",
               "  <ColumnDisplayIndex>",
               "    <item>",
@@ -10001,6 +10118,14 @@
               "        <int>32</int>",
               "      </value>",
               "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Postkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>33</int>",
+              "      </value>",
+              "    </item>",
               "  </ColumnDisplayIndex>",
               "  <ColumnFrozen />",
               "  <ColumnChecked>",
@@ -10231,6 +10356,14 @@
               "    <item>",
               "      <key>",
               "        <string>Stillingkode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Postkode</string>",
               "      </key>",
               "      <value>",
               "        <boolean>true</boolean>",
@@ -18378,6 +18511,66 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Post",
+        "columns": [
+          {
+            "name": "Postkode",
+            "dataType": "string",
+            "sourceColumn": "Postkode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Postnavn",
+            "dataType": "string",
+            "sourceColumn": "Postnavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "PostkodeNavn",
+            "dataType": "string",
+            "sourceColumn": "PostkodeNavn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Original dimensjonskode",
+            "dataType": "string",
+            "sourceColumn": "Original dimensjonskode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Tabellkode",
+            "dataType": "string",
+            "sourceColumn": "Tabellkode",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Post",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Post].* FROM [dbo].[Post] ",
+              "dataSource": "VK-SXD0E-002;Reporting_ASSS"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Post].* FROM [dbo].[Post] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Post"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -18604,6 +18797,13 @@
         "fromColumn": "Stillingkode",
         "toTable": "Stilling",
         "toColumn": "Stillingkode"
+      },
+      {
+        "name": "523d7fcd-9571-4ced-b1aa-c4b1fc43b889",
+        "fromTable": "Alle Data",
+        "fromColumn": "Postkode",
+        "toTable": "Post",
+        "toColumn": "Postkode"
       }
     ],
     "roles": [
