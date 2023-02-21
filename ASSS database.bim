@@ -6688,7 +6688,7 @@
               ")",
               "",
               "return (",
-              "    gebyr",
+              "    ROUND(gebyr, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -6745,7 +6745,7 @@
               ")",
               "",
               "return (",
-              "    kvalitetsindeks",
+              "    ROUND(kvalitetsindeks, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -6764,7 +6764,7 @@
               ")",
               "",
               "return (",
-              "    kvalitetsindeks",
+              "    ROUND(kvalitetsindeks, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -6784,7 +6784,7 @@
               ")",
               "",
               "return (",
-              "    kvalitetsindeks",
+              "    ROUND(kvalitetsindeks, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -6804,7 +6804,7 @@
               ")",
               "",
               "return (",
-              "    kvalitetsindeks",
+              "    ROUND(kvalitetsindeks, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -7016,7 +7016,7 @@
               ")",
               "",
               "return (",
-              "    gebyr",
+              "    ROUND(gebyr, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7035,7 +7035,7 @@
               ")",
               "",
               "return (",
-              "    gebyr",
+              "    ROUND(gebyr, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Renovasjon"
