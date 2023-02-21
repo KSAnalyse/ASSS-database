@@ -6849,7 +6849,7 @@
               ")",
               "",
               "return (",
-              "    kvalitetsindeks",
+              "    ROUND(kvalitetsindeks, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -6868,7 +6868,7 @@
               ")",
               "",
               "return (",
-              "    kvalitetsindeks",
+              "    ROUND(kvalitetsindeks, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -6887,7 +6887,7 @@
               ")",
               "",
               "return (",
-              "    kvalitetsindeks",
+              "    ROUND(kvalitetsindeks, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -6906,7 +6906,7 @@
               ")",
               "",
               "return (",
-              "    kvalitetsindeks",
+              "    ROUND(kvalitetsindeks, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -6926,10 +6926,29 @@
               ")",
               "",
               "return (",
-              "    kvalitetsindeks",
+              "    ROUND(kvalitetsindeks, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
+          },
+          {
+            "name": "VAR Vektet kvalitetsindeks (KI) (avløp)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
+              "    FILTER(ALL('Tjenesteområde'[Tjenesteområdenavn]), [Tjenesteområdenavn] = \"Avløp\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Vektet kvalitetsindeks (KI)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(kvalitetsindeks, 2)",
+              ")"
+            ]
           }
         ],
         "annotations": [
