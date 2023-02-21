@@ -6910,6 +6910,26 @@
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
+          },
+          {
+            "name": "VAR Ledningsnettets funksjon (kvalitetsindeks) (avløp)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
+              "    FILTER(ALL('Tjenesteområde'[Tjenesteområdenavn]), [Tjenesteområdenavn] = \"Avløp\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Ledningsnettets funksjon\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ],
+            "displayFolder": "VAR\\Avløp"
           }
         ],
         "annotations": [
