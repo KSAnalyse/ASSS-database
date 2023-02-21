@@ -6728,6 +6728,44 @@
               ")"
             ],
             "displayFolder": "VAR\\Vann"
+          },
+          {
+            "name": "VAR Leveringsstabilitet (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Leveringsstabilitet\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ],
+            "displayFolder": "VAR\\Vann"
+          },
+          {
+            "name": "VAR Alternativ forsyning (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Alternativ forsyning\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ],
+            "displayFolder": "VAR\\Vann"
           }
         ],
         "annotations": [
