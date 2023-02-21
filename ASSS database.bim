@@ -6689,7 +6689,7 @@
               "    gebyr",
               ")"
             ],
-            "displayFolder": "VAR\\Vann"
+            "displayFolder": "VAR"
           },
           {
             "name": "VAR Hygienisk betryggende drikkevann (kvalitetsindeks)",
@@ -6834,6 +6834,61 @@
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
+          },
+          {
+            "name": "VAR Overholdelse gjeldende rensekrav (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Overholdelse gjeldende rensekrav\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ],
+            "displayFolder": "VAR\\Avløp"
+          },
+          {
+            "name": "VAR Tilknytning til godkjent utslipp (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Tilknytning til godkjent utslipp\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Kvalitet og bruk av slam (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Kvalitet og bruk av slam\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ]
           }
         ],
         "annotations": [
