@@ -6997,6 +6997,25 @@
               ")"
             ],
             "displayFolder": "VAR\\Renovasjon"
+          },
+          {
+            "name": "VAR Årsgebyr ekskl. mva for standard bolig på 120 m² (kroner) (avløp)",
+            "expression": [
+              "",
+              "",
+              "var gebyr = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12842\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Årsgebyr for avløpstjenesten - ekskl. mva. (kr)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    gebyr",
+              ")"
+            ],
+            "displayFolder": "VAR\\Avløp"
           }
         ],
         "annotations": [
