@@ -6709,6 +6709,25 @@
               ")"
             ],
             "displayFolder": "VAR\\Vann"
+          },
+          {
+            "name": "VAR Bruksmessig vannkvalitet (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Bruksmessig vannkvalitet\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ],
+            "displayFolder": "VAR\\Vann"
           }
         ],
         "annotations": [
