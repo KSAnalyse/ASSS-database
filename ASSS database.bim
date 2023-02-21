@@ -6768,7 +6768,7 @@
             "displayFolder": "VAR\\Vann"
           },
           {
-            "name": "VAR Ledningsnettets funksjon (kvalitetsindeks)",
+            "name": "VAR Ledningsnettets funksjon (kvalitetsindeks) (vann)",
             "expression": [
               "",
               "",
@@ -6786,6 +6786,54 @@
               ")"
             ],
             "displayFolder": "VAR\\Vann"
+          },
+          {
+            "name": "VAR Vektet kvalitetsindeks (KI) (vann)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL('Tjenesteområde'[Tjenesteområdenavn]), [Tjenesteområdenavn] = \"Vann\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Vektet kvalitetsindeks (KI)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ],
+            "displayFolder": "VAR\\Vann"
+          },
+          {
+            "name": "VAR Gebyrgrunnlag per innbygger (avløp)",
+            "expression": [
+              "",
+              "",
+              "var gebyr = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13056\"),",
+              "    FILTER(ALL('Tjenesteområde'[Tjenesteområdenavn]), [Tjenesteområdenavn] = \"Avløp\"),",
+              "    FILTER(ALL('Post'[Postnavn]), [Postnavn] = \"Gebyrgrunnlag\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
+              ")",
+              "",
+              "var innb = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11820\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Innbyggere (antall)\")",
+              ")",
+              "",
+              "var formel =",
+              "DIVIDE(gebyr, innb) * 1000",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ],
+            "displayFolder": "VAR\\Avløp"
           }
         ],
         "annotations": [
