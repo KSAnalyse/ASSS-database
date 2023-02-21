@@ -6870,7 +6870,8 @@
               "return (",
               "    kvalitetsindeks",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Avløp"
           },
           {
             "name": "VAR Kvalitet og bruk av slam (kvalitetsindeks)",
@@ -6888,7 +6889,27 @@
               "return (",
               "    kvalitetsindeks",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Avløp"
+          },
+          {
+            "name": "VAR Overløpsutslipp fra avløpsnettet (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Overløpsutslipp fra avløpsnettet\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ],
+            "displayFolder": "VAR\\Avløp"
           }
         ],
         "annotations": [
