@@ -6978,6 +6978,25 @@
               ")"
             ],
             "displayFolder": "VAR\\Renovasjon"
+          },
+          {
+            "name": "VAR Mengde husholdningsavfall (kg per innbygger)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12263\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Husholdningsavfall per årsinnbygger (kg)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(kvalitetsindeks, 2)",
+              ")"
+            ],
+            "displayFolder": "VAR\\Renovasjon"
           }
         ],
         "annotations": [
