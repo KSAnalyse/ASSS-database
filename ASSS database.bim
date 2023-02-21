@@ -6669,7 +6669,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Vann"
           },
           {
             "name": "VAR Årsgebyr ekskl. mva  for standard bolig på 120 m² (kroner) (vann)",
@@ -6687,7 +6688,27 @@
               "return (",
               "    gebyr",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Vann"
+          },
+          {
+            "name": "VAR Hygienisk betryggende drikkevann (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Hygienisk betryggende drikkevann\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    kvalitetsindeks",
+              ")"
+            ],
+            "displayFolder": "VAR\\Vann"
           }
         ],
         "annotations": [
