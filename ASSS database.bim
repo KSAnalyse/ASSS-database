@@ -6673,7 +6673,7 @@
             "displayFolder": "VAR\\Vann"
           },
           {
-            "name": "VAR Årsgebyr ekskl. mva  for standard bolig på 120 m² (kroner)",
+            "name": "VAR Årsgebyr ekskl. mva for standard bolig på 120 m² (kroner) (vann)",
             "expression": [
               "",
               "",
@@ -6689,7 +6689,7 @@
               "    gebyr",
               ")"
             ],
-            "displayFolder": "VAR"
+            "displayFolder": "VAR\\Vann"
           },
           {
             "name": "VAR Hygienisk betryggende drikkevann (kvalitetsindeks)",
