@@ -7035,6 +7035,25 @@
               ")"
             ],
             "displayFolder": "VAR\\Renovasjon"
+          },
+          {
+            "name": "VAR Andel levert til materialgjenvinning (prosent av total avfallsmengde)",
+            "expression": [
+              "",
+              "",
+              "var kvalitetsindeks = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12263\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Andel levert til materialgjenvinning inkl. biologisk behandling (prosent)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(kvalitetsindeks, 2)",
+              ")"
+            ],
+            "displayFolder": "VAR\\Renovasjon"
           }
         ],
         "annotations": [
