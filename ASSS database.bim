@@ -2624,7 +2624,7 @@
             "displayFolder": "Pleie og omsorg"
           },
           {
-            "name": "PLO Utgifter bolig med fast personell hele døgnet (inkl. private/ideelle) per beboer (TTU) (kroner)*",
+            "name": "PLO Utgifter til bolig med heldøgnstjenester (inkl. private/andre) per beboer (TTU) (kroner)*",
             "expression": [
               "",
               "",
@@ -7165,6 +7165,24 @@
               ")"
             ],
             "displayFolder": "Kommunehelse"
+          },
+          {
+            "name": "PLO Andel utviklingshemmede av befolkningen 18 år og eldre (TTU) (prosent)*",
+            "expression": [
+              "",
+              "",
+              "var utv16 = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"TTU01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Andel utviklingshemmede av befolkningen 18 år og eldre (TTU) (prosent)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(utv16, 1)",
+              ")"
+            ]
           }
         ],
         "annotations": [
