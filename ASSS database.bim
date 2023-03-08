@@ -7134,7 +7134,8 @@
               "        \"2 konsultasjon Alle aldre Antall pasienter per 1 000 innbyggere\"",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           },
           {
             "name": "KHT Andel hjemmebesøk utført av helsesykepleier 7-10 dager etter fødselen (prosent)",
@@ -7162,7 +7163,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Kommunehelse"
           }
         ],
         "annotations": [
