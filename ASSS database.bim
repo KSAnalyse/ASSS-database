@@ -7122,6 +7122,47 @@
               ""
             ],
             "displayFolder": "Kommunehelse"
+          },
+          {
+            "name": "KHT Konsultasjon hos fastlegen per 1 000 innbyggere i kommunen",
+            "expression": [
+              "",
+              "",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"KPR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"2 konsultasjon Alle aldre Antall pasienter per 1 000 innbyggere\"",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "KHT Andel hjemmebesøk utført av helsesykepleier 7-10 dager etter fødselen (prosent)",
+            "expression": [
+              "",
+              "",
+              "var fodte = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11993\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn (antall)\"),",
+              "    FILTER(ALL(Helsekontroller[Helsekontrollernavn]), [Helsekontrollernavn] = ",
+              "        \"Hjemmebesøk av helsesykepleier til nyfødte\"",
+              "    )",
+              ")",
+              "",
+              "var barn = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11820\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Fødte i løpet av året (antall)\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(fodte, barn) * 100 ,",
+              "        1",
+              "    )",
+              ")"
+            ]
           }
         ],
         "annotations": [
