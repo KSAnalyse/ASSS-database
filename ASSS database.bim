@@ -7058,6 +7058,37 @@
               ")"
             ],
             "displayFolder": "VAR\\Renovasjon"
+          },
+          {
+            "name": "KHT Årsverk kommunale ergoterapeuter per 10 000 innbyggere",
+            "expression": [
+              "",
+              "",
+              "/* totalt årsverk */",
+              "var aarsverk = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"KHT01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Årsverk ergoteraputer i alt\"",
+              "    )",
+              ")",
+              "",
+              "/* totale befolkning */",
+              "var bef = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"), ",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(aarsverk, bef) * 10000 , ",
+              "        1 ",
+              "    )",
+              ")",
+              ""
+            ]
           }
         ],
         "annotations": [
