@@ -2647,13 +2647,10 @@
               ")",
               "",
               "return (",
-              "    b",
-              "    /*",
               "    ROUND(",
               "        IF(valgte_aar < 2022,a, b), ",
               "        1",
               "    )",
-              "    */",
               ")"
             ],
             "displayFolder": "Pleie og omsorg"
