@@ -7208,7 +7208,8 @@
               "return (",
               "    ROUND(utv16, 1)",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           }
         ],
         "annotations": [
