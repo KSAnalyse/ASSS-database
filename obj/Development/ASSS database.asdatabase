@@ -3249,7 +3249,7 @@
             "displayFolder": "Kommunehelse"
           },
           {
-            "name": "KHT Årsverk skolehelse per innbygger 16-20 år VGS",
+            "name": "KHT Årsverk totalt skolehelsetjeneste pr. 1000 innbygger 16-20 år VGS",
             "expression": [
               "",
               "",
@@ -3276,7 +3276,7 @@
               "",
               "return (",
               "    ROUND(",
-              "        DIVIDE(aarsverk, elev),",
+              "        DIVIDE(aarsverk, elev) * 1000,",
               "        5",
               "    )",
               ")",
@@ -7209,7 +7209,8 @@
               "return (",
               "    ROUND(utv16, 1)",
               ")"
-            ]
+            ],
+            "displayFolder": "Pleie og omsorg"
           }
         ],
         "annotations": [
