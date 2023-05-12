@@ -6770,63 +6770,6 @@
             "displayFolder": "VAR\\Avløp"
           },
           {
-            "name": "VAR Overholdelse gjeldende rensekrav (kvalitetsindeks)",
-            "expression": [
-              "",
-              "",
-              "var kvalitetsindeks = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Overholdelse gjeldende rensekrav\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(kvalitetsindeks, 2)",
-              ")"
-            ],
-            "displayFolder": "VAR\\Avløp"
-          },
-          {
-            "name": "VAR Tilknytning til godkjent utslipp (kvalitetsindeks)",
-            "expression": [
-              "",
-              "",
-              "var kvalitetsindeks = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Tilknytning til godkjent utslipp\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(kvalitetsindeks, 2)",
-              ")"
-            ],
-            "displayFolder": "VAR\\Avløp"
-          },
-          {
-            "name": "VAR Kvalitet og bruk av slam (kvalitetsindeks)",
-            "expression": [
-              "",
-              "",
-              "var kvalitetsindeks = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Kvalitet og bruk av slam\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(kvalitetsindeks, 2)",
-              ")"
-            ],
-            "displayFolder": "VAR\\Avløp"
-          },
-          {
             "name": "VAR Overløpsutslipp fra avløpsnettet (kvalitetsindeks)",
             "expression": [
               "",
@@ -6886,7 +6829,7 @@
             "displayFolder": "VAR\\Avløp"
           },
           {
-            "name": "VAR Gebyrgrunnlag per innbygger (renovasjon)",
+            "name": "VAR Gebyrgrunnlag per årsinnbygger (renovasjon)",
             "expression": [
               "",
               "",
@@ -7134,7 +7077,7 @@
             ]
           },
           {
-            "name": "VAR Estimert vannlekkasje per meter kommunal ledning per år (m3/m/år) (m3)",
+            "name": "VAR Vannlekkasjeprosent",
             "expression": [
               "",
               "",
@@ -7192,6 +7135,150 @@
               "",
               "var formel = ",
               "DIVIDE(stopper, DIVIDE(ledning, 1000))",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Hygienisk betryggende drikkevann (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Hygienisk betryggende drikkevann\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Bruksmessig vannkvalitet (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Bruksmessig vannkvalitet\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Leveringsstabilitet (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Leveringsstabilitet\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Alternativ forsyning (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Alternativ forsyning\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Ledningsnettets funksjon (kvalitetsindeks) (vann)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Ledningsnettets funksjon\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Overholdelse gjeldende rensekrav (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Overholdelse gjeldende rensekrav\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Kvalitet og bruk av slam (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Kvalitet og bruk av slam\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Tilknytning til godkjent utslipp (kvalitetsindeks)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Tilknytning til godkjent utslipp\"",
+              "    )",
+              ")",
               "",
               "return (",
               "    ROUND(formel, 2)",
