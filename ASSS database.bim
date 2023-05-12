@@ -6937,7 +6937,7 @@
             "expression": [
               "",
               "",
-              "var gebyr = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12842\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -6946,7 +6946,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(gebyr, 2)",
+              "    ROUND(formel, 2)",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7156,7 +7156,7 @@
             "expression": [
               "",
               "",
-              "var gebyr = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13144\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -7165,7 +7165,36 @@
               ")",
               "",
               "return (",
-              "    ROUND(gebyr, 2)",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
+          },
+          {
+            "name": "VAR Antall kloakkstopper per km. ledning per år",
+            "expression": [
+              "",
+              "",
+              "var stopper = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13144\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Antall kloakkstopper i kommunale avløpsledninger og kummer  (antall)\"",
+              "    )",
+              ")",
+              "",
+              "var ledning = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13144\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Lengde kommunalt spillvannsnett totalt  (m)\"",
+              "    )",
+              ")",
+              "",
+              "var formel = ",
+              "DIVIDE(stopper, DIVIDE(ledning, 1000))",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
               ")"
             ]
           }
