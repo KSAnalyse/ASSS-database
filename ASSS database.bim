@@ -6720,102 +6720,6 @@
             "displayFolder": "VAR\\Vann"
           },
           {
-            "name": "VAR Hygienisk betryggende drikkevann (kvalitetsindeks)",
-            "expression": [
-              "",
-              "",
-              "var kvalitetsindeks = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Hygienisk betryggende drikkevann\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    kvalitetsindeks",
-              ")"
-            ],
-            "displayFolder": "VAR\\Vann"
-          },
-          {
-            "name": "VAR Bruksmessig vannkvalitet (kvalitetsindeks)",
-            "expression": [
-              "",
-              "",
-              "var kvalitetsindeks = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Bruksmessig vannkvalitet\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    kvalitetsindeks",
-              ")"
-            ],
-            "displayFolder": "VAR\\Vann"
-          },
-          {
-            "name": "VAR Leveringsstabilitet (kvalitetsindeks)",
-            "expression": [
-              "",
-              "",
-              "var kvalitetsindeks = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Leveringsstabilitet\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(kvalitetsindeks, 2)",
-              ")"
-            ],
-            "displayFolder": "VAR\\Vann"
-          },
-          {
-            "name": "VAR Alternativ forsyning (kvalitetsindeks)",
-            "expression": [
-              "",
-              "",
-              "var kvalitetsindeks = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Alternativ forsyning\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(kvalitetsindeks, 2)",
-              ")"
-            ],
-            "displayFolder": "VAR\\Vann"
-          },
-          {
-            "name": "VAR Ledningsnettets funksjon (kvalitetsindeks) (vann)",
-            "expression": [
-              "",
-              "",
-              "var kvalitetsindeks = ",
-              "CALCULATE(SUM('Alle Data'[Verdi]),",
-              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
-              "    FILTER(ALL('Tjenesteområde'[Tjenesteområdenavn]), [Tjenesteområdenavn] = \"Vann\"),",
-              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
-              "        \"Ledningsnettets funksjon\"",
-              "    )",
-              ")",
-              "",
-              "return (",
-              "    ROUND(kvalitetsindeks, 2)",
-              ")"
-            ],
-            "displayFolder": "VAR\\Vann"
-          },
-          {
             "name": "VAR Vektet kvalitetsindeks (KI) (vann)",
             "expression": [
               "",
@@ -7210,6 +7114,24 @@
               ")"
             ],
             "displayFolder": "Pleie og omsorg"
+          },
+          {
+            "name": "VAR Fornyelse av ledningsnettet (vann)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13143\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Andel fornyet kommunalt ledningsnett, gjennomsnitt for siste tre år (prosent)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
           }
         ],
         "annotations": [
