@@ -6740,7 +6740,7 @@
             "displayFolder": "VAR\\Vann"
           },
           {
-            "name": "VAR Gebyrgrunnlag per innbygger (avløp)",
+            "name": "VAR Gebyrgrunnlag per innbygger tilknyttet (avløp)",
             "expression": [
               "",
               "",
