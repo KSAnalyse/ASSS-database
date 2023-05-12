@@ -7150,6 +7150,24 @@
               "    ROUND(formel, 2)",
               ")"
             ]
+          },
+          {
+            "name": "VAR Fornyelse av ledningsnettet (avløp)",
+            "expression": [
+              "",
+              "",
+              "var gebyr = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13144\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Andel fornyet kommunalt spillvannsnett, gjennomsnitt for siste tre år (prosent)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(gebyr, 2)",
+              ")"
+            ]
           }
         ],
         "annotations": [
