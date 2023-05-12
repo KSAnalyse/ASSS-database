@@ -7132,6 +7132,24 @@
               "    ROUND(formel, 2)",
               ")"
             ]
+          },
+          {
+            "name": "VAR Estimert vannlekkasje per meter kommunal ledning per år (m3/m/år) (m3)",
+            "expression": [
+              "",
+              "",
+              "var formel = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13143\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
+              "        \"Estimert vannlekkasje per meter kommunal ledning per år (m3/m/år) (m3)\"",
+              "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 2)",
+              ")"
+            ]
           }
         ],
         "annotations": [
