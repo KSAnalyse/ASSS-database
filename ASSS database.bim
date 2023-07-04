@@ -7248,11 +7248,16 @@
             "expression": [
               "",
               "",
+              "var formel =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"KPR01\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
               "        \"2 konsultasjon Alle aldre Antall pasienter per 1 000 innbyggere\"",
               "    )",
+              ")",
+              "",
+              "return (",
+              "    ROUND(formel, 1)",
               ")"
             ],
             "displayFolder": "Kommunehelse"
