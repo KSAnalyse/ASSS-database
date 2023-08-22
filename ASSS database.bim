@@ -7326,7 +7326,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Vann"
           },
           {
             "name": "VAR Vannlekkasjeprosent",
@@ -7344,7 +7345,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Vann"
           },
           {
             "name": "VAR Fornyelse av ledningsnettet (avløp)",
@@ -7362,7 +7364,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Avløp"
           },
           {
             "name": "VAR Antall kloakkstopper per km. ledning per år",
@@ -7391,7 +7394,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Avløp"
           },
           {
             "name": "VAR Hygienisk betryggende drikkevann (kvalitetsindeks)",
@@ -7409,7 +7413,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Vann"
           },
           {
             "name": "VAR Bruksmessig vannkvalitet (kvalitetsindeks)",
@@ -7427,7 +7432,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Vann"
           },
           {
             "name": "VAR Leveringsstabilitet (kvalitetsindeks)",
@@ -7445,7 +7451,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Vann"
           },
           {
             "name": "VAR Alternativ forsyning (kvalitetsindeks)",
@@ -7463,7 +7470,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Vann"
           },
           {
             "name": "VAR Ledningsnettets funksjon (kvalitetsindeks) (vann)",
@@ -7481,7 +7489,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Vann"
           },
           {
             "name": "VAR Overholdelse gjeldende rensekrav (kvalitetsindeks)",
@@ -7499,7 +7508,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Avløp"
           },
           {
             "name": "VAR Kvalitet og bruk av slam (kvalitetsindeks)",
@@ -7517,7 +7527,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Avløp"
           },
           {
             "name": "VAR Tilknytning til godkjent utslipp (kvalitetsindeks)",
@@ -7535,7 +7546,8 @@
               "return (",
               "    ROUND(formel, 2)",
               ")"
-            ]
+            ],
+            "displayFolder": "VAR\\Avløp"
           },
           {
             "name": "EIE Samlet areal på barnehagelokaler og skyss i kvadratmeter per innbygger",
@@ -7563,7 +7575,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           },
           {
             "name": "EIE Samlet areal på skolelokaler i kvadratmeter per innbygger",
@@ -7591,7 +7604,8 @@
               "        1",
               "    )",
               ")"
-            ]
+            ],
+            "displayFolder": "Eiendomsforvaltning"
           }
         ],
         "annotations": [
