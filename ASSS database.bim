@@ -7536,6 +7536,62 @@
               "    ROUND(formel, 2)",
               ")"
             ]
+          },
+          {
+            "name": "EIE Samlet areal på barnehagelokaler og skyss i kvadratmeter per innbygger",
+            "expression": [
+              "",
+              "",
+              "var areal = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11906\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Areal (m2)\"),",
+              "    FILTER(ALL(Eieform[Eieformnavn]), [Eieformnavn] = \"Areal totalt\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"221\")",
+              ")",
+              "",
+              "var bef = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]=\"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(areal, bef),",
+              "        1",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "EIE Samlet areal på skolelokaler i kvadratmeter per innbygger",
+            "expression": [
+              "",
+              "",
+              "var areal = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11906\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Areal (m2)\"),",
+              "    FILTER(ALL(Eieform[Eieformnavn]), [Eieformnavn] = \"Areal totalt\"),",
+              "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"222\")",
+              ")",
+              "",
+              "var bef = ",
+              "CALCULATE(SUM('Alle Data'[Verdi]),",
+              "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
+              "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn]=\"Personer (antall)\"),",
+              "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"I alt\")",
+              ")",
+              "",
+              "return (",
+              "    ROUND(",
+              "        DIVIDE(areal, bef),",
+              "        1",
+              "    )",
+              ")"
+            ]
           }
         ],
         "annotations": [
@@ -19258,10 +19314,10 @@
         "toColumn": "Postkode"
       },
       {
-        "name": "cebf82e2-86ae-4726-82d2-ed78d00c219c",
-        "fromTable": "Omsorgs-hjelpetiltak",
+        "name": "d9a41b9a-83c0-4331-a8f7-f7bed685d866",
+        "fromTable": "Alle Data",
         "fromColumn": "Omsorgs-/hjelpetiltakkode",
-        "toTable": "Alle Data",
+        "toTable": "Omsorgs-hjelpetiltak",
         "toColumn": "Omsorgs-/hjelpetiltakkode"
       }
     ],
