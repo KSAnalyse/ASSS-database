@@ -1358,11 +1358,11 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-17 år\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE((ndrbv*1000), barn)",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE((ndrbv*1000), barn),",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1385,11 +1385,11 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-17 år\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(barn_und, pers_017) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(barn_und, pers_017) * 100,",
-              "        1",
-              "    )",
+              "    formel",
               ")",
               ""
             ],
@@ -1415,14 +1415,11 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-17 år\")",
               ")",
               "",
-              "var formel017 =",
-              "DIVIDE(",
-              "    barn_mtiltak, ",
-              "    pers_017",
-              ") * 100",
+              "var formel =",
+              "DIVIDE(barn_mtiltak, pers_017) * 100",
               "",
               "return (",
-              "    formel017",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1432,6 +1429,7 @@
             "expression": [
               "",
               "",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -1441,6 +1439,10 @@
               "    FILTER(ALL(Funksjon[Funksjonnavn]), [Funksjonnavn] = ",
               "        \"252 - Barnevernstiltak når barnet er plassert av barnevernet\"",
               "    )",
+              ")",
+              "",
+              "return (",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1459,18 +1461,14 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"0-17 år\")",
               ")",
               "",
-              "var bnv_tiltak_022 = ",
+              "var formel = ",
               "DIVIDE(",
               "    [BNV Barn med barnevernstiltak i løpet av året 0-22 år som er plassert f252 (antall)], ",
               "    barn_017",
               ") * 100",
               "",
-              "",
               "return (",
-              "    ROUND(",
-              "        bnv_tiltak_022,",
-              "        2",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1480,6 +1478,7 @@
             "expression": [
               "",
               "",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall)\"),",
@@ -1487,6 +1486,10 @@
               "    FILTER(ALL(Funksjon[Funksjonnavn]), [Funksjonnavn] = ",
               "        \"251 - Barnevernstiltak når barnet ikke er plassert av barnevernet\"",
               "    )",
+              ")",
+              "",
+              "return (",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1506,17 +1509,14 @@
               "    FILTER(ALL(Funksjon[Funksjonnavn]), [Funksjonnavn] = \"Tiltak i alt\")",
               ")",
               "",
-              "var formel_022 =",
+              "var formel =",
               "DIVIDE(",
               "    [BNV Barn med barnevernstiltak i løpet av året 0-22 år som ikke er plassert f251 (antall)],",
               "    tiltak",
               ") * 100",
               "",
               "return (",
-              "    ROUND(",
-              "        formel_022,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1549,9 +1549,10 @@
               ") * 1000",
               "",
               "return (",
-              "    ROUND(",
-              "        IF(valgte_aar >= 2021, formel024, formel022),",
-              "        1",
+              "    IF(",
+              "        valgte_aar >= 2021,",
+              "        formel024,",
+              "        formel022",
               "    )",
               ")"
             ],
@@ -1585,9 +1586,10 @@
               ") * 1000",
               "",
               "return (",
-              "    ROUND(",
-              "        IF(valgte_aar >= 2021, formel024, formel022),",
-              "        1",
+              "    IF(",
+              "        valgte_aar >= 2021,",
+              "        formel024,",
+              "        formel022",
               "    )",
               ")"
             ],
@@ -1618,11 +1620,11 @@
               "        [Handsamingstidnavn] = \"Undersøkingar avslutta\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(avsunder3mnd, avsundertot) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(avsunder3mnd, avsundertot) * 100,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1652,7 +1654,7 @@
               "DIVIDE(sykefravaer, avtalte_dagsverk) * 100",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1685,10 +1687,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        IF(valgte_aar < 2021, formel022, formel024),",
-              "        1",
-              "    )",
+              "    IF(valgte_aar < 2021, formel022, formel024)",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1714,8 +1713,11 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(netto244, nettobv) * 100",
+              "",
               "return (",
-              "    DIVIDE(netto244, nettobv) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1741,8 +1743,11 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(netto251, nettobv) * 100",
+              "",
               "return (",
-              "    DIVIDE(netto251, nettobv) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1768,8 +1773,11 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(netto252, nettobv) * 100",
+              "",
               "return (",
-              "    DIVIDE(netto252, nettobv) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1792,11 +1800,11 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] =  \"0-17 år\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(melding, barn) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(melding, barn) * 100,",
-              "        1",
-              "    )",
+              "    formel",
               ")",
               "    ",
               ""
@@ -1808,12 +1816,19 @@
             "expression": [
               "",
               "",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12280\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
               "        \"Barn med undersøking eller tiltak per årsverk (funksjon 244) (antall)\"",
               "    )",
-              ")"
+              ")",
+              "",
+              "return (",
+              "    formel",
+              ")",
+              "",
+              ""
             ],
             "displayFolder": "Barnevern"
           },
@@ -1838,11 +1853,11 @@
               "    )",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(fag, stillinger) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(fag, stillinger) * 100,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1878,11 +1893,11 @@
               "        [Konklusjon på meldinganavn] = \"Meldinger i alt\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(und, meld) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(und, meld) * 100,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -2697,11 +2712,11 @@
               "    })",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(antall1, antall2) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(antall1, antall2) * 100,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -5970,11 +5985,11 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak per 31.12\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(barnmutplan, barnmbnvtiltak) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(barnmutplan, barnmbnvtiltak) * 100,",
-              "        2",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -5996,11 +6011,11 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med hjelpetiltak per 31.12.\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(barnmtiltplan, barnmhjtiltak) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(barnmtiltplan, barnmhjtiltak) * 100,",
-              "        2",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -6022,11 +6037,11 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med omsorgstiltak per 31.12.\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(barnmomsplan, barnmomstiltak) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(barnmomsplan, barnmomstiltak) * 100,",
-              "        2",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -6054,7 +6069,7 @@
             "expression": [
               "",
               "",
-              "var rbi = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"RBI01\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Ressursbruksindikator(uveid snitt)\"),",
@@ -6062,7 +6077,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(rbi, 3)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -6591,11 +6606,11 @@
               "    })",
               ")",
               "",
+              "var formel =",
+              "DIVIDE((ndrbv*1000), barn)",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE((ndrbv*1000), barn),",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -6627,8 +6642,11 @@
               "    })",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(barn_mtiltak, pers_024) * 100",
+              "",
               "return (",
-              "    DIVIDE(barn_mtiltak, pers_024) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -6663,10 +6681,11 @@
               ") * 100",
               "",
               "return (",
-              "    ROUND(",
-              "        IF(valgte_aar >= 2021, formel_024, formel_022),",
-              "        2",
-              "        )",
+              "    IF(",
+              "        valgte_aar >= 2021,",
+              "        formel_024,",
+              "        formel_022",
+              "    )",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -6704,9 +6723,10 @@
               ") * 100 ",
               "",
               "return (",
-              "    ROUND(",
-              "        IF(valgte_aar >= 2021, formel_024, formel_022),",
-              "        1",
+              "    IF(",
+              "        valgte_aar >= 2021,",
+              "        formel_024,",
+              "        formel_022",
               "    )",
               ")"
             ],
@@ -6733,11 +6753,11 @@
               "    })",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(tiltak_05, barn_05) * 100",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(tiltak_05, barn_05) * 100,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -6747,6 +6767,7 @@
             "expression": [
               "",
               "",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn med barnevernstiltak i løpet av året  (antall)\"),",
@@ -6754,6 +6775,10 @@
               "    FILTER(ALL(Funksjon[Funksjonnavn]), [Funksjonnavn] = ",
               "        \"251 - Barnevernstiltak når barnet ikke er plassert av barnevernet\"",
               "    )",
+              ")",
+              "",
+              "return (",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -6763,6 +6788,7 @@
             "expression": [
               "",
               "",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12275\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -6772,6 +6798,10 @@
               "    FILTER(ALL(Funksjon[Funksjonnavn]), [Funksjonnavn] = ",
               "        \"252 - Barnevernstiltak når barnet er plassert av barnevernet\"",
               "    )",
+              ")",
+              "",
+              "return (",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -6805,10 +6835,7 @@
               "DIVIDE(brutto244 * 1000, tiltak)",
               "",
               "return (",
-              "    ROUND(",
-              "        formel,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnevern"
