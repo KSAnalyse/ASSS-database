@@ -1422,10 +1422,7 @@
               ") * 100",
               "",
               "return (",
-              "    ROUND(",
-              "        formel017,",
-              "        1    ",
-              "    )",
+              "    formel017",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1718,10 +1715,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(netto244, nettobv) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(netto244, nettobv) * 100",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1748,10 +1742,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(netto251, nettobv) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(netto251, nettobv) * 100",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -1778,10 +1769,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(netto252, nettobv) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(netto252, nettobv) * 100",
               ")"
             ],
             "displayFolder": "Barnevern"
@@ -4688,8 +4676,11 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"1-5 år\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(nettobhg * 1000, bef)",
+              "",
               "return (",
-              "    DIVIDE(nettobhg * 1000, bef)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4714,8 +4705,11 @@
               "    FILTER(ALL(Regnskapsbegrep[Regnskapsbegrepnavn]), [Regnskapsbegrepnavn] = \"Netto driftsutgifter totalt\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(nettobhg, nettoalle) * 100",
+              "",
               "return (",
-              "    DIVIDE(nettobhg, nettoalle) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4737,8 +4731,11 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Innvandrerbarn (antall)\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(minbarn, innbarn) * 100",
+              "",
               "return (",
-              "    DIVIDE(minbarn, innbarn) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4764,8 +4761,11 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"1-2 år\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(barnbhg12, barn12) * 100",
+              "",
               "return (",
-              "    DIVIDE(barnbhg12, barn12) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4791,8 +4791,11 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"3-5 år\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(barnbhg35, barn35) * 100",
+              "",
               "return (",
-              "    DIVIDE(barnbhg35, barn35) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4815,8 +4818,11 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"1-5 år\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(bhgbarn15, allebarn) * 100",
+              "",
               "return (",
-              "    DIVIDE(bhgbarn15, allebarn) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4838,8 +4844,11 @@
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Barn i barnehage (antall)\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(minorbhgbarn15, bhgbarn15) * 100",
+              "",
               "return (",
-              "    DIVIDE(minorbhgbarn15, bhgbarn15) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4867,8 +4876,11 @@
               "    FILTER(ALL(Oppholdstid[Oppholdstidnavn]), [Oppholdstidnavn] = \"Alle oppholdskategorier\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(barnkom, barnbhg) * 100",
+              "",
               "return (",
-              "    DIVIDE(barnkom, barnbhg) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4896,8 +4908,11 @@
               "    FILTER(ALL(Oppholdstid[Oppholdstidnavn]), [Oppholdstidnavn] = \"Alle oppholdskategorier\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(barnkom, barnbhg) * 100",
+              "",
               "return (",
-              "    DIVIDE(barnkom, barnbhg) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4932,8 +4947,11 @@
               "    })",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(menn, ansatte) * 100",
+              "",
               "return (",
-              "    DIVIDE(menn, ansatte) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4957,8 +4975,11 @@
               "    FILTER(ALL(Eierforhold[Eierforholdnavn]), [Eierforholdnavn] = \"Kommune\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(kbr201 * 1000, kopph)",
+              "",
               "return (",
-              "    DIVIDE(kbr201 * 1000, kopph)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4968,7 +4989,7 @@
             "expression": [
               "",
               "",
-              "var barn =",
+              "var formel =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG01\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -4978,7 +4999,7 @@
               ")",
               "",
               "return (",
-              "    barn",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4988,7 +5009,7 @@
             "expression": [
               "",
               "",
-              "var barn =",
+              "var formel =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG01\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -4998,7 +5019,7 @@
               ")",
               "",
               "return (",
-              "    barn",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -5035,8 +5056,11 @@
               "    FILTER(ALL(Stillingstype[Stillingstypenavn]), [Stillingstypenavn] = \"Alle stillingstyper\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(utd, ansatte) * 100",
+              "",
               "return (",
-              "    DIVIDE(utd, ansatte) * 100",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -5095,11 +5119,15 @@
               "var har_blanke_verdier =",
               "ISBLANK(a) || ISBLANK(b)",
               "",
+              "var formel =",
+              "IF(",
+              "    har_blanke_verdier,",
+              "    BLANK(),",
+              "    a + b",
+              ")",
+              "",
               "return (  ",
-              "    IF(har_blanke_verdier,",
-              "        BLANK(),",
-              "        a + b",
-              "    )",
+              "    formel",
               ")",
               "",
               ""
@@ -5150,11 +5178,15 @@
               "var har_blanke_verdier =",
               "ISBLANK(barn1) || ISBLANK(barn2)",
               "",
+              "var formel =",
+              "IF(",
+              "    har_blanke_verdier,",
+              "    BLANK(),",
+              "    DIVIDE((barn1 * 2) + barn2, bhg)",
+              ")",
+              "",
               "return (",
-              "    IF(har_blanke_verdier,",
-              "        BLANK(),",
-              "        DIVIDE((barn1 * 2) + barn2, bhg)",
-              "    )",
+              "    formel",
               ")",
               "",
               "/*Barn er korrigert ut fra endret vekt - dette er ikke korrigert hos SSB*/",
@@ -6004,7 +6036,7 @@
             "expression": [
               "",
               "",
-              "var rbi =",
+              "var formel =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"RBI01\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Ressursbruksindikator(uveid snitt)\"),",
@@ -6012,7 +6044,7 @@
               ")",
               "",
               "return (",
-              "    rbi",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -6374,14 +6406,14 @@
             "expression": [
               "",
               "",
-              "var resultat =",
+              "var formel =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG02\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Foreldreundersøkelsen: Tilfredshet\")",
               ")",
               "",
               "return (",
-              "    resultat",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -6596,10 +6628,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(    ",
-              "        DIVIDE(barn_mtiltak, pers_024) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(barn_mtiltak, pers_024) * 100",
               ")"
             ],
             "displayFolder": "Barnevern"
