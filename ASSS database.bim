@@ -4689,10 +4689,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(nettobhg * 1000, bef),",
-              "        1",
-              "    )",
+              "    DIVIDE(nettobhg * 1000, bef)",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4718,10 +4715,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(nettobhg, nettoalle) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(nettobhg, nettoalle) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4744,10 +4738,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(minbarn, innbarn) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(minbarn, innbarn) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4774,10 +4765,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(barnbhg12, barn12) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(barnbhg12, barn12) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4804,10 +4792,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(barnbhg35, barn35) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(barnbhg35, barn35) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4831,10 +4816,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(bhgbarn15, allebarn) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(bhgbarn15, allebarn) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4857,10 +4839,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(minorbhgbarn15, bhgbarn15) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(minorbhgbarn15, bhgbarn15) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4889,10 +4868,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(barnkom, barnbhg) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(barnkom, barnbhg) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4921,10 +4897,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(barnkom, barnbhg) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(barnkom, barnbhg) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4960,10 +4933,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(menn, ansatte) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(menn, ansatte) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -4988,10 +4958,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(kbr201 * 1000, kopph),",
-              "        1",
-              "    )",
+              "    DIVIDE(kbr201 * 1000, kopph)",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -5001,7 +4968,7 @@
             "expression": [
               "",
               "",
-              "var a =",
+              "var barn =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG01\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -5011,10 +4978,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        a,",
-              "        1",
-              "    )",
+              "    barn",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -5024,7 +4988,7 @@
             "expression": [
               "",
               "",
-              "var a =",
+              "var barn =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"BHG01\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -5034,10 +4998,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        a,",
-              "        1",
-              "    )",
+              "    barn",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -5075,10 +5036,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(utd, ansatte) * 100,",
-              "        1",
-              "    )",
+              "    DIVIDE(utd, ansatte) * 100",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -5108,7 +5066,7 @@
               "DIVIDE(sykefravaer, avtalte_dagsverk) * 100",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -5140,10 +5098,7 @@
               "return (  ",
               "    IF(har_blanke_verdier,",
               "        BLANK(),",
-              "        ROUND(",
-              "            a + b,",
-              "            1 ",
-              "        )",
+              "        a + b",
               "    )",
               ")",
               "",
@@ -5198,10 +5153,7 @@
               "return (",
               "    IF(har_blanke_verdier,",
               "        BLANK(),",
-              "        ROUND(",
-              "            DIVIDE((barn1 * 2) + barn2, bhg),",
-              "            1 ",
-              "        )",
+              "        DIVIDE((barn1 * 2) + barn2, bhg)",
               "    )",
               ")",
               "",
@@ -6060,7 +6012,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(rbi, 3)",
+              "    rbi",
               ")"
             ],
             "displayFolder": "Barnehage"
@@ -6429,10 +6381,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        resultat,",
-              "        1",
-              "    )",
+              "    resultat",
               ")"
             ],
             "displayFolder": "Barnehage"
