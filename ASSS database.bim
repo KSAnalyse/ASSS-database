@@ -1298,7 +1298,7 @@
               ")",
               "",
               "return (",
-              "    resultat",
+              "    formel",
               ")"
             ],
             "displayFolder": "Samferdsel"
@@ -4040,11 +4040,11 @@
               "    )",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(ndrsos * 1000, [SOS Antall innbyggere 18-66])",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(ndrsos * 1000, [SOS Antall innbyggere 18-66]),",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4062,11 +4062,11 @@
               "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"281\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(ndr281 * 1000, [SOS Antall innbyggere 18-66])",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(ndr281 * 1000, [SOS Antall innbyggere 18-66]),",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4084,11 +4084,11 @@
               "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] = \"243\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(ndr243 * 1000, [SOS Antall innbyggere 18-66])",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(ndr243 * 1000, [SOS Antall innbyggere 18-66]),",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4139,10 +4139,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        formel,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4181,10 +4178,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        formel,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4231,10 +4225,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        formel,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4257,11 +4248,11 @@
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"18-66 år\")",
               ")",
               "",
+              "var formel =",
+              "DIVIDE(delt, DIVIDE(bef, 1000))",
+              "",
               "return (",
-              "    ROUND(",
-              "        DIVIDE(delt, DIVIDE(bef, 1000)),",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4305,10 +4296,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        formel,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4356,10 +4344,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        formel,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4391,10 +4376,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        formel,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4404,7 +4386,7 @@
             "expression": [
               "",
               "",
-              "var anddelt =",
+              "var formel =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"KVP01\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -4413,7 +4395,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(anddelt, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4443,7 +4425,7 @@
               "DIVIDE(sykefravaer, avtalte_dagsverk) * 100",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4491,10 +4473,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(",
-              "        formel,",
-              "        1",
-              "    )",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4530,7 +4509,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 1)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4566,7 +4545,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 0)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4576,9 +4555,14 @@
             "expression": [
               "",
               "",
+              "var formel =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"13138\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Sosialhjelpsmottakere (antall)\")",
+              ")",
+              "",
+              "return (",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4588,11 +4572,16 @@
             "expression": [
               "",
               "",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12203\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
               "        \"Sosialhjelpsmottakere med sosialhjelp som viktigste kilde til livsopphold (antall)\"",
               "    )",
+              ")",
+              "",
+              "return (",
+              "    formel",
               ")",
               "",
               ""
@@ -4604,11 +4593,16 @@
             "expression": [
               "",
               "",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12213\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
               "        \"Gjennomsnittlig stønadslengde for mottakere med sosialhjelp som hovedinntekt  (måneder)\"",
               "    )",
+              ")",
+              "",
+              "return (",
+              "    formel",
               ")",
               "",
               "",
@@ -4621,11 +4615,16 @@
             "expression": [
               "",
               "",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
               "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGD10\"),",
               "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] IN {\"242\", \"243\", \"273\", \"276\", \"281\"})",
+              ")",
+              "",
+              "return (",
+              "    formel",
               ")",
               ""
             ],
@@ -4636,11 +4635,16 @@
             "expression": [
               "",
               "",
+              "var formel =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12367\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Beløp (1000 kr)\"),",
               "    FILTER(ALL(Art[Original dimensjonskode]), [Original dimensjonskode] = \"AGD2\"),",
               "    FILTER(ALL(Funksjon[Original dimensjonskode]), [Original dimensjonskode] IN {\"242\", \"243\", \"273\", \"276\", \"281\"})",
+              ")",
+              "",
+              "return (",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
@@ -4650,12 +4654,16 @@
             "expression": [
               "",
               "",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"11805\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Personer (antall)\"),",
               "    FILTER(ALL(Alder[Aldernavn]), [Aldernavn] = \"18-66 år\")",
               ")",
-              ""
+              "",
+              "return (",
+              "    formel",
+              ")"
             ],
             "displayFolder": "Sosiale tjenester"
           },
@@ -6156,7 +6164,7 @@
             "expression": [
               "",
               "",
-              "var rbi =",
+              "var formel =",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"RBI01\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = \"Ressursbruksindikator(uveid snitt)\"),",
@@ -6164,7 +6172,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(rbi, 3)",
+              "    formel",
               ")"
             ],
             "displayFolder": "Sosiale tjenester"
