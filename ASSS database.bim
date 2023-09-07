@@ -6960,7 +6960,7 @@
               "DIVIDE(gebyr, innb) * 1000",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -6970,7 +6970,7 @@
             "expression": [
               "",
               "",
-              "var gebyr = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12842\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -6979,7 +6979,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(gebyr, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -6989,7 +6989,7 @@
             "expression": [
               "",
               "",
-              "var kvalitetsindeks = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR01\"),",
               "    FILTER(ALL('Tjenesteområde'[Tjenesteområdenavn]), [Tjenesteområdenavn] = \"Vann\"),",
@@ -6999,7 +6999,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(kvalitetsindeks, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -7029,7 +7029,7 @@
               "DIVIDE(gebyr, innb) * 1000",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7039,7 +7039,7 @@
             "expression": [
               "",
               "",
-              "var kvalitetsindeks = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -7048,7 +7048,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(kvalitetsindeks, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7058,7 +7058,7 @@
             "expression": [
               "",
               "",
-              "var kvalitetsindeks = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
               "    FILTER(ALL('Tjenesteområde'[Tjenesteområdenavn]), [Tjenesteområdenavn] = \"Avløp\"),",
@@ -7068,7 +7068,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(kvalitetsindeks, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7078,7 +7078,7 @@
             "expression": [
               "",
               "",
-              "var kvalitetsindeks = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"VAR02\"),",
               "    FILTER(ALL('Tjenesteområde'[Tjenesteområdenavn]), [Tjenesteområdenavn] = \"Avløp\"),",
@@ -7088,7 +7088,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(kvalitetsindeks, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7116,7 +7116,7 @@
               "DIVIDE(gebyr, innb) * 1000",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Renovasjon"
@@ -7126,7 +7126,7 @@
             "expression": [
               "",
               "",
-              "var kvalitetsindeks = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12263\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -7135,7 +7135,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(kvalitetsindeks, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Renovasjon"
@@ -7154,7 +7154,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7164,7 +7164,7 @@
             "expression": [
               "",
               "",
-              "var gebyr = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12842\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -7173,7 +7173,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(gebyr, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Renovasjon"
@@ -7183,7 +7183,7 @@
             "expression": [
               "",
               "",
-              "var kvalitetsindeks = ",
+              "var formel = ",
               "CALCULATE(SUM('Alle Data'[Verdi]),",
               "    FILTER(ALL(Tabeller[Tabellnummer]), [Tabellnummer] = \"12263\"),",
               "    FILTER(ALL(Variabel[Variabelnavn]), [Variabelnavn] = ",
@@ -7192,7 +7192,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(kvalitetsindeks, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Renovasjon"
@@ -7342,7 +7342,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -7361,7 +7361,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -7380,7 +7380,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7410,7 +7410,7 @@
               "DIVIDE(stopper, DIVIDE(ledning, 1000))",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7429,7 +7429,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -7448,7 +7448,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -7467,7 +7467,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -7486,7 +7486,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -7505,7 +7505,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Vann"
@@ -7524,7 +7524,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7543,7 +7543,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
@@ -7562,7 +7562,7 @@
               ")",
               "",
               "return (",
-              "    ROUND(formel, 2)",
+              "    formel",
               ")"
             ],
             "displayFolder": "VAR\\Avløp"
